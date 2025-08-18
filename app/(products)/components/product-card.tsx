@@ -29,7 +29,7 @@ export function ProductCard({
           loading="lazy"
           width={368}
           height={368}
-          className="ring-primary-200 group-hover:bg-primary-100 group-hover:ring-primary-300 aspect-square min-h-[368px] w-full overflow-hidden rounded-2xl bg-white ring-1 transition-all duration-200"
+          className="ring-primary-200 group-hover:bg-primary-100 group-hover:ring-primary-300 aspect-square w-full overflow-hidden rounded-2xl bg-white ring-1 transition-all duration-200"
           src={imageUrl}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />

@@ -1,6 +1,6 @@
 import { CategoryHero } from "@/app/(products)/components/category-hero";
 import { ProductCard } from "@/app/(products)/components/product-card";
-import { ExpertAdviceCTA } from "@/app/(products)/injections/components/expert-advice-cta";
+import { ExpertAdviceCTA } from "@/app/(products)/components/expert-advice-cta";
 import { CrossSellSection } from "../components/cross-sell-section";
 import { MentalHealthSection } from "@/app/(products)/components/mental-health-section";
 import { FAQsSection } from "@/app/(products)/components/faqs-section";
@@ -77,7 +77,7 @@ export default function InjectionsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="mx-auto px-4 max-w-7xl">
+      <section className="mx-auto px-4 max-w-7xl w-full">
         <CategoryHero
           title="Northampton Weight Loss Injections"
           description="Discover if you're eligible for weight loss injections at Northampton Weight Loss Clinic. Compare Wegovy, Saxenda, and Mounjaro for their effectiveness, common side effects, patient reviews, and pricing."
@@ -102,12 +102,12 @@ export default function InjectionsPage() {
       </section>
 
       {/* Injections Comparison Section */}
-      <section className="mx-auto px-4 max-w-7xl">
+      <section className="mx-auto px-4 max-w-7xl w-full">
         <InjectionsComparisonSection />
       </section>
 
       {/* Expert Advice CTA */}
-      <section className="mx-auto px-4 max-w-7xl">
+      <section className="mx-auto px-4 max-w-7xl w-full">
         <ExpertAdviceCTA />
       </section>
 
@@ -127,7 +127,7 @@ export default function InjectionsPage() {
       <PublicPresenceSection />
 
       {/* Cross-sell Pills Section */}
-      <section className="mx-auto px-4 max-w-7xl">
+      <section className="mx-auto px-4 max-w-7xl w-full">
         <CrossSellSection
           title="We also offer weight loss pills"
           description="Northampton Weight Loss Clinic also offers weight loss pills"
@@ -137,12 +137,12 @@ export default function InjectionsPage() {
       </section>
 
       {/* Mental Health Support Section */}
-      <section className="mx-auto px-4 max-w-7xl">
+      <section className="mx-auto px-4 max-w-7xl w-full">
         <MentalHealthSection />
       </section>
 
       {/* FAQs Section */}
-      <section className="mx-auto px-4 max-w-7xl">
+      <section className="mx-auto px-4 max-w-7xl w-full">
         <FAQsSection />
       </section>
 
