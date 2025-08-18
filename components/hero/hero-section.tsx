@@ -6,10 +6,10 @@ export function HeroSection() {
   return (
     <>
       <div className="-mt-6 w-full px-3 sm:px-6 lg:-mt-2">
-        <div className="bg-primary-200 rounded-5xl via-primary-100 to-primary-200 ring-primary-300/50 shadow-primary-900/5 bg-gradient-to-b from-white via-90% shadow-xl ring inset-ring inset-ring-white/40">
-          <div className="ring-primary-500/20 bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-start text-left rounded-5xl flex w-full flex-col px-4 lg:p-10 bg-primary-800 relative overflow-hidden bg-[radial-gradient(ellipse_70%_80%_at_bottom,var(--color-primary-700),var(--color-primary-900))] py-4">
+        <div className="bg-primary-200 rounded-5xl via-primary-100 to-primary-200 ring-primary-300/50 shadow-primary-900/5 bg-linear-to-b from-white via-90% shadow-xl ring inset-ring inset-ring-white/40">
+          <div className="ring-primary-500/20 bg-size-[100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-start text-left rounded-5xl flex w-full flex-col px-4 lg:p-10 bg-primary-800 relative overflow-hidden bg-[radial-gradient(ellipse_70%_80%_at_bottom,var(--color-primary-700),var(--color-primary-900))] py-4">
             <div className="rounded-5xl ring-primary-100/60 pointer-events-none absolute top-0 left-0 z-20 h-full w-full shadow-inner ring-1 ring-inset" />
-            <div className="animate-noise pointer-events-none absolute -top-[100%] -left-[100%] z-20 h-[200%] w-[200%] bg-[url(https://ik.imagekit.io/medicspot/noise-light.webp)] bg-[size:90px] opacity-80"></div>
+            <div className="animate-noise pointer-events-none absolute -top-full -left-full z-20 h-[200%] w-[200%] bg-[url(https://ik.imagekit.io/medicspot/noise-light.webp)] bg-size-[90px] opacity-80"></div>
 
             <div className="z-20 mx-auto grid w-full max-w-[1600px] grid-cols-1 flex-wrap items-center justify-center gap-6 xl:grid-cols-[1fr_745px] xl:flex-row xl:justify-between 2xl:grid-cols-[1fr_790px]">
               <div className="z-10 mb-4 flex h-full w-full items-center justify-center xl:mb-0">

@@ -1,3 +1,4 @@
+import FooterSection from "./footer-section";
 import { Header } from "./header-nav";
 import PromoBanner from "./promo-banner";
 
@@ -17,6 +18,7 @@ export default function LayoutWrapper({
         <main className="flex w-full flex-col items-center gap-24 py-8">
           {children}
         </main>
+        <FooterSection />
       </div>
     </div>
   );
