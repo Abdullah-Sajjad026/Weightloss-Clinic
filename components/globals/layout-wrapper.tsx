@@ -1,6 +1,6 @@
 import FooterSection from "./footer-section";
-import { Header } from "./header-nav";
 import PromoBanner from "./promo-banner";
+import HeaderNav from "./header-nav";
 
 export default function LayoutWrapper({
   children,
@@ -10,10 +10,9 @@ export default function LayoutWrapper({
   return (
     <div className="min-h-screen">
       <div className="relative z-40">
-        {/* <PromoBanner />
-        <Header /> */}
+        <PromoBanner />
+        <HeaderNav />
       </div>
-      <div className="h-28 w-full"></div>
       <div className="flex flex-col items-center">
         <main className="flex w-full flex-col items-center gap-24 py-8">
           {children}

@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/medicspot/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
