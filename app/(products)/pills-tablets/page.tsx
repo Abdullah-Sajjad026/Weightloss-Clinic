@@ -5,6 +5,8 @@ import { PillsComparisonSection } from "@/app/(products)/components/pills-compar
 import { ExpertAdviceCTA } from "@/app/(products)/components/expert-advice-cta";
 import { HowItWorksSection } from "@/app/(products)/components/how-it-works-section";
 import { MentalHealthSection } from "../components/mental-health-section";
+import { FAQsSection } from "@/app/(products)/components/faqs-section";
+import { pillsFAQs } from "@/app/(products)/data/pills-faqs";
 import MedicallyReviewedSection from "@/app/(landing-page)/components/medically-reviewed-section";
 
 const pillProducts = [
@@ -128,6 +130,15 @@ export default function PillsTabletsPage() {
       {/* Mental Health Support Section */}
       <section className="mx-auto px-4 max-w-7xl w-full">
         <MentalHealthSection />
+      </section>
+
+      {/* FAQs Section */}
+      <section className="mx-auto px-4 max-w-7xl w-full">
+        <FAQsSection 
+          title="Northampton weight loss pills FAQs"
+          faqData={pillsFAQs}
+          colorScheme="tertiary"
+        />
       </section>
 
       <MedicallyReviewedSection />

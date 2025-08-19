@@ -4,6 +4,7 @@ import { ExpertAdviceCTA } from "@/app/(products)/components/expert-advice-cta";
 import { CrossSellSection } from "../components/cross-sell-section";
 import { MentalHealthSection } from "@/app/(products)/components/mental-health-section";
 import { FAQsSection } from "@/app/(products)/components/faqs-section";
+import { injectionFAQs } from "@/app/(products)/data/injection-faqs";
 import { InjectionsComparisonSection } from "@/app/(products)/components/injections-comparison-section";
 import YourJourneySection from "@/app/(landing-page)/components/your-journey-section";
 import CLinicComparisonSection from "@/app/(landing-page)/components/clinic-comparison-section";
@@ -143,7 +144,11 @@ export default function InjectionsPage() {
 
       {/* FAQs Section */}
       <section className="mx-auto px-4 max-w-7xl w-full">
-        <FAQsSection />
+        <FAQsSection 
+          title="Northampton weight loss injections FAQs"
+          faqData={injectionFAQs}
+          colorScheme="tertiary"
+        />
       </section>
 
       <MedicallyReviewedSection />
