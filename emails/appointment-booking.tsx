@@ -9,6 +9,7 @@ import {
   Hr,
   Row,
   Column,
+  Button,
 } from '@react-email/components'
 
 interface AppointmentBookingEmailProps {
@@ -19,7 +20,10 @@ interface AppointmentBookingEmailProps {
     phone: string
     consultationType: string
     preferredDate: Date
+    timezone?: string | null
     notes?: string | null
+    meetingLink?: string | null
+    meetingId?: string | null
     timeSlot: {
       dayOfWeek: number
       startTime: string
@@ -165,6 +169,68 @@ export function AppointmentBookingEmail({ appointment }: AppointmentBookingEmail
               )}
             </Section>
 
+            {/* Google Meet Section */}
+            {appointment.meetingLink && (
+              <Section style={{ 
+                backgroundColor: '#f0fdf4', 
+                border: '1px solid #bbf7d0',
+                borderRadius: '8px', 
+                padding: '20px', 
+                margin: '24px 0' 
+              }}>
+                <Heading style={{ color: '#166534', fontSize: '18px', marginBottom: '16px' }}>
+                  🎥 Virtual Consultation Details
+                </Heading>
+                
+                <Text style={{ color: '#166534', fontSize: '16px', marginBottom: '16px' }}>
+                  Your consultation will be conducted via secure video call. Please join using the link below:
+                </Text>
+
+                <Section style={{ textAlign: 'center', margin: '20px 0' }}>
+                  <Button
+                    href={appointment.meetingLink}
+                    style={{
+                      backgroundColor: '#16a34a',
+                      color: 'white',
+                      padding: '12px 24px',
+                      borderRadius: '6px',
+                      textDecoration: 'none',
+                      fontSize: '16px',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    Join Video Consultation
+                  </Button>
+                </Section>
+
+                <Text style={{ color: '#166534', fontSize: '14px', textAlign: 'center' }}>
+                  Meeting Link: {appointment.meetingLink}
+                </Text>
+
+                <Hr style={{ margin: '16px 0', borderColor: '#bbf7d0' }} />
+
+                <Heading style={{ color: '#166534', fontSize: '16px', marginBottom: '12px' }}>
+                  Before Your Consultation:
+                </Heading>
+                
+                <Text style={{ color: '#166534', margin: '4px 0' }}>
+                  • Test your camera and microphone by clicking the link early
+                </Text>
+                <Text style={{ color: '#166534', margin: '4px 0' }}>
+                  • Use Chrome, Firefox, Safari, or Edge (works on phones too!)
+                </Text>
+                <Text style={{ color: '#166534', margin: '4px 0' }}>
+                  • Ensure stable internet connection
+                </Text>
+                <Text style={{ color: '#166534', margin: '4px 0' }}>
+                  • Join from a quiet, private location
+                </Text>
+                <Text style={{ color: '#166534', margin: '4px 0' }}>
+                  • Have pen, paper, and any questions ready
+                </Text>
+              </Section>
+            )}
+
             <Section style={{ 
               backgroundColor: '#dbeafe', 
               borderLeft: '4px solid #3b82f6',
@@ -178,9 +244,15 @@ export function AppointmentBookingEmail({ appointment }: AppointmentBookingEmail
               <Text style={{ color: '#1e40af', margin: '4px 0' }}>
                 • Our team will call you to confirm your preferred date and time
               </Text>
-              <Text style={{ color: '#1e40af', margin: '4px 0' }}>
-                • You'll receive an email with video call instructions
-              </Text>
+              {appointment.meetingLink ? (
+                <Text style={{ color: '#1e40af', margin: '4px 0' }}>
+                  • Join the video consultation using the link above
+                </Text>
+              ) : (
+                <Text style={{ color: '#1e40af', margin: '4px 0' }}>
+                  • You'll receive an email with video call instructions
+                </Text>
+              )}
               <Text style={{ color: '#1e40af', margin: '4px 0' }}>
                 • Please have your medical history and questions ready
               </Text>

@@ -10,7 +10,8 @@ import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { appointmentSchema, type AppointmentFormData } from '@/lib/validations/appointment'
-import { Calendar, Clock, User, Phone, Mail, MessageSquare } from 'lucide-react'
+import { Calendar, Clock, User, Phone, Mail, MessageSquare, Globe } from 'lucide-react'
+import { COMMON_TIMEZONES, detectUserTimezone, getTimezoneDisplayName } from '@/lib/timezone-utils'
 
 const CONSULTATION_TYPES = [
   { value: 'INJECTIONS', label: 'Weight Loss Injections' },
@@ -48,6 +49,7 @@ export function AppointmentBookingForm({ onSubmit, isLoading }: AppointmentBooki
     resolver: zodResolver(appointmentSchema),
     defaultValues: {
       consultationType: 'GENERAL',
+      timezone: detectUserTimezone(),
     },
   })
 
@@ -213,6 +215,32 @@ export function AppointmentBookingForm({ onSubmit, isLoading }: AppointmentBooki
                 <p className="text-sm text-red-600">{errors.consultationType.message}</p>
               )}
             </div>
+          </div>
+
+          {/* Timezone Selection */}
+          <div className="space-y-2">
+            <Label htmlFor="timezone" className="flex items-center gap-2">
+              <Globe className="h-4 w-4" />
+              Your Timezone
+            </Label>
+            <Select
+              onValueChange={(value) => setValue('timezone', value)}
+              defaultValue={watch('timezone')}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select your timezone" />
+              </SelectTrigger>
+              <SelectContent>
+                {Object.entries(COMMON_TIMEZONES).map(([value, label]) => (
+                  <SelectItem key={value} value={value}>
+                    {label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <p className="text-xs text-gray-500">
+              We've detected your timezone as: {getTimezoneDisplayName(detectUserTimezone())}
+            </p>
           </div>
 
           <div className="space-y-2">

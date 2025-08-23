@@ -9,6 +9,7 @@ export const appointmentSchema = z.object({
   }),
   timeSlotId: z.string().min(1, 'Please select an available time slot'),
   preferredDate: z.string().min(1, 'Please select a preferred date'),
+  timezone: z.string().optional(), // Patient's timezone
   notes: z.string().optional(),
 })
 

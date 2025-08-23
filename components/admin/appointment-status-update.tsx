@@ -1,57 +1,63 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { AlertCircle, CheckCircle, Clock, XCircle, UserX } from 'lucide-react'
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AlertCircle, CheckCircle, Clock, XCircle, UserX } from "lucide-react";
 
 const STATUS_OPTIONS = [
   {
-    value: 'PENDING',
-    label: 'Pending',
-    description: 'Appointment request received, awaiting confirmation',
-    color: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+    value: "PENDING",
+    label: "Pending",
+    description: "Appointment request received, awaiting confirmation",
+    color: "bg-yellow-100 text-yellow-800 border-yellow-200",
     icon: Clock,
   },
   {
-    value: 'CONFIRMED',
-    label: 'Confirmed',
-    description: 'Appointment confirmed with patient, video call scheduled',
-    color: 'bg-blue-100 text-blue-800 border-blue-200',
+    value: "CONFIRMED",
+    label: "Confirmed",
+    description: "Appointment confirmed with patient, video call scheduled",
+    color: "bg-blue-100 text-blue-800 border-blue-200",
     icon: CheckCircle,
   },
   {
-    value: 'COMPLETED',
-    label: 'Completed',
-    description: 'Video consultation successfully completed',
-    color: 'bg-green-100 text-green-800 border-green-200',
+    value: "COMPLETED",
+    label: "Completed",
+    description: "Video consultation successfully completed",
+    color: "bg-green-100 text-green-800 border-green-200",
     icon: CheckCircle,
   },
   {
-    value: 'CANCELLED',
-    label: 'Cancelled',
-    description: 'Appointment cancelled by patient or clinic',
-    color: 'bg-red-100 text-red-800 border-red-200',
+    value: "CANCELLED",
+    label: "Cancelled",
+    description: "Appointment cancelled by patient or clinic",
+    color: "bg-red-100 text-red-800 border-red-200",
     icon: XCircle,
   },
   {
-    value: 'NO_SHOW',
-    label: 'No Show',
-    description: 'Patient did not attend scheduled appointment',
-    color: 'bg-gray-100 text-gray-800 border-gray-200',
+    value: "NO_SHOW",
+    label: "No Show",
+    description: "Patient did not attend scheduled appointment",
+    color: "bg-gray-100 text-gray-800 border-gray-200",
     icon: UserX,
   },
-]
+];
 
 interface AppointmentStatusUpdateProps {
-  currentStatus: string
-  currentNotes?: string
-  onStatusUpdate: (status: string, notes?: string) => Promise<void>
-  isLoading?: boolean
+  currentStatus: string;
+  currentNotes?: string;
+  onStatusUpdate: (status: string, notes?: string) => Promise<void>;
+  isLoading?: boolean;
 }
 
 export function AppointmentStatusUpdate({
@@ -60,34 +66,35 @@ export function AppointmentStatusUpdate({
   onStatusUpdate,
   isLoading = false,
 }: AppointmentStatusUpdateProps) {
-  const [selectedStatus, setSelectedStatus] = useState(currentStatus)
-  const [notes, setNotes] = useState(currentNotes || '')
-  const [isUpdating, setIsUpdating] = useState(false)
+  const [selectedStatus, setSelectedStatus] = useState(currentStatus);
+  const [notes, setNotes] = useState(currentNotes || "");
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const handleUpdate = async () => {
-    if (selectedStatus === currentStatus && notes === (currentNotes || '')) {
-      return // No changes
+    if (selectedStatus === currentStatus && notes === (currentNotes || "")) {
+      return; // No changes
     }
 
-    setIsUpdating(true)
+    setIsUpdating(true);
     try {
-      await onStatusUpdate(selectedStatus, notes)
+      await onStatusUpdate(selectedStatus, notes);
     } finally {
-      setIsUpdating(false)
+      setIsUpdating(false);
     }
-  }
+  };
 
   const getCurrentStatus = () => {
-    return STATUS_OPTIONS.find(option => option.value === currentStatus)
-  }
+    return STATUS_OPTIONS.find((option) => option.value === currentStatus);
+  };
 
   const getSelectedStatus = () => {
-    return STATUS_OPTIONS.find(option => option.value === selectedStatus)
-  }
+    return STATUS_OPTIONS.find((option) => option.value === selectedStatus);
+  };
 
-  const currentStatusInfo = getCurrentStatus()
-  const selectedStatusInfo = getSelectedStatus()
-  const hasChanges = selectedStatus !== currentStatus || notes !== (currentNotes || '')
+  const currentStatusInfo = getCurrentStatus();
+  const selectedStatusInfo = getSelectedStatus();
+  const hasChanges =
+    selectedStatus !== currentStatus || notes !== (currentNotes || "");
 
   return (
     <Card>
@@ -120,7 +127,7 @@ export function AppointmentStatusUpdate({
         <div className="space-y-2">
           <Label htmlFor="status">Update Status</Label>
           <Select value={selectedStatus} onValueChange={setSelectedStatus}>
-            <SelectTrigger>
+            <SelectTrigger className="whitespace-normal h-auto">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -130,7 +137,9 @@ export function AppointmentStatusUpdate({
                     <option.icon className="h-4 w-4" />
                     <div>
                       <div className="font-medium">{option.label}</div>
-                      <div className="text-xs text-gray-500">{option.description}</div>
+                      <div className="text-xs text-gray-500">
+                        {option.description}
+                      </div>
                     </div>
                   </div>
                 </SelectItem>
@@ -144,7 +153,9 @@ export function AppointmentStatusUpdate({
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
             <div className="flex items-center gap-2 mb-2">
               <selectedStatusInfo.icon className="h-4 w-4 text-blue-600" />
-              <span className="font-medium text-blue-900">Preview New Status:</span>
+              <span className="font-medium text-blue-900">
+                Preview New Status:
+              </span>
             </div>
             <Badge className={selectedStatusInfo.color}>
               {selectedStatusInfo.label}
@@ -181,14 +192,14 @@ export function AppointmentStatusUpdate({
               <span>No changes to save</span>
             )}
           </div>
-          
+
           <div className="flex gap-2">
             {hasChanges && (
               <Button
                 variant="outline"
                 onClick={() => {
-                  setSelectedStatus(currentStatus)
-                  setNotes(currentNotes || '')
+                  setSelectedStatus(currentStatus);
+                  setNotes(currentNotes || "");
                 }}
               >
                 Reset
@@ -198,7 +209,7 @@ export function AppointmentStatusUpdate({
               onClick={handleUpdate}
               disabled={!hasChanges || isUpdating || isLoading}
             >
-              {isUpdating ? 'Updating...' : 'Update Status'}
+              {isUpdating ? "Updating..." : "Update Status"}
             </Button>
           </div>
         </div>
@@ -210,13 +221,14 @@ export function AppointmentStatusUpdate({
             <div className="text-sm text-amber-800">
               <p className="font-medium mb-1">Important Reminder</p>
               <p>
-                Status updates are for internal tracking only. You must contact the patient 
-                directly to confirm appointments and provide video call details.
+                Status updates are for internal tracking only. You must contact
+                the patient directly to confirm appointments and provide video
+                call details.
               </p>
             </div>
           </div>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

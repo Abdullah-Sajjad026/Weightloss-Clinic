@@ -19,7 +19,10 @@ interface AdminNotificationEmailProps {
     phone: string
     consultationType: string
     preferredDate: Date
+    timezone?: string | null
     notes?: string | null
+    meetingLink?: string | null
+    meetingId?: string | null
     timeSlot: {
       dayOfWeek: number
       startTime: string
@@ -234,6 +237,43 @@ export function AdminNotificationEmail({ appointment }: AdminNotificationEmailPr
                         fontStyle: 'italic'
                       }}>
                         "{appointment.notes}"
+                      </Text>
+                    </Column>
+                  </Row>
+                </>
+              )}
+              
+              {/* Meeting Details for Admin */}
+              {appointment.meetingLink && (
+                <>
+                  <Hr style={{ margin: '16px 0', borderColor: '#d1d5db' }} />
+                  <Row>
+                    <Column>
+                      <Text style={{ margin: '0', fontWeight: 'bold', color: '#374151' }}>
+                        Google Meet Link:
+                      </Text>
+                      <Text style={{ 
+                        margin: '8px 0 0 0', 
+                        color: '#3b82f6',
+                        textDecoration: 'underline'
+                      }}>
+                        {appointment.meetingLink}
+                      </Text>
+                    </Column>
+                  </Row>
+                </>
+              )}
+              
+              {appointment.timezone && (
+                <>
+                  <Hr style={{ margin: '16px 0', borderColor: '#d1d5db' }} />
+                  <Row>
+                    <Column>
+                      <Text style={{ margin: '0', fontWeight: 'bold', color: '#374151' }}>
+                        Patient Timezone:
+                      </Text>
+                      <Text style={{ margin: '8px 0 0 0', color: '#374151' }}>
+                        {appointment.timezone}
                       </Text>
                     </Column>
                   </Row>

@@ -6,12 +6,12 @@ import { MentalHealthSection } from "@/app/(products)/components/mental-health-s
 import { FAQsSection } from "@/app/(products)/components/faqs-section";
 import { injectionFAQs } from "@/app/(products)/data/injection-faqs";
 import { InjectionsComparisonSection } from "@/app/(products)/components/injections-comparison-section";
-import YourJourneySection from "@/app/(landing-page)/components/your-journey-section";
-import CLinicComparisonSection from "@/app/(landing-page)/components/clinic-comparison-section";
-import TestimonialsSection from "@/app/(landing-page)/components/testimonials-section";
-import SupportSection from "@/app/(landing-page)/components/support-section";
-import PublicPresenceSection from "@/app/(landing-page)/components/public-presence-section";
-import MedicallyReviewedSection from "@/app/(landing-page)/components/medically-reviewed-section";
+import YourJourneySection from "@/app/(public)/(landing-page)/components/your-journey-section";
+import CLinicComparisonSection from "@/app/(public)/(landing-page)/components/clinic-comparison-section";
+import TestimonialsSection from "@/app/(public)/(landing-page)/components/testimonials-section";
+import SupportSection from "@/app/(public)/(landing-page)/components/support-section";
+import PublicPresenceSection from "@/app/(public)/(landing-page)/components/public-presence-section";
+import MedicallyReviewedSection from "@/app/(public)/(landing-page)/components/medically-reviewed-section";
 
 const injectionProducts = [
   {
@@ -144,7 +144,7 @@ export default function InjectionsPage() {
 
       {/* FAQs Section */}
       <section className="mx-auto px-4 max-w-7xl w-full">
-        <FAQsSection 
+        <FAQsSection
           title="Northampton weight loss injections FAQs"
           faqData={injectionFAQs}
           colorScheme="tertiary"

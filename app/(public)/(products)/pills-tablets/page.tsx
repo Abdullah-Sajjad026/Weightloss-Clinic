@@ -1,13 +1,13 @@
-import { CategoryHero } from "@/app/(products)/components/category-hero";
-import { ProductCard } from "@/app/(products)/components/product-card";
-import { CrossSellSection } from "@/app/(products)/components/cross-sell-section";
-import { PillsComparisonSection } from "@/app/(products)/components/pills-comparison-section";
-import { ExpertAdviceCTA } from "@/app/(products)/components/expert-advice-cta";
-import { HowItWorksSection } from "@/app/(products)/components/how-it-works-section";
+import MedicallyReviewedSection from "../../(landing-page)/components/medically-reviewed-section";
+import { CategoryHero } from "../components/category-hero";
+import { CrossSellSection } from "../components/cross-sell-section";
+import { ExpertAdviceCTA } from "../components/expert-advice-cta";
+import { FAQsSection } from "../components/faqs-section";
+import { HowItWorksSection } from "../components/how-it-works-section";
 import { MentalHealthSection } from "../components/mental-health-section";
-import { FAQsSection } from "@/app/(products)/components/faqs-section";
-import { pillsFAQs } from "@/app/(products)/data/pills-faqs";
-import MedicallyReviewedSection from "@/app/(landing-page)/components/medically-reviewed-section";
+import { PillsComparisonSection } from "../components/pills-comparison-section";
+import { ProductCard } from "../components/product-card";
+import { pillsFAQs } from "../data/pills-faqs";
 
 const pillProducts = [
   {
@@ -134,7 +134,7 @@ export default function PillsTabletsPage() {
 
       {/* FAQs Section */}
       <section className="mx-auto px-4 max-w-7xl w-full">
-        <FAQsSection 
+        <FAQsSection
           title="Northampton weight loss pills FAQs"
           faqData={pillsFAQs}
           colorScheme="tertiary"

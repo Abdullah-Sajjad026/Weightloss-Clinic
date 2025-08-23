@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -119,11 +120,11 @@ export function AppointmentDetailsModal({
         onAppointmentUpdate(updatedAppointment);
       } else {
         const error = await response.json();
-        alert(error.error || "Failed to update appointment");
+        toast.error(error.error || "Failed to update appointment");
       }
     } catch (error) {
       console.error("Error updating appointment:", error);
-      alert("Failed to update appointment");
+      toast.error("Failed to update appointment");
     } finally {
       setIsUpdating(false);
     }
@@ -135,7 +136,7 @@ export function AppointmentDetailsModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-7xl max-h-[90vh] overflow-y-auto w-full">
+      <DialogContent className="sm:max-w-7xl max-h-[90vh] overflow-y-auto w-full">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <User className="h-5 w-5" />
@@ -147,7 +148,7 @@ export function AppointmentDetailsModal({
           {/* Left Column - Patient & Appointment Info */}
           <div className="lg:col-span-2 space-y-6">
             {/* Patient Information */}
-            <div className="bg-gray-50 rounded-lg p-4">
+            <div className="rounded-lg p-4">
               <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <User className="h-4 w-4" />
                 Patient Information
@@ -238,7 +239,7 @@ export function AppointmentDetailsModal({
             </div>
 
             {/* Appointment Details */}
-            <div className="bg-blue-50 rounded-lg p-4">
+            <div className="rounded-lg p-4">
               <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 Appointment Details

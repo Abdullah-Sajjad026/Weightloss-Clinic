@@ -1,8 +1,9 @@
 import FooterSection from "./footer-section";
 import PromoBanner from "./promo-banner";
 import HeaderNav from "./header-nav";
+import { Toaster } from "@/components/ui/sonner";
 
-export default function LayoutWrapper({
+export default function PublicLayoutWrapper({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -19,6 +20,7 @@ export default function LayoutWrapper({
         </main>
         <FooterSection />
       </div>
+      <Toaster />
     </div>
   );
 }

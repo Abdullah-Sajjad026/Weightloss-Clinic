@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { toast } from 'sonner'
 import {
   Table,
   TableBody,
@@ -94,7 +95,7 @@ export default function TimeSlotsPage() {
       setIsDialogOpen(false)
     } else {
       const error = await response.json()
-      alert(error.error || 'Failed to create time slot')
+      toast.error(error.error || 'Failed to create time slot')
     }
   }
 
@@ -112,7 +113,7 @@ export default function TimeSlotsPage() {
       setEditingSlot(null)
     } else {
       const error = await response.json()
-      alert(error.error || 'Failed to update time slot')
+      toast.error(error.error || 'Failed to update time slot')
     }
   }
 
@@ -125,7 +126,7 @@ export default function TimeSlotsPage() {
       await fetchTimeSlots()
     } else {
       const error = await response.json()
-      alert(error.error || 'Failed to delete time slot')
+      toast.error(error.error || 'Failed to delete time slot')
     }
   }
 
