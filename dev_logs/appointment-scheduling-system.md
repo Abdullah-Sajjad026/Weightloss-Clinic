@@ -40,6 +40,11 @@ model Appointment {
   preferredDate   DateTime
   status          AppointmentStatus @default(PENDING)
   notes           String?
+  timezone        String?           // Patient's timezone (NEW)
+  meetingLink     String?           // Video meeting URL (NEW)
+  meetingId       String?           // Meeting room identifier (NEW)
+  patientEmailSent Boolean          @default(false) // Email tracking (NEW)
+  adminEmailSent   Boolean          @default(false) // Email tracking (NEW)
   createdAt       DateTime          @default(now())
   updatedAt       DateTime          @updatedAt
 
@@ -492,15 +497,28 @@ ADMIN_PASSWORD="secure_admin_password"
 ## Files Created/Modified
 
 ### Database & Configuration
-- `prisma/schema.prisma` - Database schema definition
-- `lib/prisma.ts` - Prisma client configuration
+- `prisma/schema.prisma` - Database schema definition (UPDATED: meeting fields, timezone)
+- `lib/prisma.ts` - Prisma client configuration (UPDATED: connection handling)
 - `lib/auth.ts` - Authentication utilities
 - `middleware.ts` - Route protection middleware
-- `.env.local` - Environment configuration
+- `.env.local` - Environment configuration (UPDATED: Gmail, Google API keys)
 
 ### Validation Schemas
 - `lib/validations/time-slot.ts` - Time slot form validation
-- `lib/validations/appointment.ts` - Appointment booking validation
+- `lib/validations/appointment.ts` - Appointment booking validation (UPDATED: timezone field)
+
+### New Services & Utilities
+- `lib/video-meeting-service.ts` - **NEW**: Jitsi Meet integration service
+- `lib/google-meet-service.ts` - **NEW**: Google Calendar API integration
+- `lib/timezone-utils.ts` - **NEW**: Timezone detection and validation utilities
+- `lib/email.ts` - **UPDATED**: Gmail SMTP integration replacing Resend
+- `lib/test-gmail.ts` - **NEW**: Gmail email testing utilities
+- `test-gmail-setup.js` - **NEW**: Command-line email testing script
+
+### Documentation & Setup Guides
+- `gmail-setup-instructions.md` - **NEW**: Gmail App Password setup guide
+- `google-calendar-setup.md` - **NEW**: Google Calendar API configuration
+- `email-setup-guide.md` - **NEW**: Comprehensive email service setup
 
 ### Admin Components
 - `components/admin/sidebar.tsx` - Admin navigation sidebar
@@ -509,7 +527,9 @@ ADMIN_PASSWORD="secure_admin_password"
 - `components/admin/appointment-details-modal.tsx` - Appointment detail view
 
 ### User-Facing Components
-- `components/appointment-booking-form.tsx` - Public booking form
+- `components/appointment-booking-form.tsx` - Public booking form (UPDATED: timezone selection)
+- `components/risk-assessment-form.tsx` - **NEW**: Multi-step risk assessment form
+- `components/risk-assessment/` - **NEW**: Risk assessment form steps components
 
 ### Pages
 - `app/admin/layout.tsx` - Admin dashboard layout
@@ -517,7 +537,11 @@ ADMIN_PASSWORD="secure_admin_password"
 - `app/admin/login/page.tsx` - Admin authentication
 - `app/admin/time-slots/page.tsx` - Time slot management
 - `app/admin/appointments/page.tsx` - Appointment management
-- `app/book-appointment/page.tsx` - Public booking page
+- `app/admin/risk-assessments/page.tsx` - **NEW**: Risk assessments management
+- `app/admin/risk-assessments/[id]/page.tsx` - **NEW**: Individual assessment view
+- `app/(public)/book-appointment/page.tsx` - Public booking page (MOVED to public route group)
+- `app/(public)/risk-assessment/page.tsx` - **NEW**: Public risk assessment form
+- `app/(public)/layout.tsx` - **NEW**: Public pages layout wrapper
 
 ### API Routes
 - `app/api/admin/auth/login/route.ts` - Admin login
@@ -526,13 +550,46 @@ ADMIN_PASSWORD="secure_admin_password"
 - `app/api/admin/time-slots/[id]/route.ts` - Individual slot operations
 - `app/api/admin/appointments/route.ts` - Admin appointment access
 - `app/api/admin/appointments/[id]/route.ts` - Appointment updates
-- `app/api/appointments/route.ts` - Public appointment creation
+- `app/api/appointments/route.ts` - Public appointment creation (UPDATED: meeting link generation)
 - `app/api/time-slots/route.ts` - Public time slot access
+- `app/api/risk-assessments/route.ts` - **NEW**: Risk assessment submission
+- `app/api/risk-assessments/[id]/route.ts` - **NEW**: Individual assessment management
 
 ### Email System
-- `lib/email.ts` - Email service integration
-- `emails/appointment-booking.tsx` - User confirmation template
-- `emails/admin-notification.tsx` - Admin alert template
+- `lib/email.ts` - Email service integration (UPDATED: Gmail SMTP, meeting links)
+- `emails/appointment-booking.tsx` - User confirmation template (UPDATED: video meeting instructions)
+- `emails/admin-notification.tsx` - Admin alert template (UPDATED: meeting details, timezone info)
+
+## Recent Updates (Latest Release)
+
+### Video Meeting Integration ✅ IMPLEMENTED
+- **Jitsi Meet Integration**: Real working video meetings without API keys
+- **Google Meet Fallback**: Full Google Calendar API integration with authentication
+- **Meeting Link Generation**: Automatic video room creation for all appointments
+- **Email Updates**: Professional meeting instructions in confirmation emails
+
+### Gmail SMTP Email System ✅ IMPLEMENTED  
+- **Gmail Integration**: Professional emails sent via Gmail SMTP
+- **Email Templates Enhanced**: Meeting details, timezone info, and join instructions
+- **Setup Documentation**: Comprehensive guides for Gmail App Password setup
+- **Testing Utilities**: Built-in email testing tools and validation
+
+### Timezone Support ✅ IMPLEMENTED
+- **Automatic Detection**: Browser-based timezone detection for patients
+- **Common Timezone Support**: Dropdown with popular UK timezones
+- **Validation & Fallback**: Robust timezone handling with Europe/London default
+- **Admin Coordination**: Timezone info displayed in admin panel for scheduling
+
+### Enhanced Database Schema ✅ IMPLEMENTED
+- **Meeting Fields**: `meetingLink`, `meetingId`, `timezone` fields added
+- **Email Tracking**: `patientEmailSent`, `adminEmailSent` status tracking
+- **Data Integrity**: Proper relationships and validation constraints
+
+### System Architecture Improvements ✅ IMPLEMENTED
+- **Service Layer**: Modular video meeting service with multiple provider support
+- **Error Handling**: Comprehensive error logging and graceful fallbacks
+- **App Restructuring**: Clean separation of public/admin routes
+- **Development Tools**: Email testing, setup validation, and debugging utilities
 
 ## Future Enhancements
 
@@ -545,7 +602,7 @@ ADMIN_PASSWORD="secure_admin_password"
 ### Medium-term Features
 1. **Automated Confirmations**: Option for automatic appointment confirmation
 2. **SMS Notifications**: Text message alerts using Twilio
-3. **Video Call Links**: Integration with Zoom/Teams for automatic meeting links
+3. **Advanced Video Features**: Screen sharing, recording, waiting rooms
 4. **Patient Portal**: Allow patients to reschedule/cancel their own appointments
 
 ### Advanced Features
@@ -562,6 +619,10 @@ ADMIN_PASSWORD="secure_admin_password"
 ✅ **Status Management**: 5-status workflow with admin tracking  
 ✅ **Email Notifications**: Professional templates for users and admins  
 ✅ **Admin Authentication**: Simple but secure login system  
+✅ **Video Meeting Integration**: Real working meeting links for consultations
+✅ **Timezone Support**: Automatic detection and proper handling
+✅ **Risk Assessment System**: Multi-step form with medical questionnaire
+✅ **Gmail SMTP Integration**: Professional email delivery system
 
 ### Technical Quality Achieved
 ✅ **Type Safety**: Full TypeScript coverage with proper interfaces  
@@ -569,11 +630,17 @@ ADMIN_PASSWORD="secure_admin_password"
 ✅ **Error Handling**: Graceful degradation and user-friendly error messages  
 ✅ **Responsive Design**: Mobile-first approach using Tailwind CSS  
 ✅ **Code Reusability**: Modular components following established patterns  
+✅ **Service Architecture**: Clean separation with video meeting and email services
+✅ **Database Design**: Enhanced schema with meeting and assessment data
+✅ **Documentation**: Comprehensive setup guides and testing tools
 
 ### User Experience Goals
 ✅ **Professional Interface**: Clean, modern design matching clinic branding  
 ✅ **Clear Workflow**: Intuitive booking process with helpful guidance  
 ✅ **Admin Efficiency**: Comprehensive management tools with filtering/search  
-✅ **Communication**: Clear messaging about manual confirmation process  
+✅ **Communication**: Clear messaging about manual confirmation process
+✅ **Video Consultations**: Seamless meeting experience with professional instructions
+✅ **Multi-Platform Access**: Works on desktop, tablet, and mobile devices
+✅ **Medical Compliance**: Risk assessment integration for patient safety  
 
 This appointment scheduling system successfully delivers a production-ready MVP that balances functionality with simplicity, providing exactly what was requested: a basic but professional solution that handles the core business requirements while maintaining room for future enhancement.
