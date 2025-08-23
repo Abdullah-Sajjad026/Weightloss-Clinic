@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { SpotlightSVG } from "./spotlight";
+import { WeightLossCalculator } from "@/components/weight-loss-calculator";
 
 export default function HeroSection() {
   return (
@@ -40,12 +41,10 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-            <div
-              className="grid h-full w-full grid-cols-1 items-center justify-end gap-3 lg:grid-cols-11 lg:gap-5
-            "
-            >
-              <div className="grid h-full w-full grid-cols-2 grid-rows-1 gap-3 lg:col-span-3 lg:grid-cols-1 lg:grid-rows-2 lg:gap-5"></div>
-              <div className="relative z-10 h-full w-full rounded-xl rounded-b-3xl lg:col-span-8 lg:rounded-l-xl lg:rounded-r-3xl"></div>
+            <div className="flex h-full w-full items-center justify-center lg:justify-end">
+              <div className="w-full max-w-md">
+                <WeightLossCalculator />
+              </div>
             </div>
           </div>
         </div>
