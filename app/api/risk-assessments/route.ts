@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     }
     
     return NextResponse.json(
-      { error: 'Failed to submit risk assessment', details: error?.message || 'Unknown error' },
+      { error: 'Failed to submit risk assessment', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     )
   }

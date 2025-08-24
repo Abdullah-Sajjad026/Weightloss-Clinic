@@ -159,7 +159,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(appointment, { status: 201 })
   } catch (error) {
     console.error('❌ Error creating appointment:', error)
-    console.error('❌ Error stack:', error.stack)
+    console.error('❌ Error stack:', error instanceof Error ? error.stack : 'No stack trace')
     console.error('❌ Error details:', JSON.stringify(error, null, 2))
     
     if (error instanceof Error && 'issues' in error) {
@@ -170,16 +170,16 @@ export async function POST(request: NextRequest) {
     }
 
     // Check for Prisma errors
-    if (error.code) {
+    if (error && typeof error === 'object' && 'code' in error) {
       console.error('❌ Prisma error code:', error.code)
       return NextResponse.json(
-        { error: 'Database error', details: error.message },
+        { error: 'Database error', details: error instanceof Error ? error.message : 'Unknown database error' },
         { status: 500 }
       )
     }
 
     return NextResponse.json(
-      { error: 'Failed to create appointment', details: error.message },
+      { error: 'Failed to create appointment', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     )
   }

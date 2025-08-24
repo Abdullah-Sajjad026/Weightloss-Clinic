@@ -73,6 +73,8 @@ const getGoogleAuth = async () => {
 
 /**
  * Create real Google Meet link via Calendar API
+ * Note: Currently disabled due to complex setup requirements.
+ * Falls back to development links.
  */
 export const createRealGoogleMeetEvent = async (appointment: {
   id: string
@@ -81,128 +83,13 @@ export const createRealGoogleMeetEvent = async (appointment: {
   consultationType: string
   preferredDate: Date
 }): Promise<MeetingDetails> => {
-  try {
-    const auth = await getGoogleAuth()
-    if (!auth) {
-      console.log('📝 Google Auth not available, creating development link')
-      return await generateGoogleMeetLink()
-    }
-
-    const calendar = google.calendar({ version: 'v3', auth })
-    
-    // Calculate end time (30 minutes after start)
-    const endTime = new Date(appointment.preferredDate.getTime() + 30 * 60 * 1000)
-    
-    // First try with conferenceData for real Google Meet
-    console.log('📅 Attempting to create Google Calendar event with Meet link...')
-    
-    try {
-      const eventWithMeet = {
-        summary: `${appointment.consultationType} Consultation - ${appointment.name}`,
-        description: `Virtual weight loss consultation with ${appointment.name}\n\nPatient Email: ${appointment.email}`,
-        start: {
-          dateTime: appointment.preferredDate.toISOString(),
-          timeZone: 'Europe/London',
-        },
-        end: {
-          dateTime: endTime.toISOString(),
-          timeZone: 'Europe/London',
-        },
-        conferenceData: {
-          createRequest: {
-            requestId: `meet_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-            conferenceSolutionKey: {
-              type: 'hangoutsMeet'
-            }
-          }
-        }
-      }
-
-      const responseWithMeet = await calendar.events.insert({
-        calendarId: 'primary',
-        resource: eventWithMeet,
-        conferenceDataVersion: 1,
-        sendUpdates: 'none'
-      })
-
-      const meetingLink = responseWithMeet.data.hangoutLink || 
-                          responseWithMeet.data.conferenceData?.entryPoints?.find(ep => ep.entryPointType === 'video')?.uri
-
-      if (meetingLink) {
-        const meetingCode = extractMeetingCode(meetingLink) || 'unknown'
-        
-        console.log('✅ Real Google Meet event created successfully:', {
-          eventId: responseWithMeet.data.id,
-          meetingLink,
-          meetingCode
-        })
-
-        return {
-          meetingId: responseWithMeet.data.id || `meeting_${randomBytes(8).toString('hex')}`,
-          meetingLink,
-          meetingCode,
-        }
-      }
-    } catch (meetError) {
-      console.log('⚠️  Could not create Meet link via conferenceData, trying alternative approach...')
-    }
-
-    // Fallback: Create regular calendar event and use our own Meet-style link
-    const basicEvent = {
-      summary: `${appointment.consultationType} Consultation - ${appointment.name}`,
-      description: `Virtual weight loss consultation with ${appointment.name}\n\nPatient Email: ${appointment.email}\n\nMeeting link will be provided via email.`,
-      start: {
-        dateTime: appointment.preferredDate.toISOString(),
-        timeZone: 'Europe/London',
-      },
-      end: {
-        dateTime: endTime.toISOString(),
-        timeZone: 'Europe/London',
-      },
-      reminders: {
-        useDefault: false,
-        overrides: [
-          { method: 'popup', minutes: 10 },
-        ],
-      }
-    }
-
-    const basicResponse = await calendar.events.insert({
-      calendarId: 'primary',
-      resource: basicEvent,
-      sendUpdates: 'none'
-    })
-
-    console.log('📅 Basic calendar event created, generating custom Meet link...')
-
-    // Generate our own Meet-style link
-    const customMeetLink = await generateGoogleMeetLink()
-    
-    // Update the event with the meeting link in description
-    await calendar.events.patch({
-      calendarId: 'primary',
-      eventId: basicResponse.data.id!,
-      resource: {
-        description: `${basicEvent.description}\n\nGoogle Meet Link: ${customMeetLink.meetingLink}`
-      }
-    })
-
-    console.log('✅ Calendar event with custom Meet link created:', {
-      eventId: basicResponse.data.id,
-      meetingLink: customMeetLink.meetingLink
-    })
-
-    return {
-      meetingId: basicResponse.data.id || customMeetLink.meetingId,
-      meetingLink: customMeetLink.meetingLink,
-      meetingCode: customMeetLink.meetingCode,
-    }
-
-  } catch (error) {
-    console.error('❌ Failed to create Google Calendar event:', error)
-    console.log('📝 Falling back to development link')
-    return await generateGoogleMeetLink()
-  }
+  // Google Calendar API integration is complex and requires:
+  // 1. Service account with Domain-Wide Delegation
+  // 2. Proper scopes and permissions  
+  // 3. Complex authentication setup
+  // For now, we fall back to development links
+  console.log('📝 Google Calendar API disabled, using development link')
+  return await generateGoogleMeetLink()
 }
 
 /**

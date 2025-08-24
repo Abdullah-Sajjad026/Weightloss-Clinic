@@ -58,7 +58,7 @@ export async function testGmailSetup(testEmail: string) {
 
   } catch (error) {
     console.error('❌ Gmail test failed:', error)
-    return { success: false, error: error.message }
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
   }
 }
 

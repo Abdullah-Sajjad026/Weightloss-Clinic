@@ -49,8 +49,11 @@ interface Appointment {
   phone: string
   consultationType: keyof typeof CONSULTATION_TYPES
   preferredDate: string
-  status: keyof typeof STATUS_COLORS
+  status: string
   notes?: string
+  timezone?: string
+  meetingLink?: string
+  meetingId?: string
   createdAt: string
   timeSlot: {
     dayOfWeek: number
@@ -328,7 +331,7 @@ export default function AppointmentsPage() {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge className={STATUS_COLORS[appointment.status]}>
+                        <Badge className={STATUS_COLORS[appointment.status as keyof typeof STATUS_COLORS] || STATUS_COLORS.PENDING}>
                           {appointment.status.replace('_', ' ')}
                         </Badge>
                       </TableCell>

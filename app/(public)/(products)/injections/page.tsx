@@ -1,11 +1,11 @@
-import { CategoryHero } from "@/app/(products)/components/category-hero";
-import { ProductCard } from "@/app/(products)/components/product-card";
-import { ExpertAdviceCTA } from "@/app/(products)/components/expert-advice-cta";
+import { CategoryHero } from "@/app/(public)/(products)/components/category-hero";
+import { ProductCard } from "@/app/(public)/(products)/components/product-card";
+import { ExpertAdviceCTA } from "@/app/(public)/(products)/components/expert-advice-cta";
 import { CrossSellSection } from "../components/cross-sell-section";
-import { MentalHealthSection } from "@/app/(products)/components/mental-health-section";
-import { FAQsSection } from "@/app/(products)/components/faqs-section";
-import { injectionFAQs } from "@/app/(products)/data/injection-faqs";
-import { InjectionsComparisonSection } from "@/app/(products)/components/injections-comparison-section";
+import { MentalHealthSection } from "@/app/(public)/(products)/components/mental-health-section";
+import { FAQsSection } from "@/app/(public)/(products)/components/faqs-section";
+import { injectionFAQs } from "@/app/(public)/(products)/data/injection-faqs";
+import { InjectionsComparisonSection } from "@/app/(public)/(products)/components/injections-comparison-section";
 import YourJourneySection from "@/app/(public)/(landing-page)/components/your-journey-section";
 import CLinicComparisonSection from "@/app/(public)/(landing-page)/components/clinic-comparison-section";
 import TestimonialsSection from "@/app/(public)/(landing-page)/components/testimonials-section";
