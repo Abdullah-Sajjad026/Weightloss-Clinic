@@ -9,7 +9,9 @@ import {
   Users,
   LayoutDashboard,
   Settings,
-  LogOut
+  LogOut,
+  Package,
+  FileText
 } from 'lucide-react'
 
 const navigation = [
@@ -19,9 +21,19 @@ const navigation = [
     icon: LayoutDashboard,
   },
   {
+    name: 'Orders',
+    href: '/admin/orders',
+    icon: Package,
+  },
+  {
     name: 'Appointments',
     href: '/admin/appointments',
     icon: Calendar,
+  },
+  {
+    name: 'Risk Assessments',
+    href: '/admin/risk-assessments',
+    icon: FileText,
   },
   {
     name: 'Time Slots',

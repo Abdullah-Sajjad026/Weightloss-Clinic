@@ -5,6 +5,7 @@ import { ProductInfo } from "./ProductInfo";
 import { ProductDosage } from "./ProductDosage";
 import { ProductVideo } from "./ProductVideo";
 import { ProductReferences } from "./ProductReferences";
+import { ProductCTA } from "./ProductCTA";
 
 interface ProductPageProps {
   product: ProductData;
@@ -18,7 +19,7 @@ export function ProductPage({ product }: ProductPageProps) {
         <ProductHero product={product} />
 
         {/* Pricing Section */}
-        <ProductPricing pricingTiers={product.pricingTiers} />
+        <ProductPricing product={product} pricingTiers={product.pricingTiers} />
 
         {/* What is [Product] Section */}
         <ProductInfo
@@ -56,6 +57,9 @@ export function ProductPage({ product }: ProductPageProps) {
           steps={product.dosageSteps}
           footerNote={product.dosageFooterNote}
         />
+
+        {/* CTA Section */}
+        <ProductCTA productName={product.name} />
 
         {/* References Section (if exists) */}
         {product.references && (

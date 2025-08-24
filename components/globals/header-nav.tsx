@@ -16,8 +16,10 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu, ShoppingCart, Heart } from "lucide-react";
+import { Menu, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CartIcon } from "@/components/cart/CartIcon";
+import { CartSidebar } from "@/components/cart/CartSidebar";
 
 // Placeholder Logo Component
 const Logo = ({ className }: { className?: string }) => (
@@ -78,6 +80,7 @@ const mobileNavItems = [
   { name: "Injections", href: "/injections" },
   { name: "Pills", href: "/pills-tablets" },
   { name: "Surgery", href: "/bariatric-surgery" },
+  { name: "Track Order", href: "/orders/track" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -221,27 +224,35 @@ export default function HeaderNav() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+          
+          {/* Track Order Link */}
+          <Link
+            href="/orders/track"
+            className="text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
+          >
+            Track Order
+          </Link>
         </div>
 
         {/* Right side buttons */}
         <div className="flex items-center space-x-3">
-          {/* Desktop CTA Button */}
+          {/* Desktop CTA Buttons */}
+          <Button
+            asChild
+            variant="outline"
+            className="hidden lg:inline-flex border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white text-sm px-4 py-2"
+          >
+            <Link href="/assessment">Check eligibility</Link>
+          </Button>
           <Button
             asChild
             className="hidden lg:inline-flex bg-primary-600 hover:bg-primary-700 text-white text-sm px-4 py-2"
           >
-            <Link href="/assessment">Check your eligibility</Link>
+            <Link href="/book-appointment">Book Appointment</Link>
           </Button>
 
           {/* Shopping Cart */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-gray-600 hover:text-gray-900 p-2"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            <span className="sr-only">Shopping cart</span>
-          </Button>
+          <CartIcon className="text-gray-600 hover:text-gray-900 p-2" />
 
           {/* Mobile menu */}
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -271,8 +282,9 @@ export default function HeaderNav() {
                   <div className="flex items-center space-x-2">
                     <Button
                       asChild
+                      variant="outline"
                       size="sm"
-                      className="bg-primary-600 hover:bg-primary-700 text-white text-xs px-3 py-2 h-auto"
+                      className="border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white text-xs px-3 py-2 h-auto"
                     >
                       <Link
                         href="/assessment"
@@ -281,9 +293,19 @@ export default function HeaderNav() {
                         Check eligibility
                       </Link>
                     </Button>
-                    <Button variant="ghost" size="icon" className="p-2">
-                      <ShoppingCart className="h-4 w-4" />
+                    <Button
+                      asChild
+                      size="sm"
+                      className="bg-primary-600 hover:bg-primary-700 text-white text-xs px-3 py-2 h-auto"
+                    >
+                      <Link
+                        href="/book-appointment"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Book Appointment
+                      </Link>
                     </Button>
+                    <CartIcon className="p-2" />
                   </div>
                 </div>
               </SheetHeader>
@@ -304,6 +326,9 @@ export default function HeaderNav() {
           </Sheet>
         </div>
       </div>
+
+      {/* Cart Sidebar */}
+      <CartSidebar />
     </header>
   );
 }

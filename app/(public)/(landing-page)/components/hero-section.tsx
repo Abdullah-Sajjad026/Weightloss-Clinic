@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { SpotlightSVG } from "./spotlight";
 import { WeightLossCalculator } from "@/components/weight-loss-calculator";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -34,7 +35,14 @@ export default function HeroSection() {
                 </div>
 
                 <div className="mt-10 flex items-center justify-center gap-5 xl:justify-start">
-                  <Button variant="orange">Get Started</Button>
+                  <Link href="/book-appointment">
+                    <Button variant="orange" size="lg">Book Appointment</Button>
+                  </Link>
+                  <Link href="/assessment">
+                    <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-primary">Get Started</Button>
+                  </Link>
+                </div>
+                <div className="mt-4 text-center xl:text-left">
                   <div className="text-primary-foreground text-base font-medium text-shadow-sm">
                     from £45/week
                   </div>

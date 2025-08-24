@@ -174,7 +174,7 @@ export function RiskAssessmentForm() {
 
       if (response.ok) {
         toast.success("Assessment submitted successfully!");
-        router.push("/risk-assessment/thank-you");
+        router.push("/assessment/thank-you");
       } else {
         const error = await response.json();
         toast.error(error.error || "Failed to submit assessment");

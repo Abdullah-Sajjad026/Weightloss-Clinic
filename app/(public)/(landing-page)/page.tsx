@@ -9,6 +9,7 @@ import TestimonialsSection from "./components/testimonials-section";
 import MedicallyReviewedSection from "./components/medically-reviewed-section";
 import FAQsSection from "./components/faqs-section";
 import TrustedClinicSection from "./components/trusted-clinic-section";
+import AppointmentCTASection from "./components/appointment-cta-section";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <WeightlossExpertsSection />
       <TestimonialsSection />
       <TrustedClinicSection />
+      <AppointmentCTASection />
       <FAQsSection />
       <MedicallyReviewedSection />
     </>

@@ -107,3 +107,145 @@ enum AssessmentStatus {
   REJECTED
   REQUIRES_FOLLOWUP
 }
+
+// E-commerce Order Management Models
+model Order {
+  id                String       @id @default(cuid())
+  orderNumber       String       @unique // NWLC-XXXXXX format
+  
+  // Customer Information
+  customerEmail     String
+  customerName      String
+  customerPhone     String?
+  
+  // Order Totals
+  subtotal          Float
+  taxAmount         Float        @default(0)
+  shippingAmount    Float        @default(0)
+  totalAmount       Float
+  
+  // Order Status
+  status            OrderStatus  @default(PENDING)
+  paymentStatus     PaymentStatus @default(PENDING)
+  
+  // Prescription Requirements
+  prescriptionRequired Boolean   @default(false)
+  prescriptionUploaded Boolean   @default(false)
+  prescriptionNotes    String?
+  
+  // Medical Review
+  medicalReviewStatus  MedicalReviewStatus @default(PENDING)
+  reviewedBy          String?
+  reviewedAt          DateTime?
+  medicalNotes        String?
+  
+  // Shipping Information
+  shippingStreet      String
+  shippingCity        String
+  shippingPostalCode  String
+  shippingCountry     String     @default("United Kingdom")
+  
+  // Billing Information (optional, defaults to shipping)
+  billingStreet       String?
+  billingCity         String?
+  billingPostalCode   String?
+  billingCountry      String?
+  
+  // Additional Information
+  specialInstructions String?
+  marketingOptIn      Boolean    @default(false)
+  
+  // Tracking
+  trackingNumber      String?
+  estimatedDelivery   DateTime?
+  deliveredAt         DateTime?
+  
+  // Timestamps
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  
+  // Relations
+  orderItems          OrderItem[]
+  orderStatusHistory  OrderStatusHistory[]
+  
+  @@map("orders")
+}
+
+model OrderItem {
+  id          String @id @default(cuid())
+  
+  // Product Information
+  productId   String
+  productName String
+  productSlug String
+  category    ProductCategory
+  variant     String? // dosage, strength, etc.
+  
+  // Pricing
+  unitPrice   Float
+  quantity    Int
+  totalPrice  Float
+  
+  // Product Details
+  productImage String?
+  productDescription String?
+  isPrescription Boolean @default(true)
+  
+  // Relations
+  order       Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId     String
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("order_items")
+}
+
+model OrderStatusHistory {
+  id        String   @id @default(cuid())
+  
+  status    OrderStatus
+  notes     String?
+  updatedBy String?  // Admin user who made the change
+  
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   String
+  
+  createdAt DateTime @default(now())
+  
+  @@map("order_status_history")
+}
+
+enum OrderStatus {
+  PENDING           // Order placed, awaiting medical review
+  MEDICAL_REVIEW    // Under medical review
+  APPROVED          // Medically approved, ready for processing
+  REJECTED          // Medically rejected
+  PROCESSING        // Being prepared for shipment
+  SHIPPED           // Dispatched
+  DELIVERED         // Delivered to customer
+  CANCELLED         // Cancelled by customer or admin
+  REFUNDED          // Refunded
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+  PARTIALLY_REFUNDED
+}
+
+enum MedicalReviewStatus {
+  PENDING           // Awaiting medical review
+  UNDER_REVIEW      // Currently being reviewed
+  APPROVED          // Medically approved
+  REJECTED          // Medically rejected
+  REQUIRES_CONSULTATION // Needs customer consultation
+}
+
+enum ProductCategory {
+  INJECTIONS
+  PILLS_TABLETS
+  BARIATRIC_SURGERY
+}
