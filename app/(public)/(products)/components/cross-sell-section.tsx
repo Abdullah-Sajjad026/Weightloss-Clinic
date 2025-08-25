@@ -25,7 +25,7 @@ export function CrossSellSection({
   description,
   products,
   colorScheme = "tertiary",
-  backgroundImage = "https://ik.imagekit.io/medicspot/rays.webp?updatedAt=1746126061944",
+  backgroundImage = "https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=600&fit=crop&crop=center&auto=format&q=30",
   className,
 }: CrossSellSectionProps) {
   const colorClasses = {

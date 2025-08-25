@@ -18,7 +18,7 @@ export function WhyChooseSection() {
   return (
     <section className="px-4 w-full max-w-7xl mx-auto">
       <PageSectionTitle
-        smallText=" Why choose Northampton Weight Loss Clinic?"
+        smallText=" Why choose DigitalClinicSystem?"
         largeText=" Everything you need to lose weight for good"
       />
 
@@ -53,8 +53,8 @@ export function WhyChooseSection() {
               height="178"
               className="ease-snappy w-full scale-100 transition duration-700 group-hover:scale-102 group-hover:brightness-105 max-lg:max-w-sm"
               // sizes="(max-width: 768px) 95vw, (max-width: 1200px) 45vw, 22vw"
-              // srcSet="https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-256,q-75 256w, https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-384,q-75 384w, https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-640,q-75 640w, https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-750,q-75 750w, https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-828,q-75 828w, https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-1080,q-75 1080w, https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-1200,q-75 1200w, https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-1920,q-75 1920w, https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-2048,q-75 2048w, https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-3840,q-75 3840w"
-              src="https://ik.imagekit.io/medicspot/Medicspot%20Box%20Mounjaro.webp?tr=w-3840,q-75"
+              // srcSet="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=256&h=178&fit=crop&crop=center&auto=format&q=75 256w, https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=384&h=256&fit=crop&crop=center&auto=format&q=75 384w, https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=640&h=400&fit=crop&crop=center&auto=format&q=75 640w, https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=750&h=468&fit=crop&crop=center&auto=format&q=75 750w"
+              src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=750&h=468&fit=crop&crop=center&auto=format&q=75"
             />
           </CardContent>
         </Card>

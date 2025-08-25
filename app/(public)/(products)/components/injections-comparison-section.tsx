@@ -194,13 +194,12 @@ function renderValue(value: string | boolean, featured: boolean = false) {
 
 export function InjectionsComparisonSection() {
   return (
-    <div className="bg-zinc-100 ring-zinc-500/20 bg-[url(https://ik.imagekit.io/medicspot/rays.webp?updatedAt=1746126061944)] bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-center text-center rounded-5xl flex w-full flex-col px-4 py-6 lg:p-10 from-transparent">
+    <div className="bg-zinc-100 ring-zinc-500/20 bg-[url(https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=600&fit=crop&crop=center&auto=format&q=30)] bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-center text-center rounded-5xl flex w-full flex-col px-4 py-6 lg:p-10 from-transparent">
       <h2 className="mx-auto mt-2 max-w-lg text-center text-3xl font-semibold tracking-tight text-balance sm:text-4xl text-zinc-950">
         Weight loss injections comparison
       </h2>
       <p className="mt-4 max-w-(--breakpoint-sm) text-balance mb-0 max-w-(--breakpoint-sm) text-sm text-zinc-700 lg:text-base">
-        We offer the best weight loss injections at Northampton Weight Loss
-        Clinic. Here are the key differences in effectiveness, how to take them,
+        We offer the best weight loss injections at DigitalClinicSystem. Here are the key differences in effectiveness, how to take them,
         common side effects, and who they can be prescribed to, helping you make
         an informed decision about which treatment is right for you.
       </p>

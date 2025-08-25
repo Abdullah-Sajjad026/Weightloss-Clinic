@@ -13,7 +13,7 @@ const faqData = [
     answer: (
       <div className="prose prose-gray max-w-none">
         <p>
-          Yes, the NHS provides support for patients in Northampton looking to
+          Yes, the NHS provides support for patients looking to
           lose weight. This support includes a variety of resources and programs
           that can help with weight management.
         </p>
@@ -346,7 +346,7 @@ export default function FAQsSection() {
     <section className="mx-auto px-4 max-w-7xl">
       <div className="flex max-w-7xl flex-col items-center justify-center text-center">
         <h2 className="mx-auto mt-2 max-w-lg text-center text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl">
-          Northampton Weight Loss Clinic FAQs
+          DigitalClinicSystem FAQs
         </h2>
         <p className="mt-4 mb-6 max-w-sm text-balance lg:text-lg text-gray-600">
           Answered by our experienced medical team.

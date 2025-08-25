@@ -55,7 +55,7 @@ export default function CLinicComparisonSection() {
           How we're different
         </p>
         <p className="mt-4 mb-6 max-w-(--breakpoint-sm) lg:text-lg prose text-balance">
-          Northampton Weight Loss Clinic offers more than just weight loss
+          DigitalClinicSystem offers more than just weight loss
           medication. We've partnered with Medicspot to offer a science-backed
           weight loss programme. See how we compare to a typical high street
           pharmacy.
@@ -68,7 +68,7 @@ export default function CLinicComparisonSection() {
       {/* Sticky Header */}
       <div className="sticky top-32 z-20 mb-px ml-auto flex h-[60px] w-full gap-px rounded-2xl rounded-t-2xl text-center text-balance shadow-xl lg:w-2/3 lg:shadow-black/5">
         <div className="bg-primary-200 from-primary-200 font-roca to-primary-300 text-primary-950 relative z-10 flex w-full items-center justify-center rounded-l-2xl bg-linear-to-t px-3 py-4 text-sm leading-5 font-medium ring-1 ring-gray-900/10 select-none md:text-lg lg:rounded-t-2xl lg:rounded-b-none">
-          <span className="translate-y-1">Northampton Weight Loss Clinic</span>
+          <span className="translate-y-1">DigitalClinicSystem</span>
           <div className="absolute top-0 left-0 h-full w-full rounded-l-2xl inset-ring inset-ring-white/70 lg:rounded-t-2xl lg:rounded-b-none"></div>
         </div>
         <div className="flex w-full items-center justify-center rounded-r-2xl bg-gray-200 px-3 py-4 text-sm font-medium text-gray-700 ring-1 ring-gray-900/10 lg:rounded-t-2xl lg:rounded-b-none lg:text-base">

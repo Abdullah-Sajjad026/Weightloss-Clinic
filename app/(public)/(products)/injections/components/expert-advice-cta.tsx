@@ -19,7 +19,7 @@ export function ExpertAdviceCTA({
   return (
     <div
       className={cn(
-        "bg-secondary-100 ring-secondary-500/20 bg-[url(https://ik.imagekit.io/medicspot/rays.webp?updatedAt=1746126061944)] bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-start text-left rounded-5xl w-full lg:p-10 flex flex-col justify-between gap-4 p-6 md:flex-row md:items-center",
+        "bg-secondary-100 ring-secondary-500/20 bg-[url(https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=600&fit=crop&crop=center&auto=format&q=30)] bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-start text-left rounded-5xl w-full lg:p-10 flex flex-col justify-between gap-4 p-6 md:flex-row md:items-center",
         className
       )}
     >

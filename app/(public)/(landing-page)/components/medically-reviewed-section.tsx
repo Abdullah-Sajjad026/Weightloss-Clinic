@@ -132,7 +132,7 @@ export default function MedicallyReviewedSection() {
                 on <b>8 Jan 2025</b>.
               </p>
               <p>
-                Northampton Weight Loss Clinic is committed to providing you
+                DigitalClinicSystem is committed to providing you
                 with the most objective, trustworthy and accurate health
                 information.
               </p>

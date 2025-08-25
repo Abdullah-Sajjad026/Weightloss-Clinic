@@ -167,7 +167,7 @@ export default function SupportSection() {
         
         {/* Chat Interface */}
         <div className="relative h-full w-full">
-          <div className="ring-primary-950/10 aspect-[16/11] max-h-[350px] w-full cursor-default rounded-3xl bg-gray-400 bg-[url(https://ik.imagekit.io/medicspot/mountain.webp?tr=w-700)] bg-cover px-6 shadow-2xl ring-1 inset-ring-1 inset-ring-white/40 transition select-none">
+          <div className="ring-primary-950/10 aspect-[16/11] max-h-[350px] w-full cursor-default rounded-3xl bg-gray-400 bg-[url(https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=700&h=400&fit=crop&crop=center&auto=format&q=75)] bg-cover px-6 shadow-2xl ring-1 inset-ring-1 inset-ring-white/40 transition select-none">
             <div className="relative flex h-full flex-col">
               <div className="relative flex-1 overflow-y-auto px-3 py-8 [scrollbar-width:none]" style={{
                 maskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)'

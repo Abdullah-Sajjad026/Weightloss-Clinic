@@ -68,7 +68,7 @@ export default function FooterSection() {
           href="/" 
           className="font-serif pt-2 text-lg tracking-tight sm:text-xl hover:text-white/90 transition-colors"
         >
-          Northampton Weight Loss Clinic
+          DigitalClinicSystem
         </Link>
       </div>
 
@@ -79,7 +79,7 @@ export default function FooterSection() {
             Lose weight, gain confidence
           </div>
           <p className="text-lg text-white/90">
-            Ready to take control of your health? Take the first step towards a healthier, happier you with Northampton Weight Loss Clinic.
+            Ready to take control of your health? Take the first step towards a healthier, happier you with DigitalClinicSystem.
           </p>
           <div>
             <Button 
@@ -141,12 +141,12 @@ export default function FooterSection() {
       <div className="flex w-full max-w-7xl flex-col justify-between gap-4 lg:flex-row">
         <div className="flex items-center gap-1">
           <Copyright className="text-primary-400 w-4 h-4" />
-          <span>2025 Northampton Weight Loss Clinic</span>
+          <span>2025 DigitalClinicSystem</span>
         </div>
         
         <div className="flex items-center gap-1">
           <MapPin className="text-primary-400 w-4 h-4" />
-          <span>Northampton Weight Loss Clinic, Northampton, Northamptonshire, UK</span>
+          <span>DigitalClinicSystem, United Kingdom</span>
         </div>
         
         <div className="flex gap-5">

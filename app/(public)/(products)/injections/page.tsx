@@ -19,7 +19,7 @@ const injectionProducts = [
     description: "All doses available",
     price: "£45/week",
     imageUrl:
-      "https://ik.imagekit.io/medicspot/mounjaro-pen-2.webp?tr=w-750,q-75",
+      "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Mounjaro pen angled",
     href: "/injections/mounjaro",
   },
@@ -28,7 +28,7 @@ const injectionProducts = [
     description: "All doses available",
     price: "£45/week",
     imageUrl:
-      "https://ik.imagekit.io/medicspot/wegovy-boxes.webp?tr=w-750,q-75",
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Wegovy boxes",
     href: "/injections/wegovy",
   },
@@ -37,7 +37,7 @@ const injectionProducts = [
     description: "All doses available",
     price: "£55/pen",
     imageUrl:
-      "https://ik.imagekit.io/medicspot/saxenda-pens.webp?tr=w-750,q-75",
+      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Saxenda pens",
     href: "/injections/saxenda",
   },
@@ -49,7 +49,7 @@ const pillProducts = [
     description: "Up to 10% weight loss",
     price: "from £12/week",
     imageUrl:
-      "https://ik.imagekit.io/medicspot/orlistat-box.webp?tr=w-750,q-75",
+      "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Orlistat box",
     href: "/pills-tablets/orlistat",
     badge: "Pills",
@@ -58,7 +58,7 @@ const pillProducts = [
     name: "Xenical",
     description: "Up to 10% weight loss",
     price: "from £15/week",
-    imageUrl: "https://ik.imagekit.io/medicspot/xenical.webp?tr=w-750,q-75",
+    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Xenical pills",
     href: "/pills-tablets/xenical",
     badge: "Pills",
@@ -67,7 +67,7 @@ const pillProducts = [
     name: "Alli",
     description: "Up to 5% weight loss",
     price: "from £12/week",
-    imageUrl: "https://ik.imagekit.io/medicspot/alli.webp?tr=w-750,q-75",
+    imageUrl: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Alli pills",
     href: "/pills-tablets/alli",
     badge: "Pills",
@@ -81,7 +81,7 @@ export default function InjectionsPage() {
       <section className="mx-auto px-4 max-w-7xl w-full">
         <CategoryHero
           title="Northampton Weight Loss Injections"
-          description="Discover if you're eligible for weight loss injections at Northampton Weight Loss Clinic. Compare Wegovy, Saxenda, and Mounjaro for their effectiveness, common side effects, patient reviews, and pricing."
+          description="Discover if you're eligible for weight loss injections at DigitalClinicSystem. Compare Wegovy, Saxenda, and Mounjaro for their effectiveness, common side effects, patient reviews, and pricing."
         />
 
         {/* Products Grid */}
@@ -131,7 +131,7 @@ export default function InjectionsPage() {
       <section className="mx-auto px-4 max-w-7xl w-full">
         <CrossSellSection
           title="We also offer weight loss pills"
-          description="Northampton Weight Loss Clinic also offers weight loss pills"
+          description="DigitalClinicSystem also offers weight loss pills"
           products={pillProducts}
           colorScheme="tertiary"
         />

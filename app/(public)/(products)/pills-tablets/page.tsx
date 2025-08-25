@@ -15,7 +15,7 @@ const pillProducts = [
     description: "All doses available",
     price: "£12/week",
     imageUrl:
-      "https://ik.imagekit.io/medicspot/orlistat-box.webp?tr=w-750,q-75",
+      "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Orlistat box",
     href: "/pills-tablets/orlistat",
   },
@@ -23,7 +23,7 @@ const pillProducts = [
     name: "Xenical",
     description: "All doses available",
     price: "£15/week",
-    imageUrl: "https://ik.imagekit.io/medicspot/xenical.webp?tr=w-750,q-75",
+    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Xenical pills",
     href: "/pills-tablets/xenical",
   },
@@ -31,7 +31,7 @@ const pillProducts = [
     name: "Alli",
     description: "All doses available",
     price: "£12/week",
-    imageUrl: "https://ik.imagekit.io/medicspot/alli.webp?tr=w-750,q-75",
+    imageUrl: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Alli pills",
     href: "/pills-tablets/alli",
   },
@@ -43,7 +43,7 @@ const injectionProducts = [
     description: "Up to 26% weight loss",
     price: "from £45/week",
     imageUrl:
-      "https://ik.imagekit.io/medicspot/mounjaro-pen-2.webp?tr=w-750,q-75",
+      "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Mounjaro pen",
     href: "/injections/mounjaro",
     badge: "Injections",
@@ -53,7 +53,7 @@ const injectionProducts = [
     description: "Up to 15% weight loss",
     price: "from £45/week",
     imageUrl:
-      "https://ik.imagekit.io/medicspot/wegovy-boxes.webp?tr=w-750,q-75",
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Wegovy boxes",
     href: "/injections/wegovy",
     badge: "Injections",
@@ -63,7 +63,7 @@ const injectionProducts = [
     description: "Up to 10% weight loss",
     price: "from £55/pen",
     imageUrl:
-      "https://ik.imagekit.io/medicspot/saxenda-pens.webp?tr=w-750,q-75",
+      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Saxenda pens",
     href: "/injections/saxenda",
     badge: "Injections",
@@ -77,7 +77,7 @@ export default function PillsTabletsPage() {
       <section className="mx-auto px-4 max-w-7xl w-full">
         <CategoryHero
           title="Northampton Weight Loss Pills"
-          description="At Northampton Weight Loss Clinic, we specialise in providing weight loss pills that are both effective and tailored to your individual needs. Find out if you're eligible for Orlistat, Xenical, and other weight loss medications."
+          description="At DigitalClinicSystem, we specialise in providing weight loss pills that are both effective and tailored to your individual needs. Find out if you're eligible for Orlistat, Xenical, and other weight loss medications."
         />
 
         {/* Products Grid */}
@@ -107,7 +107,7 @@ export default function PillsTabletsPage() {
       <section className="mx-auto px-4 max-w-7xl w-full">
         <ExpertAdviceCTA
           title="Not sure which weight loss pill is right for you?"
-          description="Get expert advice from the Northampton Weight Loss Clinic team."
+          description="Get expert advice from the DigitalClinicSystem team."
           colorScheme="secondary"
         />
       </section>
@@ -116,7 +116,7 @@ export default function PillsTabletsPage() {
       <section className="mx-auto px-4 max-w-7xl w-full">
         <CrossSellSection
           title="We also offer weight loss injections"
-          description="Northampton Weight Loss Clinic also offers weight loss injections for more significant results"
+          description="DigitalClinicSystem also offers weight loss injections for more significant results"
           products={injectionProducts}
           colorScheme="tertiary"
         />

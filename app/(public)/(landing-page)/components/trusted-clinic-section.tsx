@@ -1,16 +1,16 @@
 import { Badge } from "@/components/ui/badge";
 
-const northamptonLocations = [
-  "Abington",
-  "Weston Favell",
-  "Kingsthorpe",
-  "Duston",
-  "Upton",
-  "Delapre",
-  "Billing",
-  "Far Cotton",
-  "Moulton",
-  "Wootton",
+const serviceAreas = [
+  "England",
+  "Scotland",
+  "Wales",
+  "London",
+  "Manchester",
+  "Birmingham",
+  "Leeds",
+  "Liverpool",
+  "Bristol",
+  "Sheffield",
 ];
 
 export default function TrustedClinicSection() {
@@ -24,7 +24,7 @@ export default function TrustedClinicSection() {
           Helping people across Northampton lose weight
         </h2>
         <p className="mt-4 mb-6 max-w-2xl text-balance lg:text-lg text-gray-700">
-          Northampton Weight Loss Clinic is proud to be leading a weight loss
+          DigitalClinicSystem is proud to be leading a weight loss
           revolution in Northampton. We specialise in medically supervised
           weight loss that focuses on sustainable health, not just short-term
           results. People all across Northampton from Abington to Weston Favell
@@ -33,7 +33,7 @@ export default function TrustedClinicSection() {
 
         {/* Location Tags */}
         <div className="mt-2 flex max-w-xl flex-wrap items-center justify-center gap-2">
-          {northamptonLocations.map((location) => (
+          {serviceAreas.map((location) => (
             <Badge
               key={location}
               variant="outline"

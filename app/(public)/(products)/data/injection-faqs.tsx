@@ -7,7 +7,7 @@ export const injectionFAQs: FAQItem[] = [
     question: "Can I get weight loss injections on the NHS?",
     answer: (
       <div className="prose">
-        <p>Yes, you can get some types of weight loss injections on the NHS under specific circumstances. Weight loss injections are available on prescription and are typically recommended for adults in Northampton who have not achieved significant weight loss through diet and exercise alone.</p>
+        <p>Yes, you can get some types of weight loss injections on the NHS under specific circumstances. Weight loss injections are available on prescription and are typically recommended for adults who have not achieved significant weight loss through diet and exercise alone.</p>
         <p>You also need to be significantly overweight, which is a <Link href="/bmi-calculator" className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70">Body Mass Index</Link> (BMI) of at least 35, or at least 30 if you have other weight-related health conditions like high cholesterol, type 2 diabetes or high blood pressure.</p>
       </div>
     ),
@@ -15,10 +15,10 @@ export const injectionFAQs: FAQItem[] = [
   },
   {
     id: "how-much-do-private-weight-loss-injections-cost-in-northampton",
-    question: "How much do private weight loss injections cost in Northampton?",
+    question: "How much do private weight loss injections cost?",
     answer: (
       <div className="prose">
-        <p>The cost of weight loss injections in Northampton varies depending on the type of injection and the clinic you choose. At Northampton Weight Loss Clinic, our treatments for Mounjaro, Saxenda, and Wegovy cost from £149 to £269 per month, depending on the dosage and drug. We recommend viewing our current weight loss injection costs for the most up-to-date pricing information.</p>
+        <p>The cost of weight loss injections varies depending on the type of injection and the clinic you choose. At DigitalClinicSystem, our treatments for Mounjaro, Saxenda, and Wegovy cost from £149 to £269 per month, depending on the dosage and drug. We recommend viewing our current weight loss injection costs for the most up-to-date pricing information.</p>
       </div>
     ),
     column: 1

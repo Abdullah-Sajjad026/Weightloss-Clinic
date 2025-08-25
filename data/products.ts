@@ -64,7 +64,7 @@ export const PRODUCTS: Record<string, ProductData> = {
     activeIngredient: "tirzepatide",
     badge: "Weight Loss Injection",
     heroDescription: "Mounjaro (tirzepatide) is a once-weekly weight loss injection that controls your appetite and calorie intake. Approved for use in Northampton and the UK, our specialised Mounjaro weight loss programmes offer medical guidance and customised care plans.",
-    heroImage: "https://ik.imagekit.io/medicspot/mounjaro-pen-2.webp?tr=w-500,q-75",
+    heroImage: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=400&fit=crop&crop=center&auto=format&q=75",
     heroImageAlt: "Mounjaro pen",
     features: [
       { text: "In stock for new and existing patients" },
@@ -119,7 +119,7 @@ export const PRODUCTS: Record<string, ProductData> = {
       steps: [
         {
           title: "Provider",
-          content: "Northampton Weight Loss Clinic offers Mounjaro with the convenience of fast, discreet delivery."
+          content: "DigitalClinicSystem offers Mounjaro with the convenience of fast, discreet delivery."
         },
         {
           title: "Consultation",
@@ -141,7 +141,7 @@ export const PRODUCTS: Record<string, ProductData> = {
       footerNote: "Only purchase Mounjaro from reputable sources to avoid counterfeit medications and ensure you receive genuine, safe treatment."
     },
     dosageTitle: "Mounjaro dosing schedule",
-    dosageDescription: "Mounjaro is taken once a week. Northampton Weight Loss Clinic experts suggest following a schedule to gradually increase the dosage to help you get the most from your treatment.",
+    dosageDescription: "Mounjaro is taken once a week. DigitalClinicSystem experts suggest following a schedule to gradually increase the dosage to help you get the most from your treatment.",
     dosageSteps: [
       {
         period: "Weeks 1–4",
@@ -203,8 +203,8 @@ export const PRODUCTS: Record<string, ProductData> = {
     name: "Wegovy",
     activeIngredient: "semaglutide",
     badge: "Weight Loss Injection",
-    heroDescription: "Wegovy (semaglutide) is a once-weekly weight loss injection that regulates appetite and food intake. Approved in Northampton and the UK, Northampton Weight Loss Clinic offers this treatment with medical guidance and personalised care. Prices start at £169.",
-    heroImage: "https://ik.imagekit.io/medicspot/wegovy-boxes.webp?tr=w-500,q-75",
+    heroDescription: "Wegovy (semaglutide) is a once-weekly weight loss injection that regulates appetite and food intake. Approved in the UK, DigitalClinicSystem offers this treatment with medical guidance and personalised care. Prices start at £169.",
+    heroImage: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&h=400&fit=crop&crop=center&auto=format&q=75",
     heroImageAlt: "Wegovy boxes",
     features: [
       { text: "In stock for new and existing patients" },
@@ -278,8 +278,8 @@ export const PRODUCTS: Record<string, ProductData> = {
     name: "Saxenda",
     activeIngredient: "liraglutide",
     badge: "Weight Loss Injection",
-    heroDescription: "Saxenda (liraglutide) is a daily injectable medication approved for weight management. At Northampton Weight Loss Clinic, we specialise in offering Saxenda, supported by expert medical guidance and personalised care plans. Saxenda prices start from £49 per pen.",
-    heroImage: "https://ik.imagekit.io/medicspot/saxenda-pens.webp?tr=w-500,q-75",
+    heroDescription: "Saxenda (liraglutide) is a daily injectable medication approved for weight management. At DigitalClinicSystem, we specialise in offering Saxenda, supported by expert medical guidance and personalised care plans. Saxenda prices start from £49 per pen.",
+    heroImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=400&fit=crop&crop=center&auto=format&q=75",
     heroImageAlt: "Saxenda pens",
     features: [
       { text: "Free, fast and discreet delivery" },
@@ -326,7 +326,7 @@ export const PRODUCTS: Record<string, ProductData> = {
       steps: [
         {
           title: "Provider",
-          content: "Certain online health providers, including Northampton Weight Loss Clinic, offer Saxenda with options for fast, discreet delivery."
+          content: "Certain online health providers, including DigitalClinicSystem, offer Saxenda with options for fast, discreet delivery."
         },
         {
           title: "Consultation",
@@ -405,8 +405,8 @@ export const PRODUCTS: Record<string, ProductData> = {
     name: "Orlistat",
     activeIngredient: "orlistat",
     badge: "Weight Loss Tablet",
-    heroDescription: "Orlistat is a leading weight loss tablet approved for weight management. At Northampton Weight Loss Clinic, we specialise in providing Orlistat, supported by expert medical guidance and personalised care plans. Orlistat prices start from £49 per pack.",
-    heroImage: "https://ik.imagekit.io/medicspot/orlistat-tablets.webp?tr=w-500,q-75",
+    heroDescription: "Orlistat is a leading weight loss tablet approved for weight management. At DigitalClinicSystem, we specialise in providing Orlistat, supported by expert medical guidance and personalised care plans. Orlistat prices start from £49 per pack.",
+    heroImage: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=500&h=400&fit=crop&crop=center&auto=format&q=75",
     heroImageAlt: "Orlistat tablets",
     features: [
       { text: "Free, fast and discreet delivery" },
@@ -453,11 +453,11 @@ export const PRODUCTS: Record<string, ProductData> = {
       steps: [
         {
           title: "Choose a reputable supplier",
-          content: "Make sure you choose a provider who ensures that the prescription will be safe and effective for you. At Northampton Weight Loss Clinic, UK based clinicians will undertake a thorough assessment and arrange delivery of the medication to your door."
+          content: "Make sure you choose a provider who ensures that the prescription will be safe and effective for you. At DigitalClinicSystem, UK based clinicians will undertake a thorough assessment and arrange delivery of the medication to your door."
         },
         {
           title: "Have your consultation",
-          content: "Make sure that Orlistat is right for you with a consultation with your NHS GP or at Northampton Weight Loss Clinic."
+          content: "Make sure that Orlistat is right for you with a consultation with your NHS GP or at DigitalClinicSystem."
         },
         {
           title: "Get your prescription",
@@ -465,7 +465,7 @@ export const PRODUCTS: Record<string, ProductData> = {
         },
         {
           title: "Receive your medication",
-          content: "Receive your medication from the pharmacy that's partnered with your chosen provider. At Northampton Weight Loss Clinic we deliver it to your door."
+          content: "Receive your medication from the pharmacy that's partnered with your chosen provider. At DigitalClinicSystem we deliver it to your door."
         },
         {
           title: "Follow-up",
@@ -475,7 +475,7 @@ export const PRODUCTS: Record<string, ProductData> = {
       footerNote: "By following these steps, you ensure that you receive Orlistat under safe conditions, supported by proper medical guidance. Remember, purchasing medication from reputable sources is important for your health and weight loss."
     },
     dosageTitle: "Orlistat dosing",
-    dosageDescription: "Understanding the correct dosing plan for Orlistat is crucial to effectively managing weight and minimising side effects. Here's an easy-to-follow guide from Northampton Weight Loss Clinic on how to use Orlistat:",
+    dosageDescription: "Understanding the correct dosing plan for Orlistat is crucial to effectively managing weight and minimising side effects. Here's an easy-to-follow guide from DigitalClinicSystem on how to use Orlistat:",
     dosageSteps: [
       {
         period: "When to take Orlistat",

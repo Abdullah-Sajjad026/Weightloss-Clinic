@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "ik.imagekit.io",
+        hostname: "images.unsplash.com",
         port: "",
-        pathname: "/medicspot/**",
+        pathname: "/**",
       },
       {
         protocol: "https",
