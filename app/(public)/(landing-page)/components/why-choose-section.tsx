@@ -18,7 +18,7 @@ export function WhyChooseSection() {
   return (
     <section className="px-4 w-full max-w-7xl mx-auto">
       <PageSectionTitle
-        smallText=" Why choose DigitalClinicSystem?"
+        smallText=" Why choose Northampton Weightloss (Powered by Regent Pharmacy)?"
         largeText=" Everything you need to lose weight for good"
       />
 

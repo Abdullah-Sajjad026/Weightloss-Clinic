@@ -82,7 +82,7 @@ const createEmailTemplate = (content: string, title: string) => `
 <body>
     <div class="container">
         <div class="header">
-            <h1>DigitalClinicSystem</h1>
+            <h1>Northampton Weightloss (Powered by Regent Pharmacy)</h1>
             <p>Professional Weight Management Solutions</p>
         </div>
         
@@ -93,7 +93,7 @@ const createEmailTemplate = (content: string, title: string) => `
             <p>Contact us at <a href="mailto:${process.env.ADMIN_EMAIL}">${process.env.ADMIN_EMAIL}</a></p>
             <p>Track your order: <a href="https://yourwebsite.com/orders/track">Track Order</a></p>
             <p style="margin-top: 20px; font-size: 12px; color: #9ca3af;">
-                DigitalClinicSystem<br>
+                Northampton Weightloss (Powered by Regent Pharmacy)<br>
                 Professional Healthcare Services<br>
                 United Kingdom
             </p>
@@ -302,7 +302,7 @@ export const createDeliveryConfirmationEmail = (data: StatusUpdateEmailData) => 
 
       <div style="background-color: #d1fae5; padding: 20px; border-radius: 8px; margin: 20px 0;">
         <h3 style="color: #065f46;">🎉 Order Complete</h3>
-        <p style="color: #065f46;">Your order has been delivered successfully. Thank you for choosing DigitalClinicSystem for your weight management journey.</p>
+        <p style="color: #065f46;">Your order has been delivered successfully. Thank you for choosing Northampton Weightloss (Powered by Regent Pharmacy) for your weight management journey.</p>
       </div>
 
       <h3>Order Summary</h3>
@@ -353,7 +353,7 @@ export const sendOrderConfirmationEmail = async (data: OrderEmailData) => {
   const htmlContent = createOrderConfirmationEmail(data);
   
   const mailOptions = {
-    from: `"DigitalClinicSystem" <${process.env.GMAIL_USER}>`,
+    from: `"Northampton Weightloss (Powered by Regent Pharmacy)" <${process.env.GMAIL_USER}>`,
     to: data.customerEmail,
     subject: `Order Confirmation - ${data.orderNumber}`,
     html: htmlContent,
@@ -373,7 +373,7 @@ export const sendMedicalReviewEmail = async (data: StatusUpdateEmailData) => {
   const htmlContent = createMedicalReviewEmail(data);
   
   const mailOptions = {
-    from: `"DigitalClinicSystem" <${process.env.GMAIL_USER}>`,
+    from: `"Northampton Weightloss (Powered by Regent Pharmacy)" <${process.env.GMAIL_USER}>`,
     to: data.customerEmail,
     subject: `Medical Review ${data.medicalReviewStatus === 'APPROVED' ? 'Approved' : 'Update'} - ${data.orderNumber}`,
     html: htmlContent,
@@ -393,7 +393,7 @@ export const sendShippingNotificationEmail = async (data: StatusUpdateEmailData)
   const htmlContent = createShippingNotificationEmail(data);
   
   const mailOptions = {
-    from: `"DigitalClinicSystem" <${process.env.GMAIL_USER}>`,
+    from: `"Northampton Weightloss (Powered by Regent Pharmacy)" <${process.env.GMAIL_USER}>`,
     to: data.customerEmail,
     subject: `Order Shipped - ${data.orderNumber}`,
     html: htmlContent,
@@ -413,7 +413,7 @@ export const sendDeliveryConfirmationEmail = async (data: StatusUpdateEmailData)
   const htmlContent = createDeliveryConfirmationEmail(data);
   
   const mailOptions = {
-    from: `"DigitalClinicSystem" <${process.env.GMAIL_USER}>`,
+    from: `"Northampton Weightloss (Powered by Regent Pharmacy)" <${process.env.GMAIL_USER}>`,
     to: data.customerEmail,
     subject: `Order Delivered - ${data.orderNumber}`,
     html: htmlContent,
@@ -433,7 +433,7 @@ export const sendStatusUpdateEmail = async (data: StatusUpdateEmailData) => {
   const htmlContent = createStatusUpdateEmail(data);
   
   const mailOptions = {
-    from: `"DigitalClinicSystem" <${process.env.GMAIL_USER}>`,
+    from: `"Northampton Weightloss (Powered by Regent Pharmacy)" <${process.env.GMAIL_USER}>`,
     to: data.customerEmail,
     subject: `Order Update - ${data.orderNumber}`,
     html: htmlContent,

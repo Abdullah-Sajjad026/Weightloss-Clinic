@@ -346,7 +346,7 @@ export default function FAQsSection() {
     <section className="mx-auto px-4 max-w-7xl">
       <div className="flex max-w-7xl flex-col items-center justify-center text-center">
         <h2 className="mx-auto mt-2 max-w-lg text-center text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl">
-          DigitalClinicSystem FAQs
+          Northampton Weightloss (Powered by Regent Pharmacy) FAQs
         </h2>
         <p className="mt-4 mb-6 max-w-sm text-balance lg:text-lg text-gray-600">
           Answered by our experienced medical team.

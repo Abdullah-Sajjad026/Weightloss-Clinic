@@ -27,7 +27,7 @@ const Logo = ({ className }: { className?: string }) => (
     <div className="flex items-center justify-center w-8 h-8 bg-primary-600 rounded-full">
       <Heart className="w-4 h-4 text-white fill-white" />
     </div>
-    <span className="font-serif text-lg font-semibold text-gray-900">NWLC</span>
+    <span className="font-serif text-lg font-semibold text-gray-900">NWL</span>
   </div>
 );
 
@@ -35,37 +35,31 @@ const medicationItems = {
   pens: [
     { name: "Mounjaro", badge: "RX", href: "/injections/mounjaro" },
     { name: "Wegovy", badge: "RX", href: "/injections/wegovy" },
-    { name: "Saxenda", badge: "RX", href: "/injections/saxenda" },
-  ],
-  pills: [
-    { name: "Orlistat", badge: "RX", href: "/pills-tablets/orlistat" },
-    { name: "Xenical", badge: "RX", href: "/pills-tablets/xenical" },
-    { name: "Alli", badge: "OTC", href: "/pills-tablets/alli" },
   ],
 };
 
-const surgeryItems = [
-  {
-    name: "Gastric sleeve",
-    description: "Permanent stomach size reduction",
-    href: "/bariatric-surgery/gastric-sleeve",
-  },
-  {
-    name: "Gastric balloon",
-    description: "Temporary stomach-filling balloon",
-    href: "/bariatric-surgery/gastric-balloon",
-  },
-  {
-    name: "Gastric bypass",
-    description: "Stomach reduction, intestine rerouting",
-    href: "/bariatric-surgery/gastric-bypass",
-  },
-  {
-    name: "Gastric band",
-    description: "Adjustable stomach-constriction band",
-    href: "/bariatric-surgery/gastric-band",
-  },
-];
+// const surgeryItems = [
+//   {
+//     name: "Gastric sleeve",
+//     description: "Permanent stomach size reduction",
+//     href: "/bariatric-surgery/gastric-sleeve",
+//   },
+//   {
+//     name: "Gastric balloon",
+//     description: "Temporary stomach-filling balloon",
+//     href: "/bariatric-surgery/gastric-balloon",
+//   },
+//   {
+//     name: "Gastric bypass",
+//     description: "Stomach reduction, intestine rerouting",
+//     href: "/bariatric-surgery/gastric-bypass",
+//   },
+//   {
+//     name: "Gastric band",
+//     description: "Adjustable stomach-constriction band",
+//     href: "/bariatric-surgery/gastric-band",
+//   },
+// ];
 
 const servicesItems = [
   { name: "Nutritionist", href: "/private-appointment/nutritionist" },
@@ -78,8 +72,7 @@ const servicesItems = [
 
 const mobileNavItems = [
   { name: "Injections", href: "/injections" },
-  { name: "Pills", href: "/pills-tablets" },
-  { name: "Surgery", href: "/bariatric-surgery" },
+  // { name: "Surgery", href: "/bariatric-surgery" },
   { name: "Track Order", href: "/orders/track" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
@@ -103,7 +96,7 @@ export default function HeaderNav() {
               <Heart className="w-4 h-4 text-white fill-white" />
             </div>
             <span className="font-serif text-base font-semibold text-gray-900">
-              NWLC
+              NWL
             </span>
           </div>
         </Link>
@@ -118,59 +111,34 @@ export default function HeaderNav() {
                   Weight Loss Medication
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid w-[600px] grid-cols-2 gap-8 p-6">
-                    <div>
-                      <div className="mb-4">
-                        <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
-                          PENS
-                        </h3>
-                        <div className="space-y-2">
-                          {medicationItems.pens.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              className="flex items-center justify-between p-2 rounded-md hover:bg-gray-50 transition-colors"
-                            >
-                              <span className="font-medium text-gray-900">
-                                {item.name}
-                              </span>
-                              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                                {item.badge}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div className="mb-4">
-                        <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
-                          PILLS
-                        </h3>
-                        <div className="space-y-2">
-                          {medicationItems.pills.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              className="flex items-center justify-between p-2 rounded-md hover:bg-gray-50 transition-colors"
-                            >
-                              <span className="font-medium text-gray-900">
-                                {item.name}
-                              </span>
-                              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                                {item.badge}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
+                  <div className="w-[300px] p-6">
+                    <div className="mb-4">
+                      <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
+                        WEIGHT LOSS INJECTIONS
+                      </h3>
+                      <div className="space-y-2">
+                        {medicationItems.pens.map((item) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className="flex items-center justify-between p-2 rounded-md hover:bg-gray-50 transition-colors"
+                          >
+                            <span className="font-medium text-gray-900">
+                              {item.name}
+                            </span>
+                            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                              {item.badge}
+                            </span>
+                          </Link>
+                        ))}
                       </div>
                     </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Weight Loss Surgery */}
-              <NavigationMenuItem>
+              {/* Weight Loss Surgery - Commented out for now */}
+              {/* <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent hover:bg-gray-50">
                   Weight Loss Surgery
                 </NavigationMenuTrigger>
@@ -199,7 +167,7 @@ export default function HeaderNav() {
                     </div>
                   </div>
                 </NavigationMenuContent>
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
 
               {/* Weight Loss Services */}
               <NavigationMenuItem>
@@ -275,7 +243,7 @@ export default function HeaderNav() {
                         <Heart className="w-4 h-4 text-white fill-white" />
                       </div>
                       <span className="font-serif text-lg font-semibold text-gray-900">
-                        NWLC
+                        NWL
                       </span>
                     </div>
                   </Link>

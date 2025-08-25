@@ -132,7 +132,7 @@ export default function MedicallyReviewedSection() {
                 on <b>8 Jan 2025</b>.
               </p>
               <p>
-                DigitalClinicSystem is committed to providing you
+                Northampton Weightloss (Powered by Regent Pharmacy) is committed to providing you
                 with the most objective, trustworthy and accurate health
                 information.
               </p>

@@ -80,45 +80,6 @@ const injectionData = [
       reducedKidneyFunction: false,
     },
   },
-  {
-    id: "saxenda",
-    name: "Saxenda",
-    subtitle: "Also known as liraglutide",
-    href: "/injections/saxenda",
-    featured: false,
-    generalInfo: {
-      startingFrom: "£55/pen",
-      expectedWeightLoss: "10%",
-      frequency: "Once daily",
-      eligibility: "BMI over 30*",
-      easyToAdminister: true,
-      inStock: true,
-      freeDelivery: true,
-    },
-    sideEffects: {
-      nausea: "Very common",
-      diarrhoea: "Very common",
-      vomiting: "Very common",
-      constipation: "Very common",
-      headache: "Very common",
-      upsetStomach: "Common",
-      feelingWeakOrTired: "Common",
-      dizziness: "Common",
-      refluxOrHeartburn: "Common",
-      gas: "Common",
-      injectionSiteReaction: "Common",
-      allergicReaction: "Common",
-      gallstones: "Common",
-      hairLoss: false,
-      poorSleep: "Common",
-      increasedCalcitoninLevels: false,
-      inflamedGallbladder: "Uncommon",
-      delayInEmptyingStomach: "Uncommon",
-      acutePancreatitis: "Rare",
-      severeAllergicReaction: "Rare",
-      reducedKidneyFunction: "Rare",
-    },
-  },
 ];
 
 const generalInfoFields = [
@@ -199,9 +160,10 @@ export function InjectionsComparisonSection() {
         Weight loss injections comparison
       </h2>
       <p className="mt-4 max-w-(--breakpoint-sm) text-balance mb-0 max-w-(--breakpoint-sm) text-sm text-zinc-700 lg:text-base">
-        We offer the best weight loss injections at DigitalClinicSystem. Here are the key differences in effectiveness, how to take them,
-        common side effects, and who they can be prescribed to, helping you make
-        an informed decision about which treatment is right for you.
+        We offer the best weight loss injections at Northampton Weightloss (Powered by Regent Pharmacy). Here
+        are the key differences in effectiveness, how to take them, common side
+        effects, and who they can be prescribed to, helping you make an informed
+        decision about which treatment is right for you.
       </p>
 
       <div className="relative w-full text-left">
@@ -338,7 +300,7 @@ export function InjectionsComparisonSection() {
             </h2>
 
             {/* Sticky Header */}
-            <div className="sticky top-[88px] z-10 mt-2 grid grid-cols-4 gap-x-8 bg-zinc-100/90 pb-3 shadow-[0_0_10px_10px_rgb(244_244_245)] backdrop-blur-sm">
+            <div className="sticky top-[88px] z-10 mt-2 grid grid-cols-3 gap-x-8 bg-zinc-100/90 pb-3 shadow-[0_0_10px_10px_rgb(244_244_245)] backdrop-blur-sm">
               <div aria-hidden="true" className="-mt-px">
                 <div className="pt-10"></div>
               </div>
@@ -368,7 +330,7 @@ export function InjectionsComparisonSection() {
               <div>
                 <div className="relative -mx-8 mt-10">
                   <div
-                    className="absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8"
+                    className="absolute inset-x-8 inset-y-0 grid grid-cols-3 gap-x-8"
                     aria-hidden="true"
                   >
                     <div></div>
@@ -398,7 +360,7 @@ export function InjectionsComparisonSection() {
                         <tr key={field.key}>
                           <th
                             scope="row"
-                            className="w-1/4 py-3 pr-4 text-left text-sm font-normal leading-6 text-zinc-900"
+                            className="w-1/3 py-3 pr-4 text-left text-sm font-normal leading-6 text-zinc-900"
                           >
                             {field.label}
                             <div className="absolute inset-x-8 mt-3 h-px bg-zinc-200"></div>
@@ -406,7 +368,7 @@ export function InjectionsComparisonSection() {
                           {injectionData.map((injection) => (
                             <td
                               key={injection.id}
-                              className="relative w-1/4 px-4 py-0 text-center leading-none"
+                              className="relative w-1/3 px-4 py-0 text-center leading-none"
                             >
                               <span className="relative h-full w-full py-3">
                                 {renderValue(
@@ -421,12 +383,12 @@ export function InjectionsComparisonSection() {
                       <tr>
                         <th
                           scope="row"
-                          className="w-1/4 py-3 pr-4 text-left text-sm font-normal leading-6 text-zinc-900"
+                          className="w-1/3 py-3 pr-4 text-left text-sm font-normal leading-6 text-zinc-900"
                         ></th>
                         {injectionData.map((injection) => (
                           <td
                             key={injection.id}
-                            className="relative w-1/4 px-4 py-0 text-center leading-none"
+                            className="relative w-1/3 px-4 py-0 text-center leading-none"
                           >
                             <span className="relative h-full w-full py-3">
                               <Link
@@ -447,7 +409,7 @@ export function InjectionsComparisonSection() {
                   </table>
 
                   <div
-                    className="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8"
+                    className="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-3 gap-x-8"
                     aria-hidden="true"
                   >
                     <div></div>
@@ -472,7 +434,7 @@ export function InjectionsComparisonSection() {
                 </h3>
                 <div className="relative -mx-8 mt-10">
                   <div
-                    className="absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8"
+                    className="absolute inset-x-8 inset-y-0 grid grid-cols-3 gap-x-8"
                     aria-hidden="true"
                   >
                     <div></div>
@@ -502,7 +464,7 @@ export function InjectionsComparisonSection() {
                         <tr key={field.key}>
                           <th
                             scope="row"
-                            className="w-1/4 py-3 pr-4 text-left text-sm font-normal leading-6 text-zinc-900"
+                            className="w-1/3 py-3 pr-4 text-left text-sm font-normal leading-6 text-zinc-900"
                           >
                             {field.label}
                             {index < sideEffectFields.length - 1 && (
@@ -512,7 +474,7 @@ export function InjectionsComparisonSection() {
                           {injectionData.map((injection) => (
                             <td
                               key={injection.id}
-                              className="relative w-1/4 px-4 py-0 text-center leading-none"
+                              className="relative w-1/3 px-4 py-0 text-center leading-none"
                             >
                               <span className="relative h-full w-full py-3">
                                 {renderValue(
@@ -528,7 +490,7 @@ export function InjectionsComparisonSection() {
                   </table>
 
                   <div
-                    className="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8"
+                    className="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-3 gap-x-8"
                     aria-hidden="true"
                   >
                     <div></div>

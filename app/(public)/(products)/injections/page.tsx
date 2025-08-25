@@ -81,7 +81,7 @@ export default function InjectionsPage() {
       <section className="mx-auto px-4 max-w-7xl w-full">
         <CategoryHero
           title="Northampton Weight Loss Injections"
-          description="Discover if you're eligible for weight loss injections at DigitalClinicSystem. Compare Wegovy, Saxenda, and Mounjaro for their effectiveness, common side effects, patient reviews, and pricing."
+          description="Discover if you're eligible for weight loss injections at Northampton Weightloss (Powered by Regent Pharmacy). Compare Wegovy, Saxenda, and Mounjaro for their effectiveness, common side effects, patient reviews, and pricing."
         />
 
         {/* Products Grid */}
@@ -131,7 +131,7 @@ export default function InjectionsPage() {
       <section className="mx-auto px-4 max-w-7xl w-full">
         <CrossSellSection
           title="We also offer weight loss pills"
-          description="DigitalClinicSystem also offers weight loss pills"
+          description="Northampton Weightloss (Powered by Regent Pharmacy) also offers weight loss pills"
           products={pillProducts}
           colorScheme="tertiary"
         />

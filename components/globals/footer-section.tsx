@@ -4,38 +4,25 @@ import Link from "next/link";
 
 const footerSections = [
   {
-    title: "Treatment",
+    title: "Weight Loss Injections",
     href: "/injections",
     links: [
       { label: "26% weight loss", href: "/injections/mounjaro" },
       { label: "15% weight loss", href: "/injections/wegovy" },
-      { label: "10% weight loss", href: "/injections/saxenda" },
-      { label: "For diabetes", href: "/injections/ozempic" },
-      { label: "Compare", href: "/injections" },
+      { label: "Compare treatments", href: "/injections" },
     ]
   },
-  {
-    title: "Pills",
-    href: "/pills-tablets",
-    links: [
-      { label: "Generic", href: "/pills-tablets/orlistat" },
-      { label: "Branded", href: "/pills-tablets/xenical" },
-      { label: "Alli", href: "/pills-tablets/alli" },
-      { label: "Future", href: "/pills-tablets/rybelsus" },
-      { label: "Compare", href: "/pills-tablets" },
-    ]
-  },
-  {
-    title: "Surgery",
-    href: "/bariatric-surgery",
-    links: [
-      { label: "Gastric sleeve", href: "/bariatric-surgery/gastric-sleeve" },
-      { label: "Gastric balloon", href: "/bariatric-surgery/gastric-balloon" },
-      { label: "Gastric bypass", href: "/bariatric-surgery/gastric-bypass" },
-      { label: "Gastric band", href: "/bariatric-surgery/gastric-band" },
-      { label: "Compare", href: "/bariatric-surgery" },
-    ]
-  },
+  // {
+  //   title: "Surgery",
+  //   href: "/bariatric-surgery",
+  //   links: [
+  //     { label: "Gastric sleeve", href: "/bariatric-surgery/gastric-sleeve" },
+  //     { label: "Gastric balloon", href: "/bariatric-surgery/gastric-balloon" },
+  //     { label: "Gastric bypass", href: "/bariatric-surgery/gastric-bypass" },
+  //     { label: "Gastric band", href: "/bariatric-surgery/gastric-band" },
+  //     { label: "Compare", href: "/bariatric-surgery" },
+  //   ]
+  // },
   {
     title: "Services",
     links: [
@@ -68,7 +55,7 @@ export default function FooterSection() {
           href="/" 
           className="font-serif pt-2 text-lg tracking-tight sm:text-xl hover:text-white/90 transition-colors"
         >
-          DigitalClinicSystem
+          Northampton Weightloss (Powered by Regent Pharmacy)
         </Link>
       </div>
 
@@ -79,7 +66,7 @@ export default function FooterSection() {
             Lose weight, gain confidence
           </div>
           <p className="text-lg text-white/90">
-            Ready to take control of your health? Take the first step towards a healthier, happier you with DigitalClinicSystem.
+            Ready to take control of your health? Take the first step towards a healthier, happier you with Northampton Weightloss (Powered by Regent Pharmacy).
           </p>
           <div>
             <Button 
@@ -141,12 +128,12 @@ export default function FooterSection() {
       <div className="flex w-full max-w-7xl flex-col justify-between gap-4 lg:flex-row">
         <div className="flex items-center gap-1">
           <Copyright className="text-primary-400 w-4 h-4" />
-          <span>2025 DigitalClinicSystem</span>
+          <span>2025 Northampton Weightloss (Powered by Regent Pharmacy)</span>
         </div>
         
         <div className="flex items-center gap-1">
           <MapPin className="text-primary-400 w-4 h-4" />
-          <span>DigitalClinicSystem, United Kingdom</span>
+          <span>Northampton Weightloss (Powered by Regent Pharmacy), United Kingdom</span>
         </div>
         
         <div className="flex gap-5">

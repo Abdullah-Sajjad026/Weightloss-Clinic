@@ -18,7 +18,7 @@ export const injectionFAQs: FAQItem[] = [
     question: "How much do private weight loss injections cost?",
     answer: (
       <div className="prose">
-        <p>The cost of weight loss injections varies depending on the type of injection and the clinic you choose. At DigitalClinicSystem, our treatments for Mounjaro, Saxenda, and Wegovy cost from £149 to £269 per month, depending on the dosage and drug. We recommend viewing our current weight loss injection costs for the most up-to-date pricing information.</p>
+        <p>The cost of weight loss injections varies depending on the type of injection and the clinic you choose. At Northampton Weightloss (Powered by Regent Pharmacy), our treatments for Mounjaro and Wegovy cost from £149 to £229 per month, depending on the dosage and drug. We recommend viewing our current weight loss injection costs for the most up-to-date pricing information.</p>
       </div>
     ),
     column: 1
@@ -30,11 +30,10 @@ export const injectionFAQs: FAQItem[] = [
       <div className="prose">
         <p>The 'best' weight loss injection can vary depending on your health conditions and goals. Commonly prescribed weight loss injections in the UK include:</p>
         <ul>
-          <li><Link href="/injections/saxenda" className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70">Saxenda (liraglutide)</Link> Saxenda is a single injection every day and is suitable if you have a BMI of 30 or more or 27 or more if you have a weight-related health condition. Saxenda acts as an appetite suppressant by making the body think that it is a hormone known as glucagon-like peptide 1 (GLP-1). Saxenda helps you feel fuller sooner and reduces your overall appetite. There may be a lower risk of problems where you inject (injection sites) with Saxenda, but a higher risk of stomach upset when compared to Wegovy.</li>
-          <li><Link href="/injections/wegovy" className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70">Wegovy (semaglutide)</Link>. Wegovy is a one injection per week that is similar to Saxenda but used less frequently. There may be a higher risk of problems when you inject with Wegovy, but a lower risk of stomach upset when compared to Saxenda.</li>
-          <li><Link href="/injections/mounjaro" className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70">Mounjaro (tirzepatide)</Link>. Mounjaro is a once-weekly injection, but it works in a different way to Wegovy and Saxenda. In addition to the GLP-1 effects, it also works by mimicking GIP glucose-dependent insulinotropic polypeptide receptors, which slows the passage of food through the stomach and reduces blood sugar. Mounjaro may cause a bigger drop in body weight compared to Wegovy and Saxenda.</li>
+          <li><Link href="/injections/wegovy" className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70">Wegovy (semaglutide)</Link>. Wegovy is a once-weekly injection that acts as an appetite suppressant by mimicking a hormone known as glucagon-like peptide 1 (GLP-1). Wegovy helps you feel fuller sooner and reduces your overall appetite, supporting significant weight loss.</li>
+          <li><Link href="/injections/mounjaro" className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70">Mounjaro (tirzepatide)</Link>. Mounjaro is a once-weekly injection that works differently from Wegovy. In addition to GLP-1 effects, it also works by mimicking GIP glucose-dependent insulinotropic polypeptide receptors, which slows the passage of food through the stomach and reduces blood sugar. Mounjaro may cause greater weight loss compared to other treatments.</li>
         </ul>
-        <p>Each of these medications has been shown to help reduce weight when combined with improved eating and activity habits. Speaking with a healthcare provider in Northampton is the best way to decide on which option might be most effective for you, as they can provide personalised advice based on your specific health needs and weight loss goals.</p>
+        <p>Both of these medications have been shown to help reduce weight when combined with improved eating and activity habits. Speaking with a healthcare provider is the best way to decide which option might be most effective for you, as they can provide personalised advice based on your specific health needs and weight loss goals.</p>
       </div>
     ),
     column: 1

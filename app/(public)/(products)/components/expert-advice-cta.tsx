@@ -12,7 +12,7 @@ interface ExpertAdviceCTAProps {
 
 export function ExpertAdviceCTA({
   title = "Not sure which weight loss injection is right for you?",
-  description = "Get expert advice from the DigitalClinicSystem team.",
+  description = "Get expert advice from the Northampton Weightloss (Powered by Regent Pharmacy) team.",
   ctaText = "Start assessment",
   ctaHref = "/assessment",
   colorScheme = 'secondary',
