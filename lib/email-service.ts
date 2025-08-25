@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import { CartItem } from '@/types/cart';
 
 // Email configuration
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.GMAIL_USER,
