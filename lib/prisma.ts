@@ -31,6 +31,7 @@ export const prisma =
       }
     },
     log: process.env.NODE_ENV === 'development' ? ['query', 'error'] : ['error'],
+    errorFormat: 'minimal',
   })
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
