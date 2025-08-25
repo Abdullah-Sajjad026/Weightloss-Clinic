@@ -9,12 +9,14 @@ interface ProductPricingProps {
 
 export function ProductPricing({ product, pricingTiers }: ProductPricingProps) {
   // Determine category based on product ID or badge
-  const getProductCategory = (product: ProductData): 'injections' => { // | 'bariatric-surgery' - commented out for now
-    // if (product.badge.includes('Injection')) {
+  const getProductCategory = (product: ProductData): 'injections' | 'pills-tablets' | 'bariatric-surgery' => {
+    if (product.badge.includes('Injection')) {
       return 'injections';
-    // } else {
-    //   return 'bariatric-surgery';
-    // }
+    } else if (product.badge.includes('Tablet') || product.badge.includes('Pills')) {
+      return 'pills-tablets';
+    } else {
+      return 'bariatric-surgery';
+    }
   };
 
   const productForCart = {

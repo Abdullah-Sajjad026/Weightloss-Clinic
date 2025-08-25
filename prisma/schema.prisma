@@ -55,8 +55,8 @@ model Appointment {
 
 enum ConsultationType {
   INJECTIONS
-  // PILLS     // Commented out for now
-  // SURGERY   // Commented out for now  
+  PILLS
+  SURGERY
   GENERAL
 }
 
@@ -246,5 +246,6 @@ enum MedicalReviewStatus {
 
 enum ProductCategory {
   INJECTIONS
-  // BARIATRIC_SURGERY  // Commented out for now, add back when needed
+  PILLS_TABLETS
+  BARIATRIC_SURGERY
 }

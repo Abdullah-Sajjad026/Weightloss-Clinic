@@ -10,7 +10,7 @@ interface AddToCartButtonProps {
   product: {
     id: string;
     name: string;
-    category: 'injections'; // | 'bariatric-surgery' - commented out for now
+    category: 'injections' | 'pills-tablets' | 'bariatric-surgery';
     image?: string;
     description?: string;
     isprescription?: boolean;

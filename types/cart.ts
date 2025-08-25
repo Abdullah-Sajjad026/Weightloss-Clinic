@@ -3,7 +3,7 @@ export interface CartItem {
   productId: string;
   name: string;
   slug: string;
-  category: 'injections'; // | 'bariatric-surgery' - commented out for now
+  category: 'injections' | 'pills-tablets' | 'bariatric-surgery';
   variant?: string; // For dosage/strength like "2.5mg", "5mg", etc.
   price: number;
   quantity: number;
