@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import HeroSection from "./components/hero-section";
 import { WhyChooseSection } from "./components/why-choose-section";
 import YourJourneySection from "./components/your-journey-section";
@@ -10,6 +11,16 @@ import MedicallyReviewedSection from "./components/medically-reviewed-section";
 import FAQsSection from "./components/faqs-section";
 import TrustedClinicSection from "./components/trusted-clinic-section";
 import AppointmentCTASection from "./components/appointment-cta-section";
+
+export const metadata: Metadata = {
+  title: "Professional Weight Loss Treatments",
+  description: "Transform your life with expert weight loss treatments at Northampton Clinic. Offering Mounjaro and Wegovy injections with professional medical support and personalized care plans.",
+  keywords: ["weight loss clinic", "Mounjaro", "Wegovy", "medical weight loss", "obesity treatment", "Northampton", "weight loss injections"],
+  openGraph: {
+    title: "Professional Weight Loss Treatments - Northampton Clinic",
+    description: "Expert weight loss treatments with Mounjaro and Wegovy injections. Professional medical support and personalized care plans for sustainable weight loss.",
+  },
+};
 
 export default function Home() {
   return (

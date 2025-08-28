@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { CategoryHero } from "@/app/(public)/(products)/components/category-hero";
 import { ProductCard } from "@/app/(public)/(products)/components/product-card";
 import { ExpertAdviceCTA } from "@/app/(public)/(products)/components/expert-advice-cta";
@@ -12,6 +13,16 @@ import TestimonialsSection from "@/app/(public)/(landing-page)/components/testim
 import SupportSection from "@/app/(public)/(landing-page)/components/support-section";
 import PublicPresenceSection from "@/app/(public)/(landing-page)/components/public-presence-section";
 import MedicallyReviewedSection from "@/app/(public)/(landing-page)/components/medically-reviewed-section";
+
+export const metadata: Metadata = {
+  title: "Weight Loss Injections - Mounjaro & Wegovy",
+  description: "Professional weight loss injections including Mounjaro (tirzepatide) and Wegovy (semaglutide). Compare effectiveness, pricing, and side effects. Expert medical consultation available.",
+  keywords: ["weight loss injections", "Mounjaro", "Wegovy", "tirzepatide", "semaglutide", "Northampton", "medical weight loss"],
+  openGraph: {
+    title: "Weight Loss Injections - Mounjaro & Wegovy - Northampton Clinic",
+    description: "Professional weight loss injections with Mounjaro and Wegovy. Expert medical consultation and personalized treatment plans.",
+  },
+};
 
 const injectionProducts = [
   {

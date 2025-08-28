@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 
+// Note: Metadata for client components should be defined in layout.tsx or parent server component
+
 export default function BookAppointmentPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submittedData, setSubmittedData] =
