@@ -7,8 +7,8 @@
   --card-foreground: oklch(0.1408 0.0044 285.8229);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.1408 0.0044 285.8229);
-  --primary: oklch(0.4797 0.2001 299.4828);
-  --primary-foreground: oklch(0.9691 0.0161 293.7558);
+  --primary: oklch(0.5 0.15 200);
+  --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.9674 0.0013 286.3752);
   --secondary-foreground: oklch(0.2103 0.0059 285.8852);
   --muted: oklch(0.9674 0.0013 286.3752);
@@ -109,17 +109,17 @@
   --ease-snappy: cubic-bezier(0.2, 0.4, 0.1, 0.95);
 
   /* Extra colors taken from reference site */
-  --color-primary-50: oklch(97.7% 0.014 304.46);
-  --color-primary-100: oklch(0.95 0.03 303.26);
-  --color-primary-200: oklch(0.92 0.05 303.04);
-  --color-primary-300: oklch(84.512% 0.10362 303.48);
-  --color-primary-400: oklch(0.76 0.16 303.36);
-  --color-primary-500: oklch(0.62 0.26 299.67);
-  --color-primary-600: oklch(0.48 0.2 299.59);
-  --color-primary-700: oklch(0.39 0.15 299.95);
-  --color-primary-800: oklch(0.33 0.13 299.75);
-  --color-primary-900: oklch(0.28 0.11 300.65);
-  --color-primary-950: oklch(0.22 0.09 302.94);
+  --color-primary-50: oklch(97% 0.02 200);
+  --color-primary-100: oklch(94% 0.05 200);
+  --color-primary-200: oklch(88% 0.1 200);
+  --color-primary-300: oklch(80% 0.15 200);
+  --color-primary-400: oklch(70% 0.2 200);
+  --color-primary-500: oklch(60% 0.25 200);
+  --color-primary-600: oklch(50% 0.2 200);
+  --color-primary-700: oklch(40% 0.15 200);
+  --color-primary-800: oklch(30% 0.12 200);
+  --color-primary-900: oklch(25% 0.1 200);
+  --color-primary-950: oklch(15% 0.08 200);
   --color-secondary-50: oklch(97.42% 0.007 39.46);
   --color-secondary-100: oklch(95.55% 0.015 33.07);
   --color-secondary-200: oklch(89.6% 0.04 35.22);

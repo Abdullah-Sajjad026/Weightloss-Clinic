@@ -161,8 +161,8 @@ export default async function AdminDashboard() {
       value: stats.pendingAssessments,
       description: 'Pending review',
       icon: Users,
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-50'
+      color: 'text-primary-600',
+      bgColor: 'bg-primary-50'
     },
   ]
 
@@ -225,10 +225,10 @@ export default async function AdminDashboard() {
               </a>
               <a
                 href="/admin/risk-assessments"
-                className="p-3 text-center bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors"
+                className="p-3 text-center bg-primary-50 hover:bg-primary-100 rounded-lg transition-colors"
               >
-                <Users className="h-6 w-6 text-purple-600 mx-auto mb-1" />
-                <p className="text-sm font-medium text-purple-900">Assessments</p>
+                <Users className="h-6 w-6 text-primary-600 mx-auto mb-1" />
+                <p className="text-sm font-medium text-primary-900">Assessments</p>
               </a>
               <a
                 href="/admin/time-slots"
@@ -266,7 +266,7 @@ export default async function AdminDashboard() {
                 </p>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
                 <p className="text-sm text-gray-600">
                   {stats.pendingAssessments} risk assessments pending review
                 </p>

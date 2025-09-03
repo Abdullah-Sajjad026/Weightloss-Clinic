@@ -25,7 +25,7 @@ const customerAvatars = [
 
 export default function CompactTestimonialsBanner() {
   return (
-    <div className="bg-gradient-to-r from-purple-800 to-purple-900 text-white py-4 px-6 rounded-2xl mx-4 mb-8">
+    <div className="bg-gradient-to-r from-primary-800 to-primary-900 text-white py-4 px-6 rounded-2xl mx-4 mb-8">
       <div className="flex items-center justify-center gap-4">
         {/* Customer Avatars */}
         <div className="flex -space-x-2">

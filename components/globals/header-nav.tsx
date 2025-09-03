@@ -16,20 +16,11 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu, Heart } from "lucide-react";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CartIcon } from "@/components/cart/CartIcon";
 import { CartSidebar } from "@/components/cart/CartSidebar";
-
-// Placeholder Logo Component
-const Logo = ({ className }: { className?: string }) => (
-  <div className={cn("flex items-center gap-2", className)}>
-    <div className="flex items-center justify-center w-8 h-8 bg-primary-600 rounded-full">
-      <Heart className="w-4 h-4 text-white fill-white" />
-    </div>
-    <span className="font-serif text-lg font-semibold text-gray-900">NWL</span>
-  </div>
-);
+import { Logo } from "@/components/ui/logo";
 
 const medicationItems = {
   pens: [
@@ -73,6 +64,7 @@ const servicesItems = [
 const mobileNavItems = [
   { name: "Injections", href: "/injections" },
   // { name: "Surgery", href: "/bariatric-surgery" },
+  { name: "Delivery", href: "/delivery" },
   { name: "Track Order", href: "/orders/track" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
@@ -89,16 +81,9 @@ export default function HeaderNav() {
           href="/"
           className="hover:opacity-80 transition-opacity flex-shrink-0"
         >
-          <Logo className="lg:flex hidden" />
+          <Logo className="lg:flex hidden" size="md" />
           {/* Mobile Logo - shorter text */}
-          <div className="flex lg:hidden items-center gap-2">
-            <div className="flex items-center justify-center w-8 h-8 bg-primary-600 rounded-full">
-              <Heart className="w-4 h-4 text-white fill-white" />
-            </div>
-            <span className="font-serif text-base font-semibold text-gray-900">
-              NWL
-            </span>
-          </div>
+          <Logo className="flex lg:hidden" size="sm" showText={false} />
         </Link>
 
         {/* Desktop Navigation */}
@@ -169,26 +154,14 @@ export default function HeaderNav() {
                 </NavigationMenuContent>
               </NavigationMenuItem> */}
 
-              {/* Weight Loss Services */}
+              {/* Delivery */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-gray-50">
-                  Weight Loss Services
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="w-[400px] p-6">
-                    <div className="grid grid-cols-2 gap-2">
-                      {servicesItems.map((item) => (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className="block p-2 rounded-md hover:bg-gray-50 transition-colors font-medium text-gray-900"
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </NavigationMenuContent>
+                <Link
+                  href="/delivery"
+                  className="text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors px-4 py-2"
+                >
+                  Delivery
+                </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -238,14 +211,7 @@ export default function HeaderNav() {
                     className="hover:opacity-80 transition-opacity"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center justify-center w-8 h-8 bg-primary-600 rounded-full">
-                        <Heart className="w-4 h-4 text-white fill-white" />
-                      </div>
-                      <span className="font-serif text-lg font-semibold text-gray-900">
-                        NWL
-                      </span>
-                    </div>
+                    <Logo size="md" />
                   </Link>
                   <div className="flex items-center space-x-2">
                     <Button

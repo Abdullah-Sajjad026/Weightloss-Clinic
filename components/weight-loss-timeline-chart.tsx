@@ -46,7 +46,7 @@ export function WeightLossTimelineChart({ data, unitSystem }: WeightLossTimeline
       return (
         <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-md">
           <p className="text-sm font-medium text-gray-900">{label}</p>
-          <p className="text-sm text-purple-600">
+          <p className="text-sm text-primary-600">
             Weight: {data.displayWeight}
           </p>
         </div>
@@ -85,13 +85,13 @@ export function WeightLossTimelineChart({ data, unitSystem }: WeightLossTimeline
           <Line
             type="monotone"
             dataKey="weight"
-            stroke="#8B5CF6"
+            stroke="#14B8A6"
             strokeWidth={3}
             dot={false}
             activeDot={{ 
               r: 6, 
-              fill: '#8B5CF6',
-              stroke: '#8B5CF6',
+              fill: '#14B8A6',
+              stroke: '#14B8A6',
               strokeWidth: 2 
             }}
           />

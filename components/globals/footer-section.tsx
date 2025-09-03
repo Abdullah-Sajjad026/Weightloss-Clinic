@@ -7,9 +7,8 @@ const footerSections = [
     title: "Weight Loss Injections",
     href: "/injections",
     links: [
-      { label: "26% weight loss", href: "/injections/mounjaro" },
-      { label: "15% weight loss", href: "/injections/wegovy" },
-      { label: "Compare treatments", href: "/injections" },
+      { label: "Mounjaro", href: "/injections/mounjaro" },
+      { label: "Wegovy", href: "/injections/wegovy" },
     ]
   },
   // {
@@ -23,17 +22,17 @@ const footerSections = [
   //     { label: "Compare", href: "/bariatric-surgery" },
   //   ]
   // },
-  {
-    title: "Services",
-    links: [
-      { label: "Nutritionist", href: "/private-appointment/nutritionist" },
-      { label: "Dietician", href: "/private-appointment/dietician" },
-      { label: "Physio", href: "/private-appointment/physio" },
-      { label: "Counselling", href: "/private-appointment/counselling" },
-      { label: "DEXA scan", href: "/private-appointment/dexa-scan" },
-      { label: "NHS weight loss", href: "/nhs-weight-loss" },
-    ]
-  },
+  // {
+  //   title: "Services",
+  //   links: [
+  //     { label: "Nutritionist", href: "/private-appointment/nutritionist" },
+  //     { label: "Dietician", href: "/private-appointment/dietician" },
+  //     { label: "Physio", href: "/private-appointment/physio" },
+  //     { label: "Counselling", href: "/private-appointment/counselling" },
+  //     { label: "DEXA scan", href: "/private-appointment/dexa-scan" },
+  //     { label: "NHS weight loss", href: "/nhs-weight-loss" },
+  //   ]
+  // },
   {
     title: "More",
     links: [
@@ -51,12 +50,14 @@ export default function FooterSection() {
   return (
     <footer className="bg-primary-700 from-primary-600 to-primary-800 mt-20 flex w-full flex-col items-center justify-between gap-8 rounded-t-3xl bg-gradient-to-br p-8 pb-12 text-white md:gap-16">
       <div className="w-full max-w-7xl">
-        <Link 
-          href="/" 
-          className="font-serif pt-2 text-lg tracking-tight sm:text-xl hover:text-white/90 transition-colors"
-        >
-          Northampton Weightloss (Powered by Regent Pharmacy)
-        </Link>
+        <div className="text-white">
+          <div className="font-serif text-xl font-bold tracking-tight">
+            Northampton Weightloss
+          </div>
+          <div className="text-sm font-medium opacity-90">
+            Powered by Regent Pharmacy
+          </div>
+        </div>
       </div>
 
       <div className="flex w-full max-w-7xl flex-col justify-between gap-10 md:flex-row">

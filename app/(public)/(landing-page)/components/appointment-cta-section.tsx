@@ -34,7 +34,7 @@ export default function AppointmentCTASection() {
           </div>
           
           <div className="mt-6 text-primary-100 text-sm">
-            ✓ Free consultation • ✓ Expert medical advice • ✓ Personalized treatment plan
+            ✓ Free consultation • ✓ Medical advice • ✓ Personalized treatment plan
           </div>
         </div>
       </div>

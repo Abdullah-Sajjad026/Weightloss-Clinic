@@ -127,7 +127,7 @@ export default function AdminOrdersPage() {
       case 'PROCESSING':
         return <Package className="w-4 h-4 text-blue-600" />;
       case 'SHIPPED':
-        return <Truck className="w-4 h-4 text-purple-600" />;
+        return <Truck className="w-4 h-4 text-primary-600" />;
       case 'DELIVERED':
         return <CheckCircle className="w-4 h-4 text-green-600" />;
       case 'REJECTED':
@@ -147,7 +147,7 @@ export default function AdminOrdersPage() {
       case 'PROCESSING':
         return "bg-blue-100 text-blue-800";
       case 'SHIPPED':
-        return "bg-purple-100 text-purple-800";
+        return "bg-primary-100 text-primary-800";
       case 'DELIVERED':
         return "bg-green-100 text-green-800";
       case 'REJECTED':
@@ -266,8 +266,8 @@ export default function AdminOrdersPage() {
 
         <Card className="p-4">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-purple-100 rounded-lg">
-              <Truck className="w-5 h-5 text-purple-600" />
+            <div className="p-2 bg-primary-100 rounded-lg">
+              <Truck className="w-5 h-5 text-primary-600" />
             </div>
             <div>
               <div className="text-2xl font-bold">

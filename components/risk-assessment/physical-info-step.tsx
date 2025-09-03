@@ -95,7 +95,7 @@ export function PhysicalInfoStep({ data, onUpdate }: PhysicalInfoStepProps) {
                   max="8"
                   value={data.heightFeet || ''}
                   onChange={(e) => onUpdate({ heightFeet: e.target.value ? Number(e.target.value) : undefined })}
-                  className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-purple-500"
+                  className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-primary-500 focus:ring-primary-500"
                 />
                 <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm font-medium">
                   ft
@@ -109,7 +109,7 @@ export function PhysicalInfoStep({ data, onUpdate }: PhysicalInfoStepProps) {
                   max="11"
                   value={data.heightInches || ''}
                   onChange={(e) => onUpdate({ heightInches: e.target.value ? Number(e.target.value) : undefined })}
-                  className="text-center text-lg py-3 pr-16 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-purple-500"
+                  className="text-center text-lg py-3 pr-16 border-gray-300 rounded-xl focus:border-primary-500 focus:ring-primary-500"
                 />
                 <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm font-medium">
                   in
@@ -125,7 +125,7 @@ export function PhysicalInfoStep({ data, onUpdate }: PhysicalInfoStepProps) {
                 max="250"
                 value={data.heightCm || ''}
                 onChange={(e) => onUpdate({ heightCm: e.target.value ? Number(e.target.value) : undefined })}
-                className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-purple-500"
+                className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-primary-500 focus:ring-primary-500"
               />
               <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm font-medium">
                 cm
@@ -150,7 +150,7 @@ export function PhysicalInfoStep({ data, onUpdate }: PhysicalInfoStepProps) {
                   max="50"
                   value={data.weightStone || ''}
                   onChange={(e) => onUpdate({ weightStone: e.target.value ? Number(e.target.value) : undefined })}
-                  className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-purple-500"
+                  className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-primary-500 focus:ring-primary-500"
                 />
                 <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm font-medium">
                   st
@@ -164,7 +164,7 @@ export function PhysicalInfoStep({ data, onUpdate }: PhysicalInfoStepProps) {
                   max="13"
                   value={data.weightPounds || ''}
                   onChange={(e) => onUpdate({ weightPounds: e.target.value ? Number(e.target.value) : undefined })}
-                  className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-purple-500"
+                  className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-primary-500 focus:ring-primary-500"
                 />
                 <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm font-medium">
                   lb
@@ -180,7 +180,7 @@ export function PhysicalInfoStep({ data, onUpdate }: PhysicalInfoStepProps) {
                 max="300"
                 value={data.weightKg || ''}
                 onChange={(e) => onUpdate({ weightKg: e.target.value ? Number(e.target.value) : undefined })}
-                className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-purple-500"
+                className="text-center text-lg py-3 pr-12 border-gray-300 rounded-xl focus:border-primary-500 focus:ring-primary-500"
               />
               <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm font-medium">
                 kg

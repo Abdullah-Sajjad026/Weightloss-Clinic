@@ -181,7 +181,7 @@ export function WeightLossCalculator() {
                 <button
                   type="button"
                   onClick={unitSystem === 'imperial' ? switchToMetric : switchToImperial}
-                  className="text-purple-600 text-sm font-medium hover:text-purple-700 underline transition-colors"
+                  className="text-primary-600 text-sm font-medium hover:text-primary-700 underline transition-colors"
                 >
                   Switch to {unitSystem === 'imperial' ? 'metric' : 'imperial'}
                 </button>
@@ -252,7 +252,7 @@ export function WeightLossCalculator() {
                 <button
                   type="button"
                   onClick={unitSystem === 'imperial' ? switchToMetric : switchToImperial}
-                  className="text-purple-600 text-sm font-medium hover:text-purple-700 underline transition-colors"
+                  className="text-primary-600 text-sm font-medium hover:text-primary-700 underline transition-colors"
                 >
                   Switch to {unitSystem === 'imperial' ? 'metric' : 'imperial'}
                 </button>
@@ -318,7 +318,7 @@ export function WeightLossCalculator() {
             <Button
               type="submit"
               disabled={!isValid}
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-4 rounded-full text-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-4 rounded-full text-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Sparkles className="mr-2 h-5 w-5" />
               Calculate my weight loss

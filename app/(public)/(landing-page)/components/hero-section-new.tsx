@@ -73,7 +73,20 @@ export default function HeroSection() {
 
 export function FreeOnlineYogaLogo() {
   return (
-    <div className="text-primary-800 flex items-center justify-center px-5 py-2.5 text-base font-medium lg:text-lg">
+    <div className="text-primary/90 flex items-center justify-center gap-2 text-base font-medium opacity-100 transition hover:opacity-80 lg:text-lg">
+      <svg
+        className="text-primary/80 size-6"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+      </svg>
       Free Online Yoga Class (Weekly)
     </div>
   );
@@ -82,7 +95,60 @@ export function FreeOnlineYogaLogo() {
 export function OfficialRegentPharmacyLogo() {
   return (
     <div className="text-primary-800 flex items-center justify-center px-5 py-2.5 text-base font-medium lg:text-lg">
-      <div>Powered by Regent Pharmacy</div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        className="size-6"
+        fill="none"
+      >
+        <path
+          d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+      </svg>
+      <div>Powered by</div>
+      <a
+        className="opacity-100 transition hover:opacity-80"
+        aria-label="Regent Pharmacy"
+        href="/assessment"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          className="size-6 mx-2"
+          fill="none"
+        >
+          <path
+            d="M3 3h18v18H3V3z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M8 12h8M12 8v8"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+        </svg>
+        <span className="font-semibold">Regent Pharmacy</span>
+      </a>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        className="size-6"
+        fill="none"
+        transform="matrix(-1,0,0,1,0,0)"
+      >
+        <path
+          d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+      </svg>
     </div>
   );
 }

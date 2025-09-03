@@ -14,7 +14,7 @@ export function ProductCTA({ productName }: ProductCTAProps) {
             Ready to start {productName}?
           </h2>
           <p className="mt-6 text-lg text-primary-100 text-balance lg:text-xl">
-            Take the first step towards your weight loss goals. Book a consultation with our medical experts to discuss if {productName} is right for you.
+            Take the first step towards your weight loss goals. Book a consultation with our medical team to discuss if {productName} is right for you.
           </p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -38,7 +38,7 @@ export function ProductCTA({ productName }: ProductCTAProps) {
           </div>
           
           <div className="mt-6 text-primary-100 text-sm">
-            ✓ Expert medical guidance • ✓ Personalized treatment plan • ✓ Ongoing support
+            ✓ Medical guidance • ✓ Personalized treatment plan • ✓ Ongoing support
           </div>
         </div>
       </div>

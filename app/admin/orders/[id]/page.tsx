@@ -186,7 +186,7 @@ export default function AdminOrderDetailPage({
       case 'PROCESSING':
         return <Package className="w-5 h-5 text-blue-600" />;
       case 'SHIPPED':
-        return <Truck className="w-5 h-5 text-purple-600" />;
+        return <Truck className="w-5 h-5 text-primary-600" />;
       case 'DELIVERED':
         return <CheckCircle className="w-5 h-5 text-green-600" />;
       case 'REJECTED':
@@ -206,7 +206,7 @@ export default function AdminOrderDetailPage({
       case 'PROCESSING':
         return "bg-blue-100 text-blue-800";
       case 'SHIPPED':
-        return "bg-purple-100 text-purple-800";
+        return "bg-primary-100 text-primary-800";
       case 'DELIVERED':
         return "bg-green-100 text-green-800";
       case 'REJECTED':

@@ -226,7 +226,7 @@ export default function SupportSection() {
               Share your wins, get advice when you're stuck, and find motivation when you need it.
             </p>
             <p>
-              Our health coaches jump in with expert guidance, but often it's hearing from someone who's been there that makes all the difference.
+              Our health coaches jump in with guidance, but often it's hearing from someone who's been there that makes all the difference.
             </p>
           </div>
         </div>

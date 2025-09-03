@@ -56,12 +56,12 @@ const createEmailTemplate = (content: string, title: string) => `
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
         .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
-        .header { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; }
+        .header { background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%); color: white; padding: 30px; text-align: center; }
         .header h1 { font-size: 28px; margin-bottom: 5px; }
         .header p { opacity: 0.9; font-size: 16px; }
         .content { padding: 30px; }
         .order-info { background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; }
-        .order-number { font-size: 24px; font-weight: bold; color: #6366f1; margin-bottom: 10px; }
+        .order-number { font-size: 24px; font-weight: bold; color: #0d9488; margin-bottom: 10px; }
         .items-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
         .items-table th { background-color: #f1f5f9; padding: 12px; text-align: left; border-bottom: 2px solid #e2e8f0; }
         .items-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
@@ -73,10 +73,10 @@ const createEmailTemplate = (content: string, title: string) => `
         .status-delivered { background-color: #d1fae5; color: #065f46; }
         .total { font-size: 20px; font-weight: bold; text-align: right; margin-top: 20px; }
         .footer { background-color: #f1f5f9; padding: 30px; text-align: center; color: #6b7280; }
-        .footer a { color: #6366f1; text-decoration: none; }
+        .footer a { color: #0d9488; text-decoration: none; }
         .medical-notice { background-color: #fef7e7; border-left: 4px solid #f59e0b; padding: 15px; margin: 20px 0; }
         .tracking-info { background-color: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 8px; margin: 20px 0; }
-        .button { display: inline-block; background-color: #6366f1; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 500; margin: 10px 0; }
+        .button { display: inline-block; background-color: #0d9488; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 500; margin: 10px 0; }
     </style>
 </head>
 <body>

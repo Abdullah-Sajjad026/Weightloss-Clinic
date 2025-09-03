@@ -46,7 +46,7 @@ export function PersonalInfoStep({ data, onUpdate }: PersonalInfoStepProps) {
             placeholder="Enter your full name"
             value={data.name}
             onChange={(e) => onUpdate({ name: e.target.value })}
-            className="border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+            className="border-gray-300 focus:border-primary-500 focus:ring-primary-500"
           />
           {data.name && data.name.length < 2 && (
             <p className="text-xs text-red-600">Name must be at least 2 characters</p>
@@ -64,7 +64,7 @@ export function PersonalInfoStep({ data, onUpdate }: PersonalInfoStepProps) {
             placeholder="Enter your email address"
             value={data.email}
             onChange={(e) => onUpdate({ email: e.target.value })}
-            className="border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+            className="border-gray-300 focus:border-primary-500 focus:ring-primary-500"
           />
           {data.email && !data.email.includes('@') && (
             <p className="text-xs text-red-600">Please enter a valid email address</p>
@@ -82,7 +82,7 @@ export function PersonalInfoStep({ data, onUpdate }: PersonalInfoStepProps) {
             placeholder="Enter your phone number"
             value={data.phone}
             onChange={(e) => onUpdate({ phone: e.target.value })}
-            className="border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+            className="border-gray-300 focus:border-primary-500 focus:ring-primary-500"
           />
           {data.phone && data.phone.length < 10 && (
             <p className="text-xs text-red-600">Please enter a valid phone number</p>

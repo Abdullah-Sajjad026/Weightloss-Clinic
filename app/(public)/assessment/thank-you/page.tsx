@@ -24,15 +24,15 @@ export default function ThankYouPage() {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Clock className="h-5 w-5 text-purple-600" />
+              <Clock className="h-5 w-5 text-primary-600" />
               What Happens Next
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                  <span className="text-purple-600 font-semibold text-sm">
+                <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-primary-600 font-semibold text-sm">
                     1
                   </span>
                 </div>
@@ -48,8 +48,8 @@ export default function ThankYouPage() {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                  <span className="text-purple-600 font-semibold text-sm">
+                <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-primary-600 font-semibold text-sm">
                     2
                   </span>
                 </div>
@@ -65,8 +65,8 @@ export default function ThankYouPage() {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                  <span className="text-purple-600 font-semibold text-sm">
+                <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-primary-600 font-semibold text-sm">
                     3
                   </span>
                 </div>
@@ -95,21 +95,21 @@ export default function ThankYouPage() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex items-center gap-2 text-sm">
-                <Phone className="h-4 w-4 text-purple-600" />
+                <Phone className="h-4 w-4 text-primary-600" />
                 <span className="font-medium">Phone:</span>
                 <a
                   href="tel:01234567890"
-                  className="text-purple-600 hover:underline"
+                  className="text-primary-600 hover:underline"
                 >
                   01234 567 890
                 </a>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Mail className="h-4 w-4 text-purple-600" />
+                <Mail className="h-4 w-4 text-primary-600" />
                 <span className="font-medium">Email:</span>
                 <a
                   href="mailto:contact@northamptonclinic.co.uk"
-                  className="text-purple-600 hover:underline"
+                  className="text-primary-600 hover:underline"
                 >
                   contact@northamptonclinic.co.uk
                 </a>

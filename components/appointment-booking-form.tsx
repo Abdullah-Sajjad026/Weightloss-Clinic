@@ -14,10 +14,7 @@ import { Calendar, Clock, User, Phone, Mail, MessageSquare, Globe } from 'lucide
 import { COMMON_TIMEZONES, detectUserTimezone, getTimezoneDisplayName } from '@/lib/timezone-utils'
 
 const CONSULTATION_TYPES = [
-  { value: 'INJECTIONS', label: 'Weight Loss Injections' },
-  { value: 'PILLS', label: 'Weight Loss Pills' },
-  { value: 'SURGERY', label: 'Bariatric Surgery' },
-  { value: 'GENERAL', label: 'General Consultation' },
+  { value: 'WEIGHT_LOSS', label: 'Weight Loss Consultation' },
 ]
 
 interface TimeSlot {
@@ -48,7 +45,7 @@ export function AppointmentBookingForm({ onSubmit, isLoading }: AppointmentBooki
   } = useForm<AppointmentFormData>({
     resolver: zodResolver(appointmentSchema),
     defaultValues: {
-      consultationType: 'GENERAL',
+      consultationType: 'WEIGHT_LOSS',
       timezone: detectUserTimezone(),
     },
   })

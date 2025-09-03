@@ -132,18 +132,18 @@ export function WeightLossResultsModal({
             </Card>
 
             {/* Call to Action */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 bg-purple-50 rounded-lg border border-purple-200">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 bg-primary-50 rounded-lg border border-primary-200">
               <div className="text-center sm:text-left">
                 <Button
                   onClick={handleStartAssessment}
-                  className="bg-purple-600 hover:bg-purple-700 text-white font-medium px-8 py-3 rounded-full text-lg transition-colors"
+                  className="bg-primary-600 hover:bg-primary-700 text-white font-medium px-8 py-3 rounded-full text-lg transition-colors"
                 >
                   Start assessment
                 </Button>
               </div>
 
               {milestone && (
-                <div className="flex items-center gap-3 text-purple-800">
+                <div className="flex items-center gap-3 text-primary-800">
                   <ArrowRight className="h-5 w-5" />
                   <span className="font-medium">
                     Start today, lose {milestone.loss} by {milestone.date}

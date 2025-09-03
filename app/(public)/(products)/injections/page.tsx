@@ -11,7 +11,7 @@ import YourJourneySection from "@/app/(public)/(landing-page)/components/your-jo
 import CLinicComparisonSection from "@/app/(public)/(landing-page)/components/clinic-comparison-section";
 import TestimonialsSection from "@/app/(public)/(landing-page)/components/testimonials-section";
 import SupportSection from "@/app/(public)/(landing-page)/components/support-section";
-import PublicPresenceSection from "@/app/(public)/(landing-page)/components/public-presence-section";
+// import PublicPresenceSection from "@/app/(public)/(landing-page)/components/public-presence-section";
 import MedicallyReviewedSection from "@/app/(public)/(landing-page)/components/medically-reviewed-section";
 
 export const metadata: Metadata = {
@@ -119,9 +119,9 @@ export default function InjectionsPage() {
       </section>
 
       {/* Expert Advice CTA */}
-      <section className="mx-auto px-4 max-w-7xl w-full">
+      {/* <section className="mx-auto px-4 max-w-7xl w-full">
         <ExpertAdviceCTA />
-      </section>
+      </section> */}
 
       {/* Journey Section */}
       <YourJourneySection />
@@ -136,7 +136,7 @@ export default function InjectionsPage() {
       <SupportSection />
 
       {/* Public Presence Section */}
-      <PublicPresenceSection />
+      {/* <PublicPresenceSection /> */}
 
       {/* Cross-sell Pills Section */}
       <section className="mx-auto px-4 max-w-7xl w-full">
