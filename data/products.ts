@@ -65,9 +65,8 @@ export const PRODUCTS: Record<string, ProductData> = {
     badge: "Weight Loss Injection",
     heroDescription:
       "Mounjaro (tirzepatide) is a once-weekly weight loss injection that controls your appetite and calorie intake. Approved for use in Northampton and the UK, our specialised Mounjaro weight loss programmes offer medical guidance and customised care plans.",
-    heroImage:
-      "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=400&fit=crop&crop=center&auto=format&q=75",
-    heroImageAlt: "Mounjaro pen",
+    heroImage: "/products/mounjaro-pen-1.webp",
+    heroImageAlt: "Mounjaro injection pen",
     features: [
       { text: "In stock for new and existing patients" },
       { text: "Free, fast and discreet delivery" },
@@ -234,9 +233,8 @@ export const PRODUCTS: Record<string, ProductData> = {
     badge: "Weight Loss Injection",
     heroDescription:
       "Wegovy (semaglutide) is a once-weekly weight loss injection that regulates appetite and food intake. Approved in the UK, Northampton Weightloss (Powered by Regent Pharmacy) offers this treatment with medical guidance and personalised care. Prices start at £169.",
-    heroImage:
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&h=400&fit=crop&crop=center&auto=format&q=75",
-    heroImageAlt: "Wegovy boxes",
+    heroImage: "/products/mounjaro-box.webp",
+    heroImageAlt: "Weight loss injection medication",
     features: [
       { text: "In stock for new and existing patients" },
       { text: "Free, fast and discreet delivery" },

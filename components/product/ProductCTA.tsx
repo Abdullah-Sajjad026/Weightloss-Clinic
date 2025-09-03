@@ -8,7 +8,7 @@ interface ProductCTAProps {
 export function ProductCTA({ productName }: ProductCTAProps) {
   return (
     <section className="mx-auto px-4 max-w-7xl w-full">
-      <div className="bg-primary-600 ring-primary-500/20 bg-[url(https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=600&fit=crop&crop=center&auto=format&q=30)] bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-center text-center rounded-5xl flex w-full flex-col px-4 py-12 lg:py-16">
+      <div className="bg-primary-600 ring-primary-500/20 bg-[url(/products/mounjaro-box.webp)] bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-center text-center rounded-5xl flex w-full flex-col px-4 py-12 lg:py-16">
         <div className="max-w-3xl mx-auto">
           <h2 className="mx-auto mt-2 text-center text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
             Ready to start {productName}?

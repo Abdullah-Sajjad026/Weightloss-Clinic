@@ -34,7 +34,33 @@ export function WhyChooseSection() {
               Share your wins, get advice and find motivation when you need it.
             </CardDescription>
           </CardHeader>
-          <CardContent></CardContent>
+          <CardContent>
+            <div className="relative h-40 bg-gradient-to-br from-teal-50 to-teal-100 rounded-lg overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="flex justify-center space-x-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <div 
+                        key={i}
+                        className={`w-2 h-2 rounded-full ${
+                          i < 4 ? 'bg-teal-500' : 'bg-gray-300'
+                        } animate-pulse`}
+                        style={{ animationDelay: `${i * 0.2}s` }}
+                      />
+                    ))}
+                  </div>
+                  <div className="text-sm font-medium text-teal-700">4.8/5 Rating</div>
+                  <div className="text-xs text-gray-600">From 200+ members</div>
+                </div>
+              </div>
+              <div className="absolute top-3 right-3">
+                <MessageSquare className="w-5 h-5 text-teal-500 opacity-60" />
+              </div>
+              <div className="absolute bottom-3 left-3">
+                <Users className="w-5 h-5 text-teal-500 opacity-60" />
+              </div>
+            </div>
+          </CardContent>
         </Card>
         <Card className="relative max-lg:row-start-1 border-0  rounded-sm">
           <ShineBorder shineColor="oklch(0.4797 0.2001 299.4828)" />
@@ -47,14 +73,12 @@ export function WhyChooseSection() {
           </CardHeader>
           <CardContent>
             <Image
-              alt="Mounjaro for weight loss"
+              alt="Mounjaro injection pen for weight loss"
               loading="lazy"
               width="368"
               height="178"
-              className="ease-snappy w-full scale-100 transition duration-700 group-hover:scale-102 group-hover:brightness-105 max-lg:max-w-sm"
-              // sizes="(max-width: 768px) 95vw, (max-width: 1200px) 45vw, 22vw"
-              // srcSet="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=256&h=178&fit=crop&crop=center&auto=format&q=75 256w, https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=384&h=256&fit=crop&crop=center&auto=format&q=75 384w, https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=640&h=400&fit=crop&crop=center&auto=format&q=75 640w, https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=750&h=468&fit=crop&crop=center&auto=format&q=75 750w"
-              src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=750&h=468&fit=crop&crop=center&auto=format&q=75"
+              className="ease-snappy w-full scale-100 transition duration-700 group-hover:scale-102 group-hover:brightness-105 max-lg:max-w-sm rounded-lg"
+              src="/products/mounjaro-pen-1.webp"
             />
           </CardContent>
         </Card>
@@ -98,7 +122,49 @@ export function WhyChooseSection() {
               Our members lose an average of 18 pounds in their first 12 weeks.
             </CardDescription>
           </CardHeader>
-          <CardContent></CardContent>
+          <CardContent>
+            <div className="relative h-48 bg-gradient-to-br from-teal-50 via-white to-teal-50 rounded-lg overflow-hidden">
+              <div className="absolute inset-4">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="text-xs text-gray-500">Weight Loss Progress</div>
+                    <div className="text-xs text-teal-600 font-medium">12 weeks</div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-gray-600">Week 4</span>
+                      <span className="text-xs font-medium">-6 lbs</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-1.5">
+                      <div className="bg-teal-400 h-1.5 rounded-full w-1/3"></div>
+                    </div>
+                    
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-gray-600">Week 8</span>
+                      <span className="text-xs font-medium">-12 lbs</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-1.5">
+                      <div className="bg-teal-500 h-1.5 rounded-full w-2/3"></div>
+                    </div>
+                    
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-gray-600">Week 12</span>
+                      <span className="text-xs font-medium">-18 lbs</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-1.5">
+                      <div className="bg-teal-600 h-1.5 rounded-full w-full"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center pt-2 border-t border-teal-100">
+                    <div className="text-lg font-bold text-teal-600">Up to 26%</div>
+                    <div className="text-xs text-gray-500">Clinical studies</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
         </Card>
       </div>
     </section>

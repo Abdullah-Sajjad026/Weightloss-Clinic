@@ -28,29 +28,18 @@ const injectionProducts = [
   {
     name: "Mounjaro",
     description: "All doses available",
-    price: "£45/week",
-    imageUrl:
-      "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
-    imageAlt: "Mounjaro pen angled",
+    price: "from £150/month",
+    imageUrl: "/products/mounjaro-pen-1.webp",
+    imageAlt: "Mounjaro injection pen",
     href: "/injections/mounjaro",
   },
   {
     name: "Wegovy",
-    description: "All doses available",
-    price: "£45/week",
-    imageUrl:
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
-    imageAlt: "Wegovy boxes",
+    description: "All doses available", 
+    price: "from £169/month",
+    imageUrl: "/products/mounjaro-box.webp",
+    imageAlt: "Weight loss injection medication",
     href: "/injections/wegovy",
-  },
-  {
-    name: "Saxenda",
-    description: "All doses available",
-    price: "£55/pen",
-    imageUrl:
-      "https://images.unsplash.com/photo-1745939921744-ba8ef27940bf?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
-    imageAlt: "Saxenda pens",
-    href: "/injections/saxenda",
   },
 ];
 
