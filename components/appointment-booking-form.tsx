@@ -134,84 +134,31 @@ export function AppointmentBookingForm({ onSubmit, isLoading }: AppointmentBooki
           Book Your Consultation
         </CardTitle>
         <p className="text-gray-600">
-          Fill out the form below to schedule your video consultation with our medical team.
+          Select your preferred time slot for a consultation. Personal details will be collected during your assessment.
         </p>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                Full Name
-              </Label>
-              <Input
-                id="name"
-                {...register('name')}
-                placeholder="Enter your full name"
-                className={errors.name ? 'border-red-500' : ''}
-              />
-              {errors.name && (
-                <p className="text-sm text-red-600">{errors.name.message}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="email" className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                Email Address
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                {...register('email')}
-                placeholder="Enter your email"
-                className={errors.email ? 'border-red-500' : ''}
-              />
-              {errors.email && (
-                <p className="text-sm text-red-600">{errors.email.message}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                Phone Number
-              </Label>
-              <Input
-                id="phone"
-                {...register('phone')}
-                placeholder="Enter your phone number"
-                className={errors.phone ? 'border-red-500' : ''}
-              />
-              {errors.phone && (
-                <p className="text-sm text-red-600">{errors.phone.message}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="consultationType">Consultation Type</Label>
-              <Select
-                onValueChange={(value) => setValue('consultationType', value as any)}
-                defaultValue={watch('consultationType')}
-              >
-                <SelectTrigger className={errors.consultationType ? 'border-red-500' : ''}>
-                  <SelectValue placeholder="Select consultation type" />
-                </SelectTrigger>
-                <SelectContent>
-                  {CONSULTATION_TYPES.map((type) => (
-                    <SelectItem key={type.value} value={type.value}>
-                      {type.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {errors.consultationType && (
-                <p className="text-sm text-red-600">{errors.consultationType.message}</p>
-              )}
-            </div>
+          <div className="space-y-2">
+            <Label htmlFor="consultationType">Consultation Type</Label>
+            <Select
+              onValueChange={(value) => setValue('consultationType', value as any)}
+              defaultValue={watch('consultationType')}
+            >
+              <SelectTrigger className={errors.consultationType ? 'border-red-500' : ''}>
+                <SelectValue placeholder="Select consultation type" />
+              </SelectTrigger>
+              <SelectContent>
+                {CONSULTATION_TYPES.map((type) => (
+                  <SelectItem key={type.value} value={type.value}>
+                    {type.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {errors.consultationType && (
+              <p className="text-sm text-red-600">{errors.consultationType.message}</p>
+            )}
           </div>
 
           {/* Timezone Selection */}
@@ -302,7 +249,7 @@ export function AppointmentBookingForm({ onSubmit, isLoading }: AppointmentBooki
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">
-              <strong>Please note:</strong> This is a booking request. Our team will contact you within 24 hours to confirm your appointment and provide video call details.
+              <strong>Please note:</strong> This is a booking request. You'll complete your medical assessment and provide personal details during your consultation. Our team will contact you to confirm your appointment.
             </p>
           </div>
 

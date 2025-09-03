@@ -31,9 +31,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import { Switch } from '@/components/ui/switch'
 import { TimeSlotForm } from '@/components/admin/time-slot-form'
 import { type TimeSlotFormData } from '@/lib/validations/time-slot'
-import { Plus, Edit, Trash2, Calendar } from 'lucide-react'
+import { Plus, Edit, Trash2, Calendar, AlertTriangle } from 'lucide-react'
 
 const DAYS_OF_WEEK = {
   1: 'Monday',
@@ -64,6 +65,9 @@ export default function TimeSlotsPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingSlot, setEditingSlot] = useState<TimeSlot | null>(null)
+  const [bankHolidayMode, setBankHolidayMode] = useState(false)
+  const [updatingBankHoliday, setUpdatingBankHoliday] = useState(false)
+  const [settingUpInitialData, setSettingUpInitialData] = useState(false)
 
   const fetchTimeSlots = async () => {
     try {
@@ -130,6 +134,71 @@ export default function TimeSlotsPage() {
     }
   }
 
+  const handleBankHolidayToggle = async (enabled: boolean) => {
+    setUpdatingBankHoliday(true)
+    setBankHolidayMode(enabled)
+    
+    try {
+      // Toggle time slots for bank holiday hours
+      const slotsToUpdate = timeSlots.filter(slot => {
+        if (enabled) {
+          // Activate only 10AM-4PM slots, deactivate others
+          const startHour = parseInt(slot.startTime.split(':')[0])
+          return startHour < 10 || startHour >= 16
+        } else {
+          // Reactivate all normal business hour slots
+          return true
+        }
+      })
+
+      for (const slot of slotsToUpdate) {
+        const newStatus = enabled ? 
+          (parseInt(slot.startTime.split(':')[0]) >= 10 && parseInt(slot.startTime.split(':')[0]) < 16) :
+          true
+
+        await fetch(`/api/admin/time-slots/${slot.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...slot,
+            isActive: newStatus
+          })
+        })
+      }
+      
+      await fetchTimeSlots()
+      toast.success(`Bank holiday mode ${enabled ? 'enabled' : 'disabled'}`)
+    } catch (error) {
+      console.error('Error updating bank holiday mode:', error)
+      toast.error('Failed to update bank holiday mode')
+      setBankHolidayMode(!enabled)
+    } finally {
+      setUpdatingBankHoliday(false)
+    }
+  }
+
+  const handleSetupInitialData = async () => {
+    setSettingUpInitialData(true)
+    try {
+      const response = await fetch('/api/admin/setup/initial-data', {
+        method: 'POST'
+      })
+      const result = await response.json()
+      
+      if (result.success) {
+        toast.success(`Created ${result.created} time slots successfully!`)
+        await fetchTimeSlots()
+      } else {
+        toast.error(result.message || 'Failed to create time slots')
+      }
+    } catch (error) {
+      console.error('Error setting up initial data:', error)
+      toast.error('Failed to setup initial data')
+    } finally {
+      setSettingUpInitialData(false)
+    }
+  }
+
   const formatTime = (time: string) => {
     return new Date(`1970-01-01T${time}:00`).toLocaleTimeString('en-US', {
       hour: 'numeric',
@@ -147,21 +216,42 @@ export default function TimeSlotsPage() {
             Manage available appointment time slots
           </p>
         </div>
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button>
-              <Plus className="mr-2 h-4 w-4" />
-              Add Time Slot
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Create New Time Slot</DialogTitle>
-            </DialogHeader>
-            <TimeSlotForm onSubmit={handleCreateTimeSlot} />
-          </DialogContent>
-        </Dialog>
+        
+        <div className="flex items-center gap-4">
+          {/* Bank Holiday Toggle */}
+          <Card className="p-4">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-600" />
+                <div>
+                  <div className="font-medium text-sm">Bank Holiday Mode</div>
+                  <div className="text-xs text-gray-600">Only 10AM-4PM slots</div>
+                </div>
+              </div>
+              <Switch
+                checked={bankHolidayMode}
+                onCheckedChange={handleBankHolidayToggle}
+                disabled={updatingBankHoliday}
+              />
+            </div>
+          </Card>
+        </div>
       </div>
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogTrigger asChild>
+          <Button>
+            <Plus className="mr-2 h-4 w-4" />
+            Add Time Slot
+          </Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Create New Time Slot</DialogTitle>
+          </DialogHeader>
+          <TimeSlotForm onSubmit={handleCreateTimeSlot} />
+        </DialogContent>
+      </Dialog>
 
       <Card>
         <CardHeader>
@@ -174,9 +264,12 @@ export default function TimeSlotsPage() {
           {isLoading ? (
             <p>Loading time slots...</p>
           ) : timeSlots.length === 0 ? (
-            <p className="text-center py-8 text-gray-500">
-              No time slots created yet. Add your first time slot above.
-            </p>
+            <div className="text-center py-8">
+              <p className="text-gray-500 mb-4">No time slots found.</p>
+              <Button onClick={handleSetupInitialData} disabled={settingUpInitialData}>
+                {settingUpInitialData ? 'Setting up...' : 'Setup Initial Time Slots'}
+              </Button>
+            </div>
           ) : (
             <Table>
               <TableHeader>

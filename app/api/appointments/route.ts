@@ -112,8 +112,8 @@ export async function POST(request: NextRequest) {
     console.log('🎥 Creating video meeting link...')
     const meetingDetails = await createMeetingForAppointment({
       id: 'temp-id', // We'll get the actual ID after creation
-      name: validatedData.name,
-      email: validatedData.email,
+      name: 'Patient', // Placeholder - will be updated during assessment
+      email: 'patient@placeholder.com', // Placeholder - will be updated during assessment
       consultationType: validatedData.consultationType,
       preferredDate: preferredDate,
     })
@@ -122,9 +122,9 @@ export async function POST(request: NextRequest) {
     console.log('💾 Creating appointment in database...')
     const appointment = await prisma.appointment.create({
       data: {
-        name: validatedData.name,
-        email: validatedData.email,
-        phone: validatedData.phone,
+        name: 'Patient', // Placeholder - will be updated during assessment
+        email: 'patient@placeholder.com', // Placeholder - will be updated during assessment 
+        phone: 'TBD', // Placeholder - will be updated during assessment
         consultationType: validatedData.consultationType,
         timeSlotId: validatedData.timeSlotId,
         preferredDate: preferredDate,
@@ -147,14 +147,14 @@ export async function POST(request: NextRequest) {
     })
     console.log('✅ Appointment created:', appointment.id)
 
-    // Send email notifications
-    try {
-      await sendAppointmentBookingEmails(appointment)
-      console.log('Email notifications sent for appointment:', appointment.id)
-    } catch (emailError) {
-      console.error('Failed to send email notifications:', emailError)
-      // Don't fail the appointment creation if email fails
-    }
+    // Send email notifications (disabled - personal data will be collected during assessment)
+    // try {
+    //   await sendAppointmentBookingEmails(appointment)
+    //   console.log('Email notifications sent for appointment:', appointment.id)
+    // } catch (emailError) {
+    //   console.error('Failed to send email notifications:', emailError)
+    //   // Don't fail the appointment creation if email fails
+    // }
 
     return NextResponse.json(appointment, { status: 201 })
   } catch (error) {

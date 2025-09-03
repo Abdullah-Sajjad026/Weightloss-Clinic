@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build && npm run setup:data",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
+    "setup:data": "node scripts/setup-initial-data.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate deploy",
