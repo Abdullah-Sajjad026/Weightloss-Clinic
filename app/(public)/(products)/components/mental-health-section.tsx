@@ -16,12 +16,12 @@ export function MentalHealthSection() {
           <div className="shadow-secondary-950/10 ring-secondary-950/10 overflow-hidden rounded-2xl bg-white text-left text-pretty ring-1 lg:col-span-3">
             <div className="flex h-full items-center">
               <Image
-                alt="Cognitive Behavioral Therapy (CBT) in Northampton"
+                alt="Mounjaro injection pen for weight loss treatment"
                 loading="lazy"
                 width={150}
                 height={279}
                 className="hidden min-w-[150px] self-end pt-2 md:block"
-                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=384&h=279&fit=crop&crop=center&auto=format&q=75"
+                src="https://images.unsplash.com/photo-1745939921744-ba8ef27940bf?w=384&h=279&fit=crop&crop=center&auto=format&q=75"
               />
               <div className="p-4 lg:p-6">
                 <h3 className="text-secondary-900 mt-0 mb-2 flex items-center gap-2 text-lg font-semibold tracking-tight lg:text-xl">

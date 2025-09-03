@@ -13,8 +13,8 @@ const comparisonFeatures = [
   },
   {
     feature: "Prices starting from",
-    clinic: "£179 (Save £30)",
-    pharmacy: "£219",
+    clinic: "£150 (Save £40)",
+    pharmacy: "£190",
   },
   {
     feature: "Supportive WhatsApp community",

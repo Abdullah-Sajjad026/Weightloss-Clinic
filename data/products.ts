@@ -74,12 +74,12 @@ export const PRODUCTS: Record<string, ProductData> = {
       { text: "Lose up to 26% body weight" },
     ],
     pricingTiers: [
-      { dose: "2.5mg", price: "£179", period: "mo" },
-      { dose: "5mg", price: "£189", period: "mo" },
-      { dose: "7.5mg", price: "£199", period: "mo" },
-      { dose: "10mg", price: "£209", period: "mo" },
-      { dose: "12.5mg", price: "£219", period: "mo" },
-      { dose: "15mg", price: "£229", period: "mo" },
+      { dose: "2.5mg", price: "£150", period: "mo" },
+      { dose: "5mg", price: "£160", period: "mo" },
+      { dose: "7.5mg", price: "£185", period: "mo" },
+      { dose: "10mg", price: "£195", period: "mo" },
+      { dose: "12.5mg", price: "£210", period: "mo" },
+      { dose: "15mg", price: "£230", period: "mo" },
     ],
     whatIsTitle: "What is Mounjaro",
     whatIsDescription:
@@ -325,7 +325,7 @@ export const PRODUCTS: Record<string, ProductData> = {
   //   activeIngredient: "liraglutide",
   //   badge: "Weight Loss Injection",
   //   heroDescription: "Saxenda (liraglutide) is a daily injectable medication approved for weight management. At Northampton Weightloss (Powered by Regent Pharmacy), we specialise in offering Saxenda, supported by expert medical guidance and personalised care plans. Saxenda prices start from £49 per pen.",
-  //   heroImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=400&fit=crop&crop=center&auto=format&q=75",
+  //   heroImage: "https://images.unsplash.com/photo-1745939921744-ba8ef27940bf?w=500&h=400&fit=crop&crop=center&auto=format&q=75",
   //   heroImageAlt: "Saxenda pens",
   //   features: [
   //     { text: "Free, fast and discreet delivery" },

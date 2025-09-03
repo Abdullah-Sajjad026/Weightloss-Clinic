@@ -17,7 +17,7 @@ export default function PromoBanner() {
           <span className="text-sm font-medium">
             🎉 Free consultation available - Limited time offer
           </span>
-          <Button asChild size="sm" variant="outline" variant="teal">
+          <Button asChild size="sm" variant="outline">
             <Link href="/consultation">Book Now</Link>
           </Button>
         </div>

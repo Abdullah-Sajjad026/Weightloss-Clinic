@@ -103,7 +103,7 @@ export default function TestimonialsSection() {
           <div className="mt-6 flex justify-center items-center space-x-2">
             <StarRating rating={5} />
             <span className="text-sm text-gray-600 ml-2">
-              4.9/5 from over 1,000+ patients
+              4.9/5 from over 200+ patients
             </span>
           </div>
         </div>
@@ -158,9 +158,9 @@ export default function TestimonialsSection() {
 
         {/* Trust Indicators */}
         <div className="mt-12 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-3 gap-8">
             <div>
-              <div className="text-2xl font-bold text-primary-600">1,000+</div>
+              <div className="text-2xl font-bold text-primary-600">200+</div>
               <div className="text-sm text-gray-600">Successful Treatments</div>
             </div>
             <div>
@@ -170,10 +170,6 @@ export default function TestimonialsSection() {
             <div>
               <div className="text-2xl font-bold text-primary-600">95%</div>
               <div className="text-sm text-gray-600">Success Rate</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-primary-600">24/7</div>
-              <div className="text-sm text-gray-600">Medical Support</div>
             </div>
           </div>
         </div>

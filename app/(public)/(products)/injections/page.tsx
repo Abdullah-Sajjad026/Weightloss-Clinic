@@ -48,7 +48,7 @@ const injectionProducts = [
     description: "All doses available",
     price: "£55/pen",
     imageUrl:
-      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
+      "https://images.unsplash.com/photo-1745939921744-ba8ef27940bf?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
     imageAlt: "Saxenda pens",
     href: "/injections/saxenda",
   },

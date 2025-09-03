@@ -247,12 +247,22 @@ export default function OrderTrackingPage() {
               {/* Tracking Information */}
               {order.trackingNumber && (
                 <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                  <h3 className="font-medium text-blue-900 mb-1">Tracking Information</h3>
-                  <p className="text-sm text-blue-700">
+                  <h3 className="font-medium text-blue-900 mb-2">Tracking Information</h3>
+                  <p className="text-sm text-blue-700 mb-3">
                     Tracking Number: <strong>{order.trackingNumber}</strong>
                   </p>
+                  <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700">
+                    <Link 
+                      href={`https://www.royalmail.com/track-your-item#/tracking-results/${order.trackingNumber}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Truck className="w-4 h-4 mr-2" />
+                      Track with Royal Mail
+                    </Link>
+                  </Button>
                   {order.estimatedDelivery && (
-                    <p className="text-sm text-blue-700">
+                    <p className="text-sm text-blue-700 mt-3">
                       Estimated Delivery: {formatDate(order.estimatedDelivery)}
                     </p>
                   )}

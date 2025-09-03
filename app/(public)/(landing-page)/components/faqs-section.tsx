@@ -68,157 +68,6 @@ const faqData = [
     ),
   },
   {
-    id: "bariatric-surgery-northampton",
-    question: "Where can I get bariatric surgery in Northampton?",
-    answer: (
-      <div className="prose prose-gray max-w-none">
-        <p>
-          In Northampton, several clinics and hospitals offer bariatric surgery,
-          catering to different patient needs and preferences. Some of the
-          notable hospitals, surgeons, and private clinics include:
-        </p>
-        <ul>
-          <li>
-            <Link
-              href="https://www.bmihealthcare.co.uk/hospitals/bmi-three-shires-hospital"
-              target="_blank"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              BMI Three Shires Hospital
-            </Link>
-            <ul>
-              <li>
-                The Avenue, Northampton NN1 5DR -{" "}
-                <Link
-                  href="https://www.google.com/maps/dir//The%20Avenue%2C%20Northampton%20NN1%205DR"
-                  target="_blank"
-                  className="text-zinc-700 font-medium underline underline-offset-2 hover:opacity-70"
-                >
-                  Directions
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <Link
-              href="https://www.northamptongeneral.nhs.uk"
-              target="_blank"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              Northampton General Hospital
-            </Link>
-            <ul>
-              <li>
-                Cliftonville, Northampton NN1 5BD -{" "}
-                <Link
-                  href="https://www.google.com/maps/dir//Cliftonville%2C%20Northampton%20NN1%205BD"
-                  target="_blank"
-                  className="text-zinc-700 font-medium underline underline-offset-2 hover:opacity-70"
-                >
-                  Directions
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <Link
-              href="https://www.stah.org"
-              target="_blank"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              St Andrew's Healthcare
-            </Link>
-            <ul>
-              <li>
-                Billing Rd, Northampton NN1 5DG -{" "}
-                <Link
-                  href="https://www.google.com/maps/dir//Billing%20Rd%2C%20Northampton%20NN1%205DG"
-                  target="_blank"
-                  className="text-zinc-700 font-medium underline underline-offset-2 hover:opacity-70"
-                >
-                  Directions
-                </Link>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <p>
-          Each of these providers has a team of experienced surgeons and
-          healthcare professionals who can guide you through the process, from
-          your first consultation to surgery to postoperative care.
-        </p>
-      </div>
-    ),
-  },
-  {
-    id: "weight-loss-surgery-cost",
-    question: "How much is weight loss surgery in Northampton?",
-    answer: (
-      <div className="prose prose-gray max-w-none">
-        <p>
-          The cost of weight loss surgery in Northampton depends on the type of
-          procedure. Some surgeries are more complicated than others, making
-          them more expensive. Here's a list of possible options, with cheaper
-          options at the top and more expensive options at the bottom:
-        </p>
-        <ul>
-          <li>
-            <Link
-              href="/bariatric-surgery/gastric-balloon"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              Gastric balloon.
-            </Link>{" "}
-            This is often cheaper because it's a less invasive procedure. It
-            involves a balloon being placed in the stomach to reduce space.
-          </li>
-          <li>
-            <Link
-              href="/bariatric-surgery/gastric-band"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              Gastric band surgery
-            </Link>
-            . This involves placing a band around the upper part of the stomach
-            to create a small pouch that limits food intake.
-          </li>
-          <li>
-            <Link
-              href="/bariatric-surgery/gastric-sleeve"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              Gastric sleeve surgery
-            </Link>
-            . This surgery involves removing part of the stomach, leading to a
-            permanent reduction in its size.
-          </li>
-          <li>
-            <Link
-              href="/bariatric-surgery/gastric-bypass"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              Gastric bypass surgery
-            </Link>
-            . Typically one of the more expensive options, this surgery reroutes
-            food from the stomach, so there is less room for it and less is
-            absorbed.
-          </li>
-        </ul>
-        <p>
-          For more weight loss surgery costs, visit our{" "}
-          <Link
-            href="/bariatric-surgery"
-            className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-          >
-            bariatric surgery
-          </Link>{" "}
-          page. This will give you information about what to expect for each
-          procedure.
-        </p>
-      </div>
-    ),
-  },
-  {
     id: "30-30-30-rule",
     question: "What is the 30 30 30 rule for weight loss?",
     answer: (
@@ -282,30 +131,6 @@ const faqData = [
             (CBT) can be effective in addressing the psychological factors that
             are linked to how, and what, you eat.
           </li>
-          <li>
-            Surgical options. Weight loss surgery such as{" "}
-            <Link
-              href="/bariatric-surgery/gastric-bypass"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              gastric bypass
-            </Link>
-            ,{" "}
-            <Link
-              href="/bariatric-surgery/gastric-sleeve"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              gastric sleeve
-            </Link>
-            , or{" "}
-            <Link
-              href="/bariatric-surgery/gastric-band"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              gastric band surgery
-            </Link>{" "}
-            are a safe and effective treatment for some people.
-          </li>
         </ul>
         <p>
           You are unique - the best approach depends on your health, choices,
@@ -339,8 +164,8 @@ const faqData = [
 
 export default function FAQsSection() {
   // Split FAQs into two columns for larger screens
-  const leftColumnFAQs = faqData.slice(0, 3);
-  const rightColumnFAQs = faqData.slice(3);
+  const leftColumnFAQs = faqData.slice(0, 2);
+  const rightColumnFAQs = faqData.slice(2);
 
   return (
     <section className="mx-auto px-4 max-w-7xl">
