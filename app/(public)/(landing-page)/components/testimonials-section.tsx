@@ -22,25 +22,25 @@ const testimonials: Testimonial[] = [
     location: "London",
     rating: 5,
     text: "The medical team was incredibly professional and supportive throughout my weight loss journey. I've lost 15kg in 4 months and feel amazing!",
-    treatment: "Semaglutide Treatment"
+    treatment: "Semaglutide Treatment",
   },
   {
-    id: "2", 
+    id: "2",
     name: "Michael Roberts",
     initials: "MR",
     location: "Manchester",
     rating: 5,
     text: "Excellent service from start to finish. The consultation was thorough and the medication has been life-changing. Highly recommend!",
-    treatment: "Tirzepatide Program"
+    treatment: "Tirzepatide Program",
   },
   {
     id: "3",
     name: "Emma Williams",
-    initials: "EW", 
+    initials: "EW",
     location: "Birmingham",
     rating: 5,
     text: "Professional, discrete, and effective. The online consultation process was smooth and the results speak for themselves.",
-    treatment: "Orlistat + Support"
+    treatment: "Orlistat + Support",
   },
   {
     id: "4",
@@ -49,7 +49,7 @@ const testimonials: Testimonial[] = [
     location: "Leeds",
     rating: 5,
     text: "The medical review process gave me confidence in the treatment. Great communication and follow-up care throughout.",
-    treatment: "Liraglutide Treatment"
+    treatment: "Liraglutide Treatment",
   },
   {
     id: "5",
@@ -58,7 +58,7 @@ const testimonials: Testimonial[] = [
     location: "Bristol",
     rating: 5,
     text: "Amazing results in just 6 months. The team's expertise and ongoing support made all the difference in my weight loss success.",
-    treatment: "Combined Program"
+    treatment: "Combined Program",
   },
   {
     id: "6",
@@ -67,8 +67,8 @@ const testimonials: Testimonial[] = [
     location: "Newcastle",
     rating: 5,
     text: "Fast, professional service with real results. The medication quality is excellent and delivery was always on time.",
-    treatment: "Semaglutide + Lifestyle"
-  }
+    treatment: "Semaglutide + Lifestyle",
+  },
 ];
 
 const StarRating = ({ rating }: { rating: number }) => {
@@ -78,9 +78,7 @@ const StarRating = ({ rating }: { rating: number }) => {
         <Star
           key={star}
           className={`w-4 h-4 ${
-            star <= rating
-              ? "fill-yellow-400 text-yellow-400"
-              : "text-gray-300"
+            star <= rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
           }`}
         />
       ))}
@@ -90,7 +88,7 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">

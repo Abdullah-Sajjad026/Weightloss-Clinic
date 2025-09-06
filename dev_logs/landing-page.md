@@ -110,7 +110,7 @@ Created a comprehensive, conversion-focused landing page for Northampton Weight 
 - Personal health coach: ✓ vs ✗
 - Behaviour change toolkit: ✓ vs ✗
 - Medication guarantee: ✓ vs ✗
-- Money back guarantee: ✓ vs ✗
+- Free online yoga class (Weekly): ✓ vs ✗
 
 ### 9. TestimonialsSection (`/components/testimonials-section.tsx`)
 **Purpose**: Detailed success stories and video testimonials

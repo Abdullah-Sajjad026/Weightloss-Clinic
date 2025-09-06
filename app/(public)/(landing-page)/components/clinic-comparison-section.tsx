@@ -37,7 +37,7 @@ const comparisonFeatures = [
     pharmacy: "x",
   },
   {
-    feature: "Money back guarantee",
+    feature: "Free online yoga class (Weekly)",
     clinic: "check",
     pharmacy: "x",
   },

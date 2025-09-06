@@ -61,7 +61,7 @@ export function ExpertAdviceCTA({
       className={cn(
         colors.background,
         colors.ring,
-        "bg-[url(https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=600&fit=crop&crop=center&auto=format&q=30)] bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-start text-left rounded-5xl w-full lg:p-10 flex flex-col justify-between gap-4 p-6 md:flex-row md:items-center",
+        "ring-1 ring-inset items-start text-left rounded-5xl w-full lg:p-10 flex flex-col justify-between gap-4 p-6 md:flex-row md:items-center relative overflow-hidden",
         className
       )}
     >

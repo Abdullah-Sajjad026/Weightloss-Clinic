@@ -3,11 +3,6 @@ import Link from "next/link"
 export default function WeightlossExpertsSection() {
   const treatments = [
     {
-      title: "Pills and tablets",
-      description: "Weight loss pills and tablets that are taken daily to reduce the amount of fat absorbed by your body from the food you eat.",
-      href: "/pills-tablets"
-    },
-    {
       title: "Breakthrough medication", 
       description: "Our weight loss medication is effective at helping you lose weight by making you feel less hungry, so you simply want to eat less.",
       href: "/injections"

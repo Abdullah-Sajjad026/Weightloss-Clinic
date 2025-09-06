@@ -37,42 +37,13 @@ const injectionProducts = [
     name: "Wegovy",
     description: "All doses available", 
     price: "from £169/month",
-    imageUrl: "/products/mounjaro-box.webp",
-    imageAlt: "Weight loss injection medication",
+    imageUrl: "/products/wegovy-box.webp",
+    imageAlt: "Wegovy injection medication",
     href: "/injections/wegovy",
   },
 ];
 
-const pillProducts = [
-  {
-    name: "Orlistat",
-    description: "Up to 10% weight loss",
-    price: "from £12/week",
-    imageUrl:
-      "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
-    imageAlt: "Orlistat box",
-    href: "/pills-tablets/orlistat",
-    badge: "Pills",
-  },
-  {
-    name: "Xenical",
-    description: "Up to 10% weight loss",
-    price: "from £15/week",
-    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
-    imageAlt: "Xenical pills",
-    href: "/pills-tablets/xenical",
-    badge: "Pills",
-  },
-  {
-    name: "Alli",
-    description: "Up to 5% weight loss",
-    price: "from £12/week",
-    imageUrl: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=750&h=468&fit=crop&crop=center&auto=format&q=75",
-    imageAlt: "Alli pills",
-    href: "/pills-tablets/alli",
-    badge: "Pills",
-  },
-];
+// Pills products removed as pages don't exist yet
 
 export default function InjectionsPage() {
   return (
@@ -127,15 +98,15 @@ export default function InjectionsPage() {
       {/* Public Presence Section */}
       {/* <PublicPresenceSection /> */}
 
-      {/* Cross-sell Pills Section */}
-      <section className="mx-auto px-4 max-w-7xl w-full">
+      {/* Cross-sell Pills Section - Commented out as pills pages don't exist yet */}
+      {/* <section className="mx-auto px-4 max-w-7xl w-full">
         <CrossSellSection
           title="We also offer weight loss pills"
           description="Northampton Weightloss (Powered by Regent Pharmacy) also offers weight loss pills"
           products={pillProducts}
           colorScheme="tertiary"
         />
-      </section>
+      </section> */}
 
       {/* Mental Health Support Section */}
       <section className="mx-auto px-4 max-w-7xl w-full">

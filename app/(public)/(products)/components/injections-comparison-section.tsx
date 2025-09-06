@@ -155,7 +155,12 @@ function renderValue(value: string | boolean, featured: boolean = false) {
 
 export function InjectionsComparisonSection() {
   return (
-    <div className="bg-zinc-100 ring-zinc-500/20 bg-[url(https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=600&fit=crop&crop=center&auto=format&q=30)] bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-center text-center rounded-5xl flex w-full flex-col px-4 py-6 lg:p-10 from-transparent">
+    <div className="bg-gradient-to-br from-primary-50 via-zinc-50 to-white ring-zinc-500/20 ring-1 ring-inset items-center text-center rounded-5xl flex w-full flex-col px-4 py-6 lg:p-10 relative overflow-hidden">
+      {/* Background decoration with product images */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 right-10 w-32 h-32 bg-[url('/products/mounjaro-pen-1.webp')] bg-contain bg-no-repeat bg-center"></div>
+        <div className="absolute bottom-10 left-10 w-32 h-32 bg-[url('/products/wegovy-pens.webp')] bg-contain bg-no-repeat bg-center"></div>
+      </div>
       <h2 className="mx-auto mt-2 max-w-lg text-center text-3xl font-semibold tracking-tight text-balance sm:text-4xl text-zinc-950">
         Weight loss injections comparison
       </h2>
@@ -511,7 +516,7 @@ export function InjectionsComparisonSection() {
           </section>
         </div>
 
-        <div className="prose-sm prose-a:font-medium prose-a:text-primary-600 mt-7 max-w-(--breakpoint-md)">
+        <div className="prose-sm prose-a:font-medium prose-a:text-primary-600 mt-7 max-w-(--breakpoint-md) relative z-10">
           <p>
             *BMI over 27 if you have a weight related condition such as
             dysglycaemia (prediabetes or type 2 diabetes mellitus),

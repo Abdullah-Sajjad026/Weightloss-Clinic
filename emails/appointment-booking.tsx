@@ -10,6 +10,7 @@ import {
   Row,
   Column,
   Button,
+  Img,
 } from '@react-email/components'
 
 interface AppointmentBookingEmailProps {
@@ -74,9 +75,15 @@ export function AppointmentBookingEmail({ appointment }: AppointmentBookingEmail
       <Body style={{ backgroundColor: '#f6f9fc', fontFamily: 'Arial, sans-serif' }}>
         <Container style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
           <Section style={{ backgroundColor: '#ffffff', borderRadius: '8px', padding: '32px' }}>
-            <Heading style={{ color: '#7c3aed', textAlign: 'center', marginBottom: '24px' }}>
-              Northampton Clinic
-            </Heading>
+            <Section style={{ textAlign: 'center', marginBottom: '24px' }}>
+              <Img
+                src="https://northamptonclinic.com/northampton-clinic-logo.png"
+                alt="Northampton Clinic Logo"
+                width="200"
+                height="60"
+                style={{ margin: '0 auto' }}
+              />
+            </Section>
             
             <Heading style={{ color: '#111827', fontSize: '24px', marginBottom: '16px' }}>
               Appointment Request Received

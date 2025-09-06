@@ -233,8 +233,8 @@ export const PRODUCTS: Record<string, ProductData> = {
     badge: "Weight Loss Injection",
     heroDescription:
       "Wegovy (semaglutide) is a once-weekly weight loss injection that regulates appetite and food intake. Approved in the UK, Northampton Weightloss (Powered by Regent Pharmacy) offers this treatment with medical guidance and personalised care. Prices start at £169.",
-    heroImage: "/products/mounjaro-box.webp",
-    heroImageAlt: "Weight loss injection medication",
+    heroImage: "/products/wegovy-pens.webp",
+    heroImageAlt: "Wegovy injection pens",
     features: [
       { text: "In stock for new and existing patients" },
       { text: "Free, fast and discreet delivery" },

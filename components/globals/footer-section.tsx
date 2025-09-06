@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Copyright, MapPin } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const footerSections = [
   {
@@ -9,7 +10,7 @@ const footerSections = [
     links: [
       { label: "Mounjaro", href: "/injections/mounjaro" },
       { label: "Wegovy", href: "/injections/wegovy" },
-    ]
+    ],
   },
   // {
   //   title: "Surgery",
@@ -36,13 +37,10 @@ const footerSections = [
   {
     title: "More",
     links: [
-      { label: "About us", href: "/about" },
-      { label: "Contact", href: "/contact" },
-      { label: "Maintenance dose", href: "/injections/mounjaro/maintenance-dose" },
+      { label: "About us", href: "https://theregentpharmacy.com/about-us/" },
+      { label: "Contact", href: "https://theregentpharmacy.com/contact-us/" },
       { label: "BMI calculator", href: "/bmi-calculator" },
-      { label: "Healthy food guide", href: "/healthy-food-guide" },
-      { label: "Active lifestyle guide", href: "/exercise" },
-    ]
+    ],
   },
 ];
 
@@ -51,12 +49,13 @@ export default function FooterSection() {
     <footer className="bg-primary-700 from-primary-600 to-primary-800 mt-20 flex w-full flex-col items-center justify-between gap-8 rounded-t-3xl bg-gradient-to-br p-8 pb-12 text-white md:gap-16">
       <div className="w-full max-w-7xl">
         <div className="text-white">
-          <div className="font-serif text-xl font-bold tracking-tight">
-            Northampton Weightloss
-          </div>
-          <div className="text-sm font-medium opacity-90">
-            Powered by Regent Pharmacy
-          </div>
+          <Image
+            src="/northampton-clinic-logo.png"
+            alt="Northampton Clinic Logo"
+            width={200}
+            height={60}
+            className=" w-auto object-contain brightness-0 invert h-[120px]"
+          />
         </div>
       </div>
 
@@ -67,10 +66,12 @@ export default function FooterSection() {
             Lose weight, gain confidence
           </div>
           <p className="text-lg text-white/90">
-            Ready to take control of your health? Take the first step towards a healthier, happier you with Northampton Weightloss (Powered by Regent Pharmacy).
+            Ready to take control of your health? Take the first step towards a
+            healthier, happier you with Northampton Weightloss (Powered by
+            Regent Pharmacy).
           </p>
           <div>
-            <Button 
+            <Button
               asChild
               className="bg-white hover:bg-zinc-100 active:bg-zinc-200 text-primary-800 shadow-lg hover:shadow-md active:shadow-inner ring ring-zinc-900/10 px-6 py-2 font-medium transition-all duration-200"
             >
@@ -84,7 +85,7 @@ export default function FooterSection() {
           {footerSections.map((section) => (
             <div key={section.title} className="flex flex-col gap-2">
               {section.href ? (
-                <Link 
+                <Link
                   href={section.href}
                   className="mb-1 text-xs tracking-widest text-zinc-200 uppercase hover:text-white transition-colors"
                 >
@@ -110,20 +111,25 @@ export default function FooterSection() {
       </div>
 
       {/* Disclaimer */}
-      <div className="prose w-full max-w-7xl text-sm text-white/70">
+      {/* <div className="prose w-full max-w-7xl text-sm text-white/70">
         <p>
-          The Independent Pharmacy (GPhC Registration: 9012559) is our partner pharmacy and prescribing service. All consultations and prescribing is carried out by GPhC registered medical practitioners. All dispensing and shipping of medicines is completed by The Independent Pharmacy, a UK licensed, General Pharmaceutical Council registered pharmacy. Superintendent Pharmacist: Mr Ant Boysan BPharm (GPhC Number: 2047716).{" "}
-          <Link 
-            href="/pharmacy-terms" 
-            className="text-white font-medium underline underline-offset-2 hover:opacity-70"
-          >
-            Pharmacy Terms
-          </Link>
+          The Independent Pharmacy (GPhC Registration: 9012559) is our partner
+          pharmacy and prescribing service. All consultations and prescribing is
+          carried out by GPhC registered medical practitioners. All dispensing
+          and shipping of medicines is completed by The Independent Pharmacy, a
+          UK licensed, General Pharmaceutical Council registered pharmacy.
+          Superintendent Pharmacist: Mr Ant Boysan BPharm (GPhC Number:
+          2047716).{" "}
+
         </p>
         <p>
-          Disclaimer: The information contained on this site is for educational and informational purposes only and does not constitute medical advice. It is not intended to replace medical advice. Please seek the advice of a healthcare professional in Northampton for advice tailored to your medical needs.
+          Disclaimer: The information contained on this site is for educational
+          and informational purposes only and does not constitute medical
+          advice. It is not intended to replace medical advice. Please seek the
+          advice of a healthcare professional in Northampton for advice tailored
+          to your medical needs.
         </p>
-      </div>
+      </div> */}
 
       {/* Footer Bottom */}
       <div className="flex w-full max-w-7xl flex-col justify-between gap-4 lg:flex-row">
@@ -131,25 +137,21 @@ export default function FooterSection() {
           <Copyright className="text-primary-400 w-4 h-4" />
           <span>2025 Northampton Weightloss (Powered by Regent Pharmacy)</span>
         </div>
-        
-        <div className="flex items-center gap-1">
-          <MapPin className="text-primary-400 w-4 h-4" />
-          <span>Northampton Weightloss (Powered by Regent Pharmacy), United Kingdom</span>
-        </div>
-        
+
         <div className="flex gap-5">
-          <Link 
-            href="/terms" 
+          {/* TODO: Add these links when pages are created */}
+          {/* <Link
+            href="/terms"
             className="text-white hover:text-white/80 transition-colors"
           >
             Terms & Conditions
           </Link>
-          <Link 
-            href="/privacy" 
+          <Link
+            href="/privacy"
             className="text-white hover:text-white/80 transition-colors"
           >
             Privacy Policy
-          </Link>
+          </Link> */}
         </div>
       </div>
     </footer>

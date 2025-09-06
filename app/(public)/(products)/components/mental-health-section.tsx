@@ -3,7 +3,7 @@ import { Brain, Info, Dumbbell, HandHeart } from "lucide-react"
 
 export function MentalHealthSection() {
   return (
-    <div className="bg-secondary-100 ring-secondary-500/20 bg-[url(https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=600&fit=crop&crop=center&auto=format&q=30)] bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-center text-center rounded-5xl flex w-full flex-col px-4 py-6 lg:p-10">
+    <div className="bg-gradient-to-br from-secondary-50 via-zinc-50 to-white ring-secondary-500/20 ring-1 ring-inset items-center text-center rounded-5xl flex w-full flex-col px-4 py-6 lg:p-10">
       <h2 className="mx-auto mt-2 max-w-lg text-center text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl">
         Supporting your mental health
       </h2>
@@ -21,7 +21,7 @@ export function MentalHealthSection() {
                 width={150}
                 height={279}
                 className="hidden min-w-[150px] self-end pt-2 md:block"
-                src="https://images.unsplash.com/photo-1745939921744-ba8ef27940bf?w=384&h=279&fit=crop&crop=center&auto=format&q=75"
+                src="/products/mounjaro-pen-2.webp"
               />
               <div className="p-4 lg:p-6">
                 <h3 className="text-secondary-900 mt-0 mb-2 flex items-center gap-2 text-lg font-semibold tracking-tight lg:text-xl">

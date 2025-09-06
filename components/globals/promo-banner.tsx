@@ -11,10 +11,10 @@ export default function PromoBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="bg-primary-600 text-white py-3 px-4 relative">
+    <div className="bg-primary-600  py-3 px-4 relative">
       <div className="container mx-auto max-w-7xl flex items-center justify-center text-center">
         <div className="flex items-center gap-4">
-          <span className="text-sm font-medium">
+          <span className="text-sm font-medium text-white">
             🎉 Free consultation available - Limited time offer
           </span>
           <Button asChild size="sm" variant="outline">

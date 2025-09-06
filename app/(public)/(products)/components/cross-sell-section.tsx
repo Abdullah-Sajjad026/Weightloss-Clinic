@@ -25,7 +25,7 @@ export function CrossSellSection({
   description,
   products,
   colorScheme = "tertiary",
-  backgroundImage = "https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=600&fit=crop&crop=center&auto=format&q=30",
+  backgroundImage,
   className,
 }: CrossSellSectionProps) {
   const colorClasses = {
@@ -53,7 +53,7 @@ export function CrossSellSection({
         "bg-[length:100%_auto] bg-top bg-no-repeat bg-blend-overlay ring-1 ring-inset items-center text-center rounded-5xl flex w-full flex-col px-4 py-6 lg:p-10",
         className
       )}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : {}}
     >
       <h2 className="mx-auto mt-2 max-w-lg text-center text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl">
         {title}

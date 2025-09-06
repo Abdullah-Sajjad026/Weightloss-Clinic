@@ -9,6 +9,7 @@ import {
   Hr,
   Row,
   Column,
+  Img,
 } from '@react-email/components'
 
 interface AdminNotificationEmailProps {
@@ -84,6 +85,16 @@ export function AdminNotificationEmail({ appointment }: AdminNotificationEmailPr
       <Body style={{ backgroundColor: '#f6f9fc', fontFamily: 'Arial, sans-serif' }}>
         <Container style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
           <Section style={{ backgroundColor: '#ffffff', borderRadius: '8px', padding: '32px' }}>
+            <Section style={{ textAlign: 'center', marginBottom: '16px' }}>
+              <Img
+                src="https://northamptonclinic.com/northampton-clinic-logo.png"
+                alt="Northampton Clinic Logo"
+                width="200"
+                height="60"
+                style={{ margin: '0 auto' }}
+              />
+            </Section>
+            
             <Heading style={{ color: '#dc2626', textAlign: 'center', marginBottom: '24px' }}>
               🚨 New Appointment Request
             </Heading>

@@ -13,9 +13,9 @@ const faqData = [
     answer: (
       <div className="prose prose-gray max-w-none">
         <p>
-          Yes, the NHS provides support for patients looking to
-          lose weight. This support includes a variety of resources and programs
-          that can help with weight management.
+          Yes, the NHS provides support for patients looking to lose weight.
+          This support includes a variety of resources and programs that can
+          help with weight management.
         </p>
         <p>
           One of the main resources available is the{" "}
@@ -108,12 +108,8 @@ const faqData = [
               medical weight loss treatments
             </Link>{" "}
             and{" "}
-            <Link
-              href="/pills-tablets"
-              className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
-            >
-              weight loss pills
-            </Link>
+            {/* Pills link removed as page doesn't exist */}
+            weight loss pills
             .
           </li>
           <li>
@@ -223,7 +219,7 @@ export default function FAQsSection() {
         <div className="mt-8 flex flex-col gap-3 text-lg text-zinc-900 lg:flex-row">
           <div>Have a question we haven't answered?</div>
           <Link
-            href="tel:+441234567890"
+            href="tel:01604250734"
             className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
           >
             Call Now!

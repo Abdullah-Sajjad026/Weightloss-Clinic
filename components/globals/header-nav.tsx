@@ -64,7 +64,6 @@ const servicesItems = [
 const mobileNavItems = [
   { name: "Injections", href: "/injections" },
   // { name: "Surgery", href: "/bariatric-surgery" },
-  { name: "Delivery", href: "/delivery" },
   { name: "Track Order", href: "/orders/track" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
@@ -81,9 +80,7 @@ export default function HeaderNav() {
           href="/"
           className="hover:opacity-80 transition-opacity flex-shrink-0"
         >
-          <Logo className="lg:flex hidden" size="md" />
-          {/* Mobile Logo - shorter text */}
-          <Logo className="flex lg:hidden" size="sm" showText={false} />
+          <Logo className="lg:flex hidden" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -153,19 +150,9 @@ export default function HeaderNav() {
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem> */}
-
-              {/* Delivery */}
-              <NavigationMenuItem>
-                <Link
-                  href="/delivery"
-                  className="text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors px-4 py-2"
-                >
-                  Delivery
-                </Link>
-              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          
+
           {/* Track Order Link */}
           <Link
             href="/orders/track"
@@ -181,7 +168,7 @@ export default function HeaderNav() {
           <Button
             asChild
             variant="outline"
-            className="hidden lg:inline-flex border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white text-sm px-4 py-2"
+            className="hidden lg:inline-flex bg-primary-50 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white text-sm px-4 py-2"
           >
             <Link href="/assessment">Check eligibility</Link>
           </Button>
@@ -211,14 +198,14 @@ export default function HeaderNav() {
                     className="hover:opacity-80 transition-opacity"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Logo size="md" />
+                    <Logo />
                   </Link>
                   <div className="flex items-center space-x-2">
                     <Button
                       asChild
                       variant="outline"
                       size="sm"
-                      className="border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white text-xs px-3 py-2 h-auto"
+                      className="bg-primary-50 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white text-xs px-3 py-2 h-auto"
                     >
                       <Link
                         href="/assessment"
