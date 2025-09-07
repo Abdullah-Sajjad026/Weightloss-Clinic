@@ -73,7 +73,7 @@ export function RiskAssessmentForm() {
       currentStepIndex = 2 + (questionIndex >= 0 ? questionIndex : 0);
     }
 
-    return Math.round(((currentStepIndex + 1) / totalSteps) * 100);
+    return Math.round((currentStepIndex / totalSteps) * 100);
   };
 
   const updateFormData = useCallback((updates: Partial<FormData>) => {
