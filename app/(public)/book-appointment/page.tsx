@@ -49,10 +49,9 @@ export default function BookAppointmentPage() {
                   Booking Request Submitted!
                 </h1>
                 <p className="text-gray-600 max-w-md">
-                  Thank you, {submittedData.name}! Your appointment request has
-                  been received. Our team will contact you at{" "}
-                  {submittedData.email} within 24 hours to confirm your
-                  consultation and provide video call details.
+                  Thank you! Your appointment request has been received. Our team 
+                  will contact you within 24 hours to confirm your consultation 
+                  and provide video call details.
                 </p>
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 w-full max-w-md">
                   <h3 className="font-semibold text-blue-900 mb-2">
