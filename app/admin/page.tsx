@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Calendar, Clock, Users, Package, AlertCircle, CheckCircle } from 'lucide-react'
+import Link from 'next/link'
 
 async function getDashboardStats() {
   // During build time, return default values to avoid database connection issues
@@ -122,7 +123,8 @@ export default async function AdminDashboard() {
       description: 'This month',
       icon: Calendar,
       color: 'text-blue-600',
-      bgColor: 'bg-blue-50'
+      bgColor: 'bg-blue-50',
+      href: '/admin/appointments'
     },
     {
       title: 'Pending Bookings',
@@ -130,7 +132,8 @@ export default async function AdminDashboard() {
       description: 'Need confirmation',
       icon: Clock,
       color: 'text-orange-600',
-      bgColor: 'bg-orange-50'
+      bgColor: 'bg-orange-50',
+      href: '/admin/appointments'
     },
     {
       title: 'Total Orders',
@@ -138,7 +141,8 @@ export default async function AdminDashboard() {
       description: 'This month',
       icon: Package,
       color: 'text-green-600',
-      bgColor: 'bg-green-50'
+      bgColor: 'bg-green-50',
+      href: '/admin/orders'
     },
     {
       title: 'Medical Reviews',
@@ -146,7 +150,8 @@ export default async function AdminDashboard() {
       description: 'Pending approval',
       icon: AlertCircle,
       color: 'text-red-600',
-      bgColor: 'bg-red-50'
+      bgColor: 'bg-red-50',
+      href: '/admin/orders'
     },
     {
       title: 'Completed Orders',
@@ -154,7 +159,8 @@ export default async function AdminDashboard() {
       description: 'This month',
       icon: CheckCircle,
       color: 'text-green-600',
-      bgColor: 'bg-green-50'
+      bgColor: 'bg-green-50',
+      href: '/admin/orders'
     },
     {
       title: 'Risk Assessments',
@@ -162,7 +168,8 @@ export default async function AdminDashboard() {
       description: 'Pending review',
       icon: Users,
       color: 'text-primary-600',
-      bgColor: 'bg-primary-50'
+      bgColor: 'bg-primary-50',
+      href: '/admin/risk-assessments'
     },
   ]
 
@@ -179,24 +186,26 @@ export default async function AdminDashboard() {
         {dashboardCards.map((card, index) => {
           const IconComponent = card.icon
           return (
-            <Card key={index} className="hover:shadow-md transition-shadow">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium text-gray-600">
-                  {card.title}
-                </CardTitle>
-                <div className={`p-2 rounded-lg ${card.bgColor}`}>
-                  <IconComponent className={`h-4 w-4 ${card.color}`} />
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className={`text-2xl font-bold ${card.color}`}>
-                  {card.value}
-                </div>
-                <p className="text-xs text-gray-500 mt-1">
-                  {card.description}
-                </p>
-              </CardContent>
-            </Card>
+            <Link key={index} href={card.href}>
+              <Card className="hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer group">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium text-gray-600 group-hover:text-gray-800">
+                    {card.title}
+                  </CardTitle>
+                  <div className={`p-2 rounded-lg ${card.bgColor} group-hover:scale-110 transition-transform`}>
+                    <IconComponent className={`h-4 w-4 ${card.color}`} />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className={`text-2xl font-bold ${card.color} group-hover:text-gray-800`}>
+                    {card.value}
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1 group-hover:text-gray-600">
+                    {card.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           )
         })}
       </div>
