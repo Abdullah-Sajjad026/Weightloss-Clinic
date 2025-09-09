@@ -62,13 +62,7 @@ export interface Order {
 }
 
 export interface CheckoutFormData {
-  // Customer Information
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  
-  // Shipping Address
+  // Shipping Address (personal info comes from authenticated user)
   shippingStreet: string;
   shippingCity: string;
   shippingPostalCode: string;

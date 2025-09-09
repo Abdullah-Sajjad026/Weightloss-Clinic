@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { appointmentSchema, type AppointmentFormData } from '@/lib/validations/appointment'
 import { Calendar, Clock, User, Phone, Mail, MessageSquare, Globe } from 'lucide-react'
 import { COMMON_TIMEZONES, detectUserTimezone, getTimezoneDisplayName } from '@/lib/timezone-utils'
+import { useUser, SignInButton, SignedIn, SignedOut } from '@clerk/nextjs'
 
 const CONSULTATION_TYPES = [
   { value: 'GENERAL', label: 'Weight Loss Consultation' },
@@ -32,6 +33,7 @@ interface AppointmentBookingFormProps {
 }
 
 export function AppointmentBookingForm({ onSubmit, isLoading }: AppointmentBookingFormProps) {
+  const { user, isLoaded } = useUser()
   const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [availableDates, setAvailableDates] = useState<string[]>([])
@@ -126,15 +128,66 @@ export function AppointmentBookingForm({ onSubmit, isLoading }: AppointmentBooki
     })
   }
 
+  // Show loading state while checking authentication
+  if (!isLoaded) {
+    return (
+      <Card className="w-full max-w-2xl mx-auto">
+        <CardContent className="p-8">
+          <div className="flex items-center justify-center min-h-[200px]">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading...</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <>
+      <SignedOut>
+        <Card className="w-full max-w-2xl mx-auto">
+          <CardContent className="p-8">
+            <div className="text-center">
+              <div className="max-w-md mx-auto">
+                <div className="mb-6">
+                  <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Calendar className="w-8 h-8 text-primary-600" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Sign In to Book</h2>
+                  <p className="text-gray-600 mb-6">
+                    Please sign in to book your consultation appointment. This helps us provide personalized care and track your progress.
+                  </p>
+                </div>
+                <div className="space-y-3">
+                  <SignInButton mode="modal">
+                    <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                      Sign In to Book Appointment
+                    </button>
+                  </SignInButton>
+                  <p className="text-sm text-gray-500">
+                    New patient? Sign up is quick and free.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </SignedOut>
+
+      <SignedIn>
+        <Card className="w-full max-w-2xl mx-auto">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Calendar className="h-6 w-6" />
           Book Your Consultation
         </CardTitle>
         <p className="text-gray-600">
-          Select your preferred time slot for a consultation. Personal details will be collected during your assessment.
+          Select your preferred time slot for a consultation.
+          <span className="block mt-1 text-green-600 text-sm">
+            ✓ Signed in as {user?.firstName} {user?.lastName} ({user?.emailAddresses[0]?.emailAddress})
+          </span>
         </p>
       </CardHeader>
       <CardContent>
@@ -247,6 +300,7 @@ export function AppointmentBookingForm({ onSubmit, isLoading }: AppointmentBooki
             />
           </div>
 
+
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">
               <strong>Please note:</strong> This is a booking request. You'll complete your medical assessment and provide personal details during your consultation. Our team will contact you to confirm your appointment.
@@ -263,5 +317,7 @@ export function AppointmentBookingForm({ onSubmit, isLoading }: AppointmentBooki
         </form>
       </CardContent>
     </Card>
+      </SignedIn>
+    </>
   )
 }

@@ -1,12 +1,7 @@
 import * as z from 'zod'
 
 export const riskAssessmentSchema = z.object({
-  // Personal Information
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  phone: z.string().min(10, 'Please enter a valid phone number').regex(/^[\d\s\-\+\(\)]+$/, 'Please enter a valid phone number'),
-  
-  // Physical Information (similar to weight loss calculator)
+  // Physical Information (personal info now comes from user account)
   heightFeet: z.number().min(3).max(8).optional(),
   heightInches: z.number().min(0).max(11).optional(),
   heightCm: z.number().min(100).max(250).optional(),

@@ -15,6 +15,7 @@
     "db:studio": "prisma studio"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.31.9",
     "@hookform/resolvers": "^5.2.1",
     "@prisma/client": "^6.14.0",
     "@radix-ui/react-accordion": "^1.2.12",
@@ -72,6 +73,7 @@
     "resend": "^6.0.1",
     "rough-notation": "^0.5.1",
     "sonner": "^2.0.7",
+    "svix": "^1.76.1",
     "tailwind-merge": "^3.3.1",
     "vaul": "^1.1.2",
     "zod": "^3.25.76",

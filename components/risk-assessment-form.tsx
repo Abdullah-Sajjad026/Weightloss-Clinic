@@ -18,16 +18,12 @@ import {
   getProgressPercentage,
   type Question,
 } from "@/lib/risk-assessment-questions";
+import { useUser, SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
-type Step = "personal" | "physical" | string; // string for question IDs
+type Step = "physical" | string; // string for question IDs - removed "personal"
 
 interface FormData {
-  // Personal Information
-  name: string;
-  email: string;
-  phone: string;
-
-  // Physical Information
+  // Physical Information (personal info now comes from user account)
   heightFeet?: number;
   heightInches?: number;
   heightCm?: number;
@@ -42,35 +38,32 @@ interface FormData {
 
 export function RiskAssessmentForm() {
   const router = useRouter();
-  const [currentStep, setCurrentStep] = useState<Step>("personal");
+  const { user, isLoaded } = useUser();
+  const [currentStep, setCurrentStep] = useState<Step>("physical");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    phone: "",
     unitSystem: "imperial",
     responses: {},
   });
 
   // Get current question for progress calculation
   const getCurrentQuestion = (): Question | null => {
-    if (currentStep === "personal" || currentStep === "physical") return null;
+    if (currentStep === "physical") return null;
     return riskAssessmentQuestions.find((q) => q.id === currentStep) || null;
   };
 
   // Calculate overall progress
   const getOverallProgress = (): number => {
-    const totalSteps = 2 + getVisibleQuestions(formData.responses).length; // personal + physical + questions
+    const totalSteps = 1 + getVisibleQuestions(formData.responses).length; // physical + questions (no personal step)
     let currentStepIndex = 0;
 
-    if (currentStep === "personal") currentStepIndex = 0;
-    else if (currentStep === "physical") currentStepIndex = 1;
+    if (currentStep === "physical") currentStepIndex = 0;
     else {
       const visibleQuestions = getVisibleQuestions(formData.responses);
       const questionIndex = visibleQuestions.findIndex(
         (q) => q.id === currentStep
       );
-      currentStepIndex = 2 + (questionIndex >= 0 ? questionIndex : 0);
+      currentStepIndex = 1 + (questionIndex >= 0 ? questionIndex : 0);
     }
 
     return Math.round((currentStepIndex / totalSteps) * 100);
@@ -88,9 +81,7 @@ export function RiskAssessmentForm() {
   }, []);
 
   const goToNextStep = () => {
-    if (currentStep === "personal") {
-      setCurrentStep("physical");
-    } else if (currentStep === "physical") {
+    if (currentStep === "physical") {
       // Go to first question
       const firstQuestionId = getVisibleQuestions(formData.responses)[0]?.id;
       if (firstQuestionId) {
@@ -109,9 +100,7 @@ export function RiskAssessmentForm() {
   };
 
   const goToPreviousStep = () => {
-    if (currentStep === "physical") {
-      setCurrentStep("personal");
-    } else if (currentStep !== "personal") {
+    if (currentStep !== "physical") {
       const prevQuestionId = getPreviousQuestionId(
         currentStep,
         formData.responses
@@ -125,13 +114,7 @@ export function RiskAssessmentForm() {
   };
 
   const canGoNext = (): boolean => {
-    if (currentStep === "personal") {
-      return (
-        formData.name.length >= 2 &&
-        formData.email.includes("@") &&
-        formData.phone.length >= 10
-      );
-    } else if (currentStep === "physical") {
+    if (currentStep === "physical") {
       if (formData.unitSystem === "imperial") {
         return (
           formData.heightFeet !== undefined &&
@@ -188,13 +171,60 @@ export function RiskAssessmentForm() {
   };
 
   const isLastQuestion = (): boolean => {
-    if (currentStep === "personal" || currentStep === "physical") return false;
+    if (currentStep === "physical") return false;
     return getNextQuestionId(currentStep, formData.responses) === null;
   };
 
+  // Show loading state while checking authentication
+  if (!isLoaded) {
+    return (
+      <div className="py-8">
+        <div className="container mx-auto px-4 max-w-2xl">
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="py-8">
-      <div className="container mx-auto px-4 max-w-2xl">
+      <SignedOut>
+        <div className="container mx-auto px-4 max-w-2xl">
+          <div className="text-center py-12">
+            <div className="max-w-md mx-auto">
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <h1 className="text-2xl font-bold text-gray-900 mb-2">Sign In Required</h1>
+                <p className="text-gray-600 mb-6">
+                  Please sign in to complete your medical assessment. This helps us keep track of your progress and provide personalized care.
+                </p>
+              </div>
+              <div className="space-y-3">
+                <SignInButton mode="modal">
+                  <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                    Sign In to Continue
+                  </button>
+                </SignInButton>
+                <p className="text-sm text-gray-500">
+                  Don't have an account? Sign up is quick and free.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SignedOut>
+
+      <SignedIn>
+        <div className="container mx-auto px-4 max-w-2xl">
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
@@ -219,10 +249,8 @@ export function RiskAssessmentForm() {
                 </Button>
               )}
               <CardTitle className="text-xl">
-                {currentStep === "personal" && "Personal Information"}
                 {currentStep === "physical" && "Physical Information"}
-                {currentStep !== "personal" &&
-                  currentStep !== "physical" &&
+                {currentStep !== "physical" &&
                   `Question ${
                     getVisibleQuestions(formData.responses).findIndex(
                       (q) => q.id === currentStep
@@ -233,15 +261,11 @@ export function RiskAssessmentForm() {
           </CardHeader>
 
           <CardContent>
-            {currentStep === "personal" && (
-              <PersonalInfoStep data={formData} onUpdate={updateFormData} />
-            )}
-
             {currentStep === "physical" && (
               <PhysicalInfoStep data={formData} onUpdate={updateFormData} />
             )}
 
-            {currentStep !== "personal" && currentStep !== "physical" && (
+            {currentStep !== "physical" && (
               <QuestionStep
                 question={getCurrentQuestion()!}
                 response={formData.responses[currentStep]}
@@ -252,7 +276,7 @@ export function RiskAssessmentForm() {
             {/* Navigation */}
             <div className="flex justify-between mt-8 pt-6 border-t">
               <div>
-                {currentStep !== "personal" && (
+                {currentStep !== "physical" && (
                   <Button variant="outline" onClick={goToPreviousStep}>
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Previous
@@ -279,7 +303,8 @@ export function RiskAssessmentForm() {
             </div>
           </CardContent>
         </Card>
-      </div>
+        </div>
+      </SignedIn>
     </div>
   );
 }

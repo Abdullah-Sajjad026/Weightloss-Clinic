@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import { CheckoutFormData } from '@/types/cart';
 import { CartItem } from '@/types/cart';
 import { sendOrderConfirmationEmail, OrderEmailData } from '@/lib/email-service';
+import { getOrCreateUser } from '@/lib/user-service';
 
 const prisma = new PrismaClient();
 
@@ -14,6 +15,16 @@ export async function POST(request: NextRequest) {
       customerData: CheckoutFormData;
       cartItems: CartItem[];
     } = body;
+
+    // Get authenticated user (now required)
+    const user = await getOrCreateUser();
+    
+    if (!user) {
+      return NextResponse.json(
+        { error: 'User authentication required' },
+        { status: 401 }
+      );
+    }
 
     // Validate required data
     if (!customerData || !cartItems || cartItems.length === 0) {
@@ -35,13 +46,15 @@ export async function POST(request: NextRequest) {
     // Check if any items require prescription
     const prescriptionRequired = cartItems.some(item => item.isprescription);
 
-    // Create order with items
+    // Create order with items using authenticated user data
     const order = await prisma.order.create({
       data: {
         orderNumber,
-        customerEmail: customerData.email,
-        customerName: `${customerData.firstName} ${customerData.lastName}`,
-        customerPhone: customerData.phone,
+        userId: user.id, // Link to authenticated user
+        customerEmail: user.email,
+        customerName: user.name,
+        customerPhone: user.phone || '',
+
         subtotal,
         taxAmount,
         shippingAmount,
@@ -90,8 +103,8 @@ export async function POST(request: NextRequest) {
     try {
       const emailData: OrderEmailData = {
         orderNumber: order.orderNumber,
-        customerName: `${customerData.firstName} ${customerData.lastName}`,
-        customerEmail: customerData.email,
+        customerName: user.name,
+        customerEmail: user.email,
         totalAmount: order.totalAmount,
         orderItems: order.orderItems.map(item => ({
           productName: item.productName,

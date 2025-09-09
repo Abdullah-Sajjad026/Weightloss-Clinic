@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { CartIcon } from "@/components/cart/CartIcon";
 import { CartSidebar } from "@/components/cart/CartSidebar";
 import { Logo } from "@/components/ui/logo";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const medicationItems = {
   pens: [
@@ -179,6 +180,25 @@ export default function HeaderNav() {
             <Link href="/book-appointment">Book Appointment</Link>
           </Button>
 
+          {/* Authentication */}
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button variant="ghost" size="sm" className="hidden lg:inline-flex text-sm">
+                Sign In
+              </Button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton 
+              appearance={{
+                elements: {
+                  avatarBox: "w-8 h-8"
+                }
+              }}
+              userProfileMode="modal"
+            />
+          </SignedIn>
+
           {/* Shopping Cart */}
           <CartIcon className="text-gray-600 hover:text-gray-900 p-2" />
 
@@ -226,6 +246,26 @@ export default function HeaderNav() {
                         Book Appointment
                       </Link>
                     </Button>
+                    
+                    {/* Mobile Authentication */}
+                    <SignedOut>
+                      <SignInButton mode="modal">
+                        <Button variant="outline" size="sm" className="text-xs px-3 py-2 h-auto">
+                          Sign In
+                        </Button>
+                      </SignInButton>
+                    </SignedOut>
+                    <SignedIn>
+                      <UserButton 
+                        appearance={{
+                          elements: {
+                            avatarBox: "w-6 h-6"
+                          }
+                        }}
+                        userProfileMode="modal"
+                      />
+                    </SignedIn>
+                    
                     <CartIcon className="p-2" />
                   </div>
                 </div>

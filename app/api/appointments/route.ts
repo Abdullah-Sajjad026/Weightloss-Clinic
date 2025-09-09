@@ -4,6 +4,7 @@ import { appointmentSchema } from '@/lib/validations/appointment'
 import { sendAppointmentBookingEmails } from '@/lib/email'
 import { createMeetingForAppointment } from '@/lib/video-meeting-service'
 import { isValidTimezone } from '@/lib/timezone-utils'
+import { getOrCreateUser } from '@/lib/user-service'
 
 export async function GET() {
   try {
@@ -119,12 +120,16 @@ export async function POST(request: NextRequest) {
     })
     console.log('✅ Meeting details created:', meetingDetails)
 
+    // Get authenticated user if available
+    const user = await getOrCreateUser()
+
     console.log('💾 Creating appointment in database...')
     const appointment = await prisma.appointment.create({
       data: {
-        name: 'Patient', // Placeholder - will be updated during assessment
-        email: 'patient@placeholder.com', // Placeholder - will be updated during assessment 
-        phone: 'TBD', // Placeholder - will be updated during assessment
+        userId: user?.id, // Link to user if authenticated
+        name: user?.name || 'Patient', // Use user name if available
+        email: user?.email || 'patient@placeholder.com', // Use user email if available
+        phone: user?.phone || 'TBD', // Use user phone if available
         consultationType: validatedData.consultationType,
         timeSlotId: validatedData.timeSlotId,
         preferredDate: preferredDate,

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { riskAssessmentSchema } from '@/lib/validations/risk-assessment'
+import { getOrCreateUser } from '@/lib/user-service'
 
 export async function POST(request: NextRequest) {
   try {
@@ -11,12 +12,23 @@ export async function POST(request: NextRequest) {
     const validatedData = riskAssessmentSchema.parse(body)
     console.log('Validated data:', JSON.stringify(validatedData, null, 2))
     
+    // Get authenticated user (now required)
+    const user = await getOrCreateUser()
+    
+    if (!user) {
+      return NextResponse.json(
+        { error: 'User authentication required' },
+        { status: 401 }
+      )
+    }
+    
     // Create the risk assessment record
     const riskAssessment = await prisma.riskAssessment.create({
       data: {
-        name: validatedData.name,
-        email: validatedData.email,
-        phone: validatedData.phone,
+        userId: user.id, // Link to authenticated user
+        name: user.name,
+        email: user.email,
+        phone: user.phone || '',
         heightFeet: validatedData.heightFeet,
         heightInches: validatedData.heightInches,
         heightCm: validatedData.heightCm,

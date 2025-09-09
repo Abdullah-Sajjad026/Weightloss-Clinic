@@ -22,19 +22,18 @@ import {
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
 import { CheckoutFormData } from "@/types/cart";
+import { useUser, SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const { user, isLoaded } = useUser();
   const { items, itemCount, totalPrice, clearCart } = useCartStore();
   const [isClient, setIsClient] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Form data - personal info comes from authenticated user account
   const [formData, setFormData] = useState<CheckoutFormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
     shippingStreet: "",
     shippingCity: "",
     shippingPostalCode: "",
@@ -48,6 +47,8 @@ export default function CheckoutPage() {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // No need to populate personal info since it comes from user account
 
   // Redirect if cart is empty
   useEffect(() => {
@@ -66,12 +67,8 @@ export default function CheckoutPage() {
   const validateStep = (step: number) => {
     switch (step) {
       case 1:
-        return (
-          formData.firstName &&
-          formData.lastName &&
-          formData.email &&
-          formData.phone
-        );
+        // Step 1 is just confirming user account info
+        return true;
       case 2:
         return (
           formData.shippingStreet &&
@@ -144,7 +141,7 @@ export default function CheckoutPage() {
     return items.filter((item) => item.isprescription);
   };
 
-  if (!isClient) {
+  if (!isClient || !isLoaded) {
     return (
       <div className="py-12">
         <div className="max-w-4xl mx-auto px-4">
@@ -161,8 +158,49 @@ export default function CheckoutPage() {
     return null; // Will redirect via useEffect
   }
 
+  // Show sign-in requirement for non-authenticated users
+  if (!user) {
+    return (
+      <div className="py-12">
+        <div className="max-w-2xl mx-auto px-4">
+          <div className="text-center">
+            <div className="max-w-md mx-auto">
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CreditCard className="w-8 h-8 text-primary-600" />
+                </div>
+                <h1 className="text-2xl font-bold text-gray-900 mb-2">Sign In to Complete Order</h1>
+                <p className="text-gray-600 mb-6">
+                  Please sign in to complete your order. This helps us process your prescription products safely and keep your order history.
+                </p>
+              </div>
+              <div className="space-y-3">
+                <SignInButton mode="modal">
+                  <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                    Sign In to Complete Order
+                  </button>
+                </SignInButton>
+                <p className="text-sm text-gray-500">
+                  Don't have an account? Sign up is quick and free.
+                </p>
+                <div className="pt-4 border-t">
+                  <Button variant="outline" asChild className="w-full">
+                    <Link href="/cart">
+                      <ArrowLeft className="w-4 h-4 mr-2" />
+                      Back to Cart
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const steps = [
-    { number: 1, title: "Customer Information", icon: User },
+    { number: 1, title: "Account Confirmation", icon: User },
     { number: 2, title: "Shipping Details", icon: MapPin },
     { number: 3, title: "Review & Confirm", icon: FileText },
   ];
@@ -222,67 +260,39 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            {/* Step 1: Customer Information */}
+            {/* Step 1: Account Confirmation */}
             {currentStep === 1 && (
               <Card className="p-6">
-                <div className="flex items-center space-x-3 mb-6">
-                  <User className="w-6 h-6 text-primary-600" />
-                  <h2 className="text-xl font-semibold">
-                    Customer Information
-                  </h2>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center space-x-3">
+                    <User className="w-6 h-6 text-primary-600" />
+                    <h2 className="text-xl font-semibold">
+                      Account Confirmation
+                    </h2>
+                  </div>
+                  {user && (
+                    <div className="text-sm text-green-600">
+                      ✓ Signed in as {user.firstName} {user.lastName}
+                    </div>
+                  )}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="firstName">First Name *</Label>
-                    <Input
-                      id="firstName"
-                      value={formData.firstName}
-                      onChange={(e) =>
-                        handleInputChange("firstName", e.target.value)
-                      }
-                      className="mt-1"
-                    />
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                  <h3 className="font-medium text-green-800 mb-2">Your Account Information</h3>
+                  <div className="text-sm text-green-700 space-y-1">
+                    <p><strong>Name:</strong> {user?.firstName} {user?.lastName}</p>
+                    <p><strong>Email:</strong> {user?.emailAddresses[0]?.emailAddress}</p>
+                    {user?.phoneNumbers[0]?.phoneNumber && (
+                      <p><strong>Phone:</strong> {user.phoneNumbers[0].phoneNumber}</p>
+                    )}
                   </div>
-                  <div>
-                    <Label htmlFor="lastName">Last Name *</Label>
-                    <Input
-                      id="lastName"
-                      value={formData.lastName}
-                      onChange={(e) =>
-                        handleInputChange("lastName", e.target.value)
-                      }
-                      className="mt-1"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email">Email Address *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        handleInputChange("email", e.target.value)
-                      }
-                      className="mt-1"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone">Phone Number *</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) =>
-                        handleInputChange("phone", e.target.value)
-                      }
-                      className="mt-1"
-                    />
-                  </div>
+                  <p className="text-xs text-green-600 mt-2">
+                    This information will be used for your order. Need to update it? Visit your profile settings.
+                  </p>
                 </div>
 
                 <div className="flex justify-end mt-6">
-                  <Button onClick={handleNextStep} disabled={!validateStep(1)}>
+                  <Button onClick={handleNextStep}>
                     Continue to Shipping
                   </Button>
                 </div>
@@ -385,11 +395,11 @@ export default function CheckoutPage() {
                 <div className="mb-6">
                   <h3 className="font-semibold mb-2">Customer Information</h3>
                   <p className="text-sm text-gray-600">
-                    {formData.firstName} {formData.lastName}
+                    {user?.firstName} {user?.lastName}
                     <br />
-                    {formData.email}
+                    {user?.emailAddresses[0]?.emailAddress}
                     <br />
-                    {formData.phone}
+                    {user?.phoneNumbers[0]?.phoneNumber}
                   </p>
                 </div>
 

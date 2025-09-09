@@ -10,6 +10,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique // Clerk's user ID
+  email     String   @unique
+  name      String
+  phone     String?
+  
+  // Profile information
+  dateOfBirth DateTime?
+  gender      String?
+  
+  // Preferences
+  preferredContactMethod String? // email, phone, sms
+  marketingOptIn         Boolean @default(false)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  riskAssessments RiskAssessment[]
+  appointments    Appointment[]
+  orders         Order[]
+
+  @@map("users")
+}
+
 model TimeSlot {
   id        String   @id @default(cuid())
   dayOfWeek Int      // 1 = Monday, 7 = Sunday
@@ -27,6 +53,11 @@ model TimeSlot {
 
 model Appointment {
   id               String            @id @default(cuid())
+  // User relation (optional for backward compatibility)
+  userId          String?           // Optional to support existing appointments
+  user            User?             @relation(fields: [userId], references: [id])
+  
+  // Keep original fields for backward compatibility
   name            String
   email           String
   phone           String
@@ -71,7 +102,11 @@ enum AppointmentStatus {
 model RiskAssessment {
   id        String   @id @default(cuid())
   
-  // Personal Information
+  // User relation (optional for backward compatibility)
+  userId    String?  // Optional to support existing assessments
+  user      User?    @relation(fields: [userId], references: [id])
+  
+  // Keep original fields for backward compatibility
   name      String
   email     String
   phone     String
@@ -113,7 +148,11 @@ model Order {
   id                String       @id @default(cuid())
   orderNumber       String       @unique // NWLC-XXXXXX format
   
-  // Customer Information
+  // User relation (optional for backward compatibility)
+  userId            String?      // Optional to support existing orders
+  user              User?        @relation(fields: [userId], references: [id])
+  
+  // Keep original fields for backward compatibility
   customerEmail     String
   customerName      String
   customerPhone     String?
