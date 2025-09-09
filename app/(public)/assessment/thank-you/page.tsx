@@ -98,20 +98,20 @@ export default function ThankYouPage() {
                 <Phone className="h-4 w-4 text-primary-600" />
                 <span className="font-medium">Phone:</span>
                 <a
-                  href="tel:01234567890"
+                  href="tel:01604250734"
                   className="text-primary-600 hover:underline"
                 >
-                  01234 567 890
+                  01604 250 734
                 </a>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Mail className="h-4 w-4 text-primary-600" />
                 <span className="font-medium">Email:</span>
                 <a
-                  href="mailto:contact@northamptonclinic.co.uk"
+                  href="mailto:regent.pharmacy@nhs.net"
                   className="text-primary-600 hover:underline"
                 >
-                  contact@northamptonclinic.co.uk
+                  regent.pharmacy@nhs.net
                 </a>
               </div>
             </div>

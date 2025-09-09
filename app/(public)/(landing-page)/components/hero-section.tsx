@@ -25,12 +25,10 @@ export default function HeroSection() {
               <div className="w-full max-w-[600px] flex-col items-center gap-4 p-4 sm:gap-8">
                 <div className="prose block w-full text-center text-balance xl:text-left">
                   <h2 className="mb-6 text-4xl font-semibold tracking-tight text-white text-shadow-md sm:text-5xl 2xl:text-6xl">
-                    Achieve 26% weight loss without surgery
+                    Transform Your Life with Medical Weight Loss
                   </h2>
                   <p className="text-primary-foreground text-base text-shadow-sm sm:text-lg md:text-xl/8">
-                    People in Northampton are losing around 26% of their body
-                    weight with our breakthrough weight loss medication. Enter
-                    your height and weight and find out how much you could lose.
+                    Join hundreds of Northampton residents who have successfully lost weight with our medically-supervised program. Our pharmacy-led approach combines proven treatments with ongoing support to help you reach your goals.
                   </p>
                 </div>
 

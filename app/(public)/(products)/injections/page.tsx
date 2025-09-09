@@ -9,7 +9,7 @@ import { injectionFAQs } from "@/app/(public)/(products)/data/injection-faqs";
 import { InjectionsComparisonSection } from "@/app/(public)/(products)/components/injections-comparison-section";
 import YourJourneySection from "@/app/(public)/(landing-page)/components/your-journey-section";
 import CLinicComparisonSection from "@/app/(public)/(landing-page)/components/clinic-comparison-section";
-import TestimonialsSection from "@/app/(public)/(landing-page)/components/testimonials-section";
+import GoogleReviewsSection from "@/app/(public)/(landing-page)/components/google-reviews-section";
 import SupportSection from "@/app/(public)/(landing-page)/components/support-section";
 // import PublicPresenceSection from "@/app/(public)/(landing-page)/components/public-presence-section";
 import MedicallyReviewedSection from "@/app/(public)/(landing-page)/components/medically-reviewed-section";
@@ -89,8 +89,8 @@ export default function InjectionsPage() {
       {/* Clinic Comparison Section */}
       <CLinicComparisonSection />
 
-      {/* Testimonials Section */}
-      <TestimonialsSection />
+      {/* Google Reviews Section */}
+      <GoogleReviewsSection />
 
       {/* Support Section */}
       <SupportSection />

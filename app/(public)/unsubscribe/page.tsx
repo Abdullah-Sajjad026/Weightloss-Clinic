@@ -123,7 +123,7 @@ export default function UnsubscribePage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="your.email@example.com"
+                placeholder="your.email@nhs.net"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

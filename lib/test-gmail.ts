@@ -64,6 +64,6 @@ export async function testGmailSetup(testEmail: string) {
 
 // Quick test function for development
 export async function quickGmailTest() {
-  const adminEmail = process.env.ADMIN_EMAIL || process.env.GMAIL_USER || 'test@example.com'
+  const adminEmail = process.env.ADMIN_EMAIL || process.env.GMAIL_USER || 'regent.pharmacy@nhs.net'
   return await testGmailSetup(adminEmail)
 }

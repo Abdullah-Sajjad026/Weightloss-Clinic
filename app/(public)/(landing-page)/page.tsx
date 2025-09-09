@@ -6,7 +6,7 @@ import YourJourneySection from "./components/your-journey-section";
 // import PublicPresenceSection from "./components/public-presence-section";
 import SupportSection from "./components/support-section";
 import CLinicComparisonSection from "./components/clinic-comparison-section";
-import TestimonialsSection from "./components/testimonials-section";
+import GoogleReviewsSection from "./components/google-reviews-section";
 // import MedicallyReviewedSection from "./components/medically-reviewed-section";
 import FAQsSection from "./components/faqs-section";
 import TrustedClinicSection from "./components/trusted-clinic-section";
@@ -32,7 +32,7 @@ export default function Home() {
       <SupportSection />
       {/* <PublicPresenceSection /> */}
       {/* <WeightlossExpertsSection /> */}
-      <TestimonialsSection />
+      <GoogleReviewsSection />
       <TrustedClinicSection />
       <AppointmentCTASection />
       <FAQsSection />

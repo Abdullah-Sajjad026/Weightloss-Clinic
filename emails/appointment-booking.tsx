@@ -270,7 +270,7 @@ export function AppointmentBookingEmail({ appointment }: AppointmentBookingEmail
             <Text style={{ color: '#6b7280', fontSize: '14px', textAlign: 'center' }}>
               If you have any questions or need to make changes, please contact us at:
               <br />
-              Phone: 01604 123456 | Email: info@northamptonclinic.com
+              Phone: 01604 250734 | Email: regent.pharmacy@nhs.net
             </Text>
           </Section>
         </Container>

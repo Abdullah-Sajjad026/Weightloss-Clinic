@@ -78,7 +78,7 @@ const chatMessages = [
   },
   {
     id: 9,
-    name: "Jeff (Medicspot Team)",
+    name: "Sarah (Regent Pharmacy Team)",
     color: "#5061f0",
     message: "Hi! Try smaller, more frequent meals and stay hydrated. Ginger tea can help too. If it persists, send me a message and our clinical team can support you 👍",
     time: "10:39 pm",
@@ -214,19 +214,19 @@ export default function SupportSection() {
         {/* Content */}
         <div className="flex max-w-lg flex-col gap-6">
           <div className="flex items-center gap-2 text-3xl font-semibold text-balance sm:text-4xl">
-            We're all here to support you
+            Your dedicated care team
             <Heart className="text-primary-400 size-8 fill-current" />
           </div>
           
           <div className="flex flex-col gap-4 text-gray-600 lg:text-lg">
             <p>
-              You will be invited to join our active WhatsApp community filled with people on the same journey as you.
+              Our experienced pharmacy professionals are committed to your success. We provide personalized medication management and ongoing clinical support.
             </p>
             <p>
-              Share your wins, get advice when you're stuck, and find motivation when you need it.
+              Every patient receives regular check-ins, progress monitoring, and adjustments to ensure optimal results and safety.
             </p>
             <p>
-              Our health coaches jump in with guidance, but often it's hearing from someone who's been there that makes all the difference.
+              With Regent Pharmacy's expertise in weight management, you have access to professional guidance at every step of your transformation journey.
             </p>
           </div>
         </div>

@@ -3,8 +3,8 @@ import Link from "next/link"
 export default function WeightlossExpertsSection() {
   const treatments = [
     {
-      title: "Breakthrough medication", 
-      description: "Our weight loss medication is effective at helping you lose weight by making you feel less hungry, so you simply want to eat less.",
+      title: "Weight loss medication", 
+      description: "Prescription medications that help reduce appetite and support weight loss when combined with lifestyle changes, dispensed under professional supervision.",
       href: "/injections"
     },
     {
@@ -32,15 +32,15 @@ export default function WeightlossExpertsSection() {
   return (
     <div className="ring-zinc-500/20 bg-transparent items-center text-center rounded-5xl flex w-full flex-col px-4 py-6 lg:p-10 overflow-hidden">
       <h2 className="text-primary-600 text-center text-base/7 font-semibold">
-        Northampton weight loss programmes
+        Weight management solutions
       </h2>
       
       <p className="mx-auto mt-2 max-w-lg text-center text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl">
-        We're experts in weight loss
+        Professional weight loss services
       </p>
       
       <p className="mt-4 mb-6 max-w-(--breakpoint-sm) lg:text-lg prose text-balance">
-        Our Northampton weight loss treatment options complement a calorie-reduced, balanced diet and regular exercise to help you lose weight and keep it off.
+        Regent Pharmacy offers various medically-supervised weight management options designed to work alongside healthy eating and regular physical activity for sustainable results.
       </p>
 
       <div className="grid w-full gap-6 lg:grid-cols-3">
@@ -59,12 +59,12 @@ export default function WeightlossExpertsSection() {
       </div>
 
       <div className="mt-8 flex flex-col gap-3 text-lg text-zinc-900 lg:flex-row">
-        <div>Not sure which is right for you?</div>
+        <div>Need guidance choosing the right option?</div>
         <Link 
           href="/assessment" 
           className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
         >
-          Take our free quiz
+          Start your assessment
         </Link>
       </div>
     </div>

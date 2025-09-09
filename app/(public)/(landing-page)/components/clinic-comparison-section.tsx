@@ -17,27 +17,27 @@ const comparisonFeatures = [
     pharmacy: "£190",
   },
   {
-    feature: "Supportive WhatsApp community",
+    feature: "Regular progress monitoring",
     clinic: "check",
     pharmacy: "x",
   },
   {
-    feature: "Personal health coach",
+    feature: "Ongoing clinical consultation",
     clinic: "check",
     pharmacy: "x",
   },
   {
-    feature: "Behaviour change toolkit",
+    feature: "Personalized treatment plans",
     clinic: "check",
     pharmacy: "x",
   },
   {
-    feature: "Medication guarantee",
+    feature: "Medication management support",
     clinic: "check",
     pharmacy: "x",
   },
   {
-    feature: "Free online yoga class (Weekly)",
+    feature: "Lifestyle guidance and support",
     clinic: "check",
     pharmacy: "x",
   },
@@ -52,13 +52,10 @@ export default function CLinicComparisonSection() {
           Comparison
         </h2>
         <p className="mx-auto mt-2 max-w-lg text-center text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl">
-          How we're different
+          Why choose us for your weight loss journey
         </p>
         <p className="mt-4 mb-6 max-w-(--breakpoint-sm) lg:text-lg prose text-balance">
-          Northampton Weightloss (Powered by Regent Pharmacy) offers more than just weight loss
-          medication. We've partnered with Medicspot to offer a science-backed
-          weight loss programme. See how we compare to a typical high street
-          pharmacy.
+          Regent Pharmacy's weight management service goes beyond dispensing medication. Our comprehensive approach includes professional clinical support, ongoing monitoring, and personalized care that sets us apart from standard pharmacy services.
         </p>
       </div>
 

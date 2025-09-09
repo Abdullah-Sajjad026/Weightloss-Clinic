@@ -8,10 +8,10 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 const testimonials = [
   {
     id: 1,
-    name: "Amanda",
-    period: "after Month 5",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748539985/testimonials/thumbnail/Amanda_-_after_Month_5-esv2-90p-bg-10p.avif",
-    videoUrl: "#", // Placeholder for actual video
+    name: "Sarah M.",
+    period: "after 5 months",
+    initials: "SM",
+    color: "bg-blue-500",
     quote: "I've lost 3 stone in 5 months! The support has been incredible.",
     progress: "Lost 42 lbs"
   },
@@ -19,82 +19,46 @@ const testimonials = [
     id: 2,
     name: "Anonymous",
     period: "after 3 months",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748539986/testimonials/thumbnail/Anonymous5_-_after_3_months_-esv2-90p-bg-10p.avif",
-    videoUrl: "#",
+    initials: "A",
+    color: "bg-green-500",
     quote: "The medication really helped curb my appetite. Amazing results!",
     progress: "Lost 28 lbs"
   },
   {
     id: 3,
-    name: "Natasha Love",
+    name: "Emma R.",
     period: "after 3 months",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748540002/testimonials/thumbnail/Natasha_Love_-_after_3_months-esv2-90p-bg-10p.avif",
-    videoUrl: "#",
+    initials: "ER",
+    color: "bg-purple-500",
     quote: "I feel like a completely different person. So much more confidence!",
     progress: "Lost 35 lbs"
   },
   {
     id: 4,
-    name: "Anonymous",
+    name: "Michael T.",
     period: "after 3 months",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748539990/testimonials/thumbnail/Anonymous4_-_after_3_months-esv2-90p-bg-10p.avif",
-    videoUrl: "#",
-    quote: "The WhatsApp support group kept me motivated every day.",
+    initials: "MT",
+    color: "bg-orange-500",
+    quote: "The support group kept me motivated every day.",
     progress: "Lost 31 lbs"
   },
   {
     id: 5,
-    name: "Celie Williams",
-    period: "after 1.75 months",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748539996/testimonials/thumbnail/Celie_Williams_-_after_1.75_months-esv2-90p-bg-10p.avif",
-    videoUrl: "#",
+    name: "Lisa K.",
+    period: "after 2 months",
+    initials: "LK",
+    color: "bg-pink-500",
     quote: "Even in less than 2 months, the changes are remarkable!",
     progress: "Lost 18 lbs"
   },
   {
     id: 6,
-    name: "Debbie Small",
+    name: "David P.",
     period: "after 1 month",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748539999/testimonials/thumbnail/Debbie_Small_-_after_1_month-esv2-90p-bg-10p.avif",
-    videoUrl: "#",
+    initials: "DP",
+    color: "bg-indigo-500",
     quote: "Just one month in and I can already see the difference!",
     progress: "Lost 12 lbs"
-  },
-  {
-    id: 7,
-    name: "Kara-Leigh Jonson",
-    period: "after 1 week",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748540000/testimonials/thumbnail/Kara-Leigh_Jonson_-_after_1_week-esv2-90p-bg-10p.avif",
-    videoUrl: "#",
-    quote: "Even after just one week, I'm feeling less hungry and more energetic!",
-    progress: "Lost 4 lbs"
-  },
-  {
-    id: 8,
-    name: "Brian Mason",
-    period: "after 1.5 months",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748540008/testimonials/thumbnail/Brian_Mason_-_after_1.5_month-esv2-90p-bg-10p.avif",
-    videoUrl: "#",
-    quote: "As a man, I was skeptical, but the results speak for themselves!",
-    progress: "Lost 22 lbs"
-  },
-  {
-    id: 9,
-    name: "Chelsea",
-    period: "after 2.5 months",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748539994/testimonials/thumbnail/Chelsea_-_2.5_months-esv2-90p-bg-10p.avif",
-    videoUrl: "#",
-    quote: "The coaching sessions really helped me change my relationship with food.",
-    progress: "Lost 26 lbs"
-  },
-  {
-    id: 10,
-    name: "Nadine Ashkuri",
-    period: "after 3 months",
-    thumbnail: "https://res.cloudinary.com/medicspot/image/upload/v1748540004/testimonials/thumbnail/Nadine_Ashkuri_-_After_3_months-esv2-90p-bg-10p.avif",
-    videoUrl: "#",
-    quote: "Three months ago I couldn't have imagined feeling this good about myself.",
-    progress: "Lost 33 lbs"
   }
 ]
 
@@ -105,7 +69,7 @@ export default function TestimonialsSection() {
     <div className="relative w-full overflow-hidden">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-0 py-6 text-center">
         {/* Header */}
-        <div className="z-20 mx-auto max-w-3xl px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-0 py-6 text-center">
           <h2 className="text-primary-600 text-center text-base/7 font-semibold">
             Testimonials
           </h2>
@@ -113,7 +77,7 @@ export default function TestimonialsSection() {
             Real people, real results
           </p>
           <p className="mt-4 mb-6 max-w-(--breakpoint-sm) lg:text-lg prose text-balance">
-            See what people on the Medicspot weight loss programme have to say
+            See what people on the Regent Pharmacy weight loss programme have to say
           </p>
         </div>
 
@@ -124,103 +88,69 @@ export default function TestimonialsSection() {
             pauseOnHover
           >
             {testimonials.map((testimonial) => (
-              <Dialog key={testimonial.id}>
-                <DialogTrigger asChild>
-                  <div className="cursor-pointer group">
-                    <div
-                      className="relative flex aspect-[9/16] min-w-46 items-center justify-center overflow-hidden rounded-3xl bg-gray-500 bg-cover bg-center shadow-xl ring ring-zinc-900/10 transition-transform hover:scale-105"
-                      style={{
-                        backgroundImage: `url("${testimonial.thumbnail}")`
-                      }}
-                    >
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="absolute inset-0 h-full w-full rounded-3xl inset-ring inset-ring-white/30"></div>
-                        
-                        {/* Play Button Overlay */}
-                        <div className="bg-black/50 rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <Play className="w-6 h-6 text-white fill-white" />
-                        </div>
-                      </div>
-
-                      {/* Name Label */}
-                      <div className="absolute bottom-3 left-3 right-3">
-                        <div className="bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1">
-                          <p className="text-xs font-medium text-gray-900 truncate">
-                            {testimonial.name}
-                          </p>
-                          <p className="text-xs text-gray-600">
-                            {testimonial.period}
-                          </p>
-                        </div>
-                      </div>
+              <div
+                key={testimonial.id}
+                className="group relative cursor-pointer"
+                onClick={() => setSelectedTestimonial(testimonial)}
+              >
+                <div className="relative aspect-[3/4] w-44 overflow-hidden rounded-3xl shadow-xl ring-1 ring-gray-900/10 transition-all duration-300 hover:scale-105 hover:shadow-2xl md:w-52">
+                  {/* Avatar placeholder instead of image */}
+                  <div className={`w-full h-full flex items-center justify-center text-white text-4xl font-bold ${testimonial.color}`}>
+                    {testimonial.initials}
+                  </div>
+                  
+                  {/* Play button overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <div className="rounded-full bg-white/90 p-3 shadow-lg backdrop-blur-sm">
+                      <Play className="h-6 w-6 text-gray-900" />
                     </div>
                   </div>
-                </DialogTrigger>
 
-                <DialogContent className="max-w-4xl max-h-[90vh] p-0 overflow-hidden">
-                  <div className="relative bg-black">
-                    {/* Video placeholder - in a real implementation, this would be a video player */}
-                    <div 
-                      className="aspect-video bg-cover bg-center flex items-center justify-center"
-                      style={{
-                        backgroundImage: `url("${testimonial.thumbnail}")`
-                      }}
-                    >
-                      <div className="bg-black/50 rounded-full p-4">
-                        <Play className="w-12 h-12 text-white fill-white" />
-                      </div>
-                    </div>
-
-                    {/* Testimonial Details */}
-                    <div className="p-6 bg-white">
-                      <div className="text-center">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                          {testimonial.name}
-                        </h3>
-                        <p className="text-primary-600 font-semibold mb-4">
-                          {testimonial.progress}
-                        </p>
-                        <blockquote className="text-lg text-gray-700 italic mb-4">
-                          "{testimonial.quote}"
-                        </blockquote>
-                        <p className="text-sm text-gray-500">
-                          Progress {testimonial.period}
-                        </p>
-                      </div>
+                  {/* Gradient overlay for text */}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                    <div className="p-4 text-white">
+                      <p className="text-lg font-semibold">{testimonial.name}</p>
+                      <p className="text-sm opacity-90">{testimonial.period}</p>
+                      <p className="mt-1 text-xs text-green-300 font-medium">{testimonial.progress}</p>
                     </div>
                   </div>
-                </DialogContent>
-              </Dialog>
+                </div>
+              </div>
             ))}
           </Marquee>
-
-          {/* Left fade gradient */}
-          <div 
-            className="absolute inset-y-0 left-0 w-[20%] pointer-events-none z-10"
-            style={{
-              background: 'linear-gradient(to right, rgb(249, 245, 255) 0%, rgba(249, 245, 255, 0) 100%)'
-            }}
-          >
-            {/* Progressive blur layers */}
-            <div className="absolute inset-0" style={{ mask: 'linear-gradient(to right, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 16.6667%)', backdropFilter: 'blur(10px)' }}></div>
-            <div className="absolute inset-0" style={{ mask: 'linear-gradient(to right, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 16.6667%, rgba(0, 0, 0, 0) 33.3333%)', backdropFilter: 'blur(5.4928px)' }}></div>
-            <div className="absolute inset-0" style={{ mask: 'linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 16.6667%, rgb(0, 0, 0) 33.3333%, rgba(0, 0, 0, 0) 50%)', backdropFilter: 'blur(3.01709px)' }}></div>
-          </div>
-
-          {/* Right fade gradient */}
-          <div 
-            className="absolute inset-y-0 right-0 w-[20%] pointer-events-none z-10"
-            style={{
-              background: 'linear-gradient(to left, rgb(249, 245, 255) 0%, rgba(249, 245, 255, 0) 100%)'
-            }}
-          >
-            {/* Progressive blur layers */}
-            <div className="absolute inset-0" style={{ mask: 'linear-gradient(to left, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 16.6667%)', backdropFilter: 'blur(10px)' }}></div>
-            <div className="absolute inset-0" style={{ mask: 'linear-gradient(to left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 16.6667%, rgba(0, 0, 0, 0) 33.3333%)', backdropFilter: 'blur(5.4928px)' }}></div>
-            <div className="absolute inset-0" style={{ mask: 'linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 16.6667%, rgb(0, 0, 0) 33.3333%, rgba(0, 0, 0, 0) 50%)', backdropFilter: 'blur(3.01709px)' }}></div>
-          </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <Dialog open={!!selectedTestimonial} onOpenChange={() => setSelectedTestimonial(null)}>
+        <DialogContent className="max-w-3xl">
+          {selectedTestimonial && (
+            <div className="space-y-4">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-xl font-semibold">{selectedTestimonial.name}</h3>
+                  <p className="text-gray-600">{selectedTestimonial.period}</p>
+                  <p className="text-green-600 font-medium">{selectedTestimonial.progress}</p>
+                </div>
+                <button
+                  onClick={() => setSelectedTestimonial(null)}
+                  className="rounded-full p-2 hover:bg-gray-100"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              
+              {/* Placeholder for video content */}
+              <div className="aspect-video rounded-lg bg-gray-100 flex items-center justify-center">
+                <div className="text-center text-gray-500">
+                  <Play className="h-12 w-12 mx-auto mb-2" />
+                  <p>"{selectedTestimonial.quote}"</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

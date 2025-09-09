@@ -77,8 +77,8 @@ export const generateJitsiMeetingInstructions = (meetingDetails: MeetingDetails)
 • Works on any device (computer, phone, tablet)
 
 **Need help?**
-• Call our clinic at +44 1234 567890
-• Email us at support@northamptonclinic.co.uk
+• Call our clinic at +44 1604 250734
+• Email us at regent.pharmacy@nhs.net
 • Technical issues? Try refreshing the page or using a different browser
 
 **Privacy Notice:**

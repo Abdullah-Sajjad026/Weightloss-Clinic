@@ -18,17 +18,13 @@ export default function TrustedClinicSection() {
     <section className="mx-auto px-4 max-w-7xl">
       <div className="flex flex-col items-center justify-center text-center">
         <h2 className="text-primary-600 text-center text-base/7 font-semibold">
-          Trusted weight loss clinic in Northampton
+          Professional weight management in Northampton
         </h2>
         <h2 className="mx-auto mt-2 max-w-lg text-center text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl">
-          Helping people across Northampton lose weight
+          Supporting your weight loss goals
         </h2>
         <p className="mt-4 mb-6 max-w-2xl text-balance lg:text-lg text-gray-700">
-          Northampton Weightloss (Powered by Regent Pharmacy) is proud to be leading a weight loss
-          revolution in Northampton. We specialise in medically supervised
-          weight loss that focuses on sustainable health, not just short-term
-          results. People all across Northampton from Abington to Weston Favell
-          are seeing results with our weight management service.
+          Regent Pharmacy provides comprehensive weight management services throughout Northampton. Our pharmacist-led approach focuses on safe, effective, and sustainable weight loss solutions. We serve patients from Weston Favell to the town center, offering professional care and ongoing support.
         </p>
 
         {/* Location Tags */}

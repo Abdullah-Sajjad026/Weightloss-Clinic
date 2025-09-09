@@ -179,8 +179,8 @@ export const generateMeetingInstructions = (meetingDetails: MeetingDetails): str
 3. If prompted, allow camera and microphone access
 
 **Need help?**
-• Call our clinic at +44 1234 567890
-• Email us at support@northamptonclinic.co.uk
+• Call our clinic at +44 1604 250734
+• Email us at regent.pharmacy@nhs.net
 
 **Privacy Notice:**
 Your consultation is confidential and secure. Please join from a private location.

@@ -136,14 +136,14 @@ export default function YourJourneySection() {
       title: "Today",
       badge: "Quick and easy",
       points: [
-        "Take our simple online assessment to see if you're eligible.",
-        "If eligible, your medication will arrive swiftly at your door.",
-        "Over 84% of our members lose weight in their first month.",
+        "Complete a comprehensive health assessment with our pharmacy team.",
+        "Start your medically-supervised weight loss program with home delivery.",
+        "Most patients see initial results within the first few weeks of treatment.",
       ],
       testimonial: {
-        quote: "The only regret I have is not doing it sooner.",
-        name: "Natasha Love",
-        detail: "Lost 2st 4lb in 3 months",
+        quote: "Starting my weight loss journey was the best decision I've made.",
+        name: "Sarah M.",
+        detail: "Northampton resident, lost 32 lbs in 3 months",
       },
     },
     {
@@ -151,15 +151,15 @@ export default function YourJourneySection() {
       title: "1-6 Months",
       badge: "Lose up to 14% body weight",
       points: [
-        "Work with your personal health coach to reframe your relationship with food.",
-        "Experience improved energy levels, sleep quality and self confidence.",
-        "Our members lose 2st 3lb on average by the end of month 6.",
+        "Receive ongoing support from our pharmacy team to develop healthy habits.",
+        "Experience improved energy levels, better sleep, and increased confidence.",
+        "Most patients achieve significant weight reduction within the first 6 months.",
       ],
       testimonial: {
         quote:
-          "I've been able to control all my eating, the food noise has been non-existent.",
-        name: "Amanda",
-        detail: "15 weeks into the Medicspot programme",
+          "My relationship with food has completely changed. I feel in control for the first time.",
+        name: "Emma R.",
+        detail: "15 weeks into Regent Pharmacy's weight management program",
       },
     },
     {
@@ -167,14 +167,14 @@ export default function YourJourneySection() {
       title: "6-12 Months",
       badge: "Build habits for life",
       points: [
-        "Lose up to 26% of your body weight.",
-        "Our behaviour change toolkit gives you everything you need to maintain your new healthy lifestyle, no matter what life throws at you.",
+        "Achieve long-term weight management goals with medical supervision.",
+        "Learn sustainable lifestyle changes that last beyond medication treatment.",
       ],
       testimonial: {
         quote:
-          "Down to 68.3kg from 100.4kg! Complete lifestyle change, ran a 10k this week and signed up to the Manchester marathon for next year!",
-        name: "Medicspot Member",
-        detail: "Shared in our community WhatsApp group",
+          "I've transformed my entire lifestyle. Lost over 70 lbs and now I'm training for my first marathon!",
+        name: "David P.",
+        detail: "Long-term patient success story",
       },
       hideAvatar: true,
     },

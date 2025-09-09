@@ -46,8 +46,8 @@ export function WhyChooseSection() {
               />
               <div className="absolute bottom-2 left-2 right-2 bg-white/90 backdrop-blur-sm rounded-lg p-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-medium text-gray-700">FDA Approved</span>
-                  <span className="text-xs font-bold text-primary-600">Up to 26% loss</span>
+                  <span className="text-xs font-medium text-gray-700">MHRA Approved</span>
+                  <span className="text-xs font-bold text-primary-600">Clinically Proven</span>
                 </div>
               </div>
             </div>

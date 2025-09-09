@@ -171,7 +171,7 @@ export default function OrderTrackingPage() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="your.email@example.com"
+                  placeholder="your.email@nhs.net"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="mt-1"

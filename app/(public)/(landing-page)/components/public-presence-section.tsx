@@ -68,7 +68,7 @@ export default function PublicPresenceSection() {
   return (
     <div className="w-full max-w-7xl py-6">
       <p className="text-primary-600 text-center text-base/7 font-semibold mb-6">
-        You might have seen Medicspot in
+        You might have seen Regent Pharmacy in
       </p>
 
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-6">
