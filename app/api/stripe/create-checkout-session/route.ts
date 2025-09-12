@@ -4,9 +4,17 @@ import { prisma } from '@/lib/prisma'
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('Stripe configured:', !!stripe)
+    console.log('Environment check:', {
+      hasSecretKey: !!process.env.STRIPE_SECRET_KEY,
+      hasPublicKey: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+      hasAppUrl: !!process.env.NEXT_PUBLIC_APP_URL
+    })
+
     if (!stripe) {
+      console.error('Stripe not configured - missing STRIPE_SECRET_KEY')
       return NextResponse.json(
-        { error: 'Stripe not configured' },
+        { error: 'Stripe not configured - missing STRIPE_SECRET_KEY' },
         { status: 500 }
       )
     }
