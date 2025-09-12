@@ -128,6 +128,12 @@ model Order {
   status            OrderStatus  @default(PENDING)
   paymentStatus     PaymentStatus @default(PENDING)
   
+  // Stripe Payment Information
+  stripeSessionId       String?    // Stripe Checkout Session ID
+  stripePaymentIntentId String?    // Stripe Payment Intent ID
+  stripeCustomerId      String?    // Stripe Customer ID for future payments
+  paidAt                DateTime?  // When payment was completed
+  
   // Prescription Requirements
   prescriptionRequired Boolean   @default(false)
   prescriptionUploaded Boolean   @default(false)
@@ -217,7 +223,10 @@ model OrderStatusHistory {
 }
 
 enum OrderStatus {
-  PENDING           // Order placed, awaiting medical review
+  PENDING           // Order placed, awaiting payment
+  PAYMENT_PENDING   // Payment in progress
+  PAID              // Payment completed
+  PAYMENT_FAILED    // Payment failed
   MEDICAL_REVIEW    // Under medical review
   APPROVED          // Medically approved, ready for processing
   REJECTED          // Medically rejected
@@ -230,8 +239,10 @@ enum OrderStatus {
 
 enum PaymentStatus {
   PENDING
-  PAID
+  PROCESSING
+  COMPLETED
   FAILED
+  CANCELLED
   REFUNDED
   PARTIALLY_REFUNDED
 }

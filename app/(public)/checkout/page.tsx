@@ -101,8 +101,8 @@ export default function CheckoutPage() {
     setIsSubmitting(true);
 
     try {
-      // Create order via API
-      const response = await fetch('/api/orders', {
+      // Step 1: Create order (with PENDING status)
+      const orderResponse = await fetch('/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -113,28 +113,43 @@ export default function CheckoutPage() {
         }),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
+      if (!orderResponse.ok) {
+        const errorData = await orderResponse.json();
         throw new Error(errorData.error || 'Failed to create order');
       }
 
-      const { order } = await response.json();
+      const { order } = await orderResponse.json();
 
-      // Store order details for confirmation page
-      localStorage.setItem('lastOrder', JSON.stringify({
-        orderNumber: order.orderNumber,
-        totalAmount: order.totalAmount,
-        prescriptionRequired: order.prescriptionRequired,
-      }));
+      // Step 2: Create Stripe checkout session
+      const checkoutResponse = await fetch('/api/stripe/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          orderId: order.id,
+        }),
+      });
 
-      // Clear cart and redirect to confirmation
-      clearCart();
-      router.push("/checkout/confirmation");
+      if (!checkoutResponse.ok) {
+        const errorData = await checkoutResponse.json();
+        throw new Error(errorData.error || 'Failed to create payment session');
+      }
+
+      const { url } = await checkoutResponse.json();
+
+      // Step 3: Redirect to Stripe Checkout
+      if (url) {
+        // Clear cart before redirecting to payment
+        clearCart();
+        window.location.href = url;
+      } else {
+        throw new Error('No payment URL returned');
+      }
 
     } catch (error) {
-      console.error('Order submission error:', error);
-      // TODO: Show error message to user
-      alert('Failed to submit order. Please try again.');
+      console.error('Checkout error:', error);
+      alert('Failed to process checkout. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -458,7 +473,7 @@ export default function CheckoutPage() {
                     disabled={!validateStep(3) || isSubmitting}
                     className="bg-green-600 hover:bg-green-700"
                   >
-                    {isSubmitting ? "Processing..." : "Place Order"}
+                    {isSubmitting ? "Processing..." : "Proceed to Payment"}
                   </Button>
                 </div>
               </Card>
