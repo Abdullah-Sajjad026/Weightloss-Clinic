@@ -45,6 +45,10 @@ export async function POST(request: NextRequest) {
         await handlePaymentIntentFailed(event.data.object)
         break
       
+      case 'checkout.session.expired':
+        await handleCheckoutSessionExpired(event.data.object)
+        break
+      
       default:
         console.log(`Unhandled event type: ${event.type}`)
     }
@@ -117,5 +121,30 @@ async function handlePaymentIntentFailed(paymentIntent: any) {
     }
   } catch (error) {
     console.error('Error handling failed payment:', error)
+  }
+}
+
+async function handleCheckoutSessionExpired(session: any) {
+  const orderId = session.metadata?.orderId
+  console.log('Checkout session expired or cancelled:', session.id, 'Order ID:', orderId)
+  
+  if (!orderId) {
+    console.error('No order ID found in expired session metadata')
+    return
+  }
+
+  try {
+    // Update order status to cancelled
+    await prisma.order.update({
+      where: { id: orderId },
+      data: {
+        status: 'PAYMENT_FAILED',
+        paymentStatus: 'CANCELLED',
+      },
+    })
+    
+    console.log(`Order ${orderId} marked as cancelled due to expired checkout session`)
+  } catch (error) {
+    console.error('Error handling expired checkout session:', error)
   }
 }

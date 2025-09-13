@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -25,10 +25,12 @@ import { CheckoutFormData } from "@/types/cart";
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { items, itemCount, totalPrice, clearCart } = useCartStore();
   const [isClient, setIsClient] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showCancelledMessage, setShowCancelledMessage] = useState(false);
 
   const [formData, setFormData] = useState<CheckoutFormData>({
     firstName: "",
@@ -47,7 +49,14 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
+    
+    // Check if user was redirected from a cancelled payment
+    if (searchParams.get('cancelled') === 'true') {
+      setShowCancelledMessage(true);
+      // Hide the message after 5 seconds
+      setTimeout(() => setShowCancelledMessage(false), 5000);
+    }
+  }, [searchParams]);
 
   // Redirect if cart is empty
   useEffect(() => {
@@ -199,6 +208,27 @@ export default function CheckoutPage() {
             </Link>
           </Button>
         </div>
+
+        {/* Cancellation Message */}
+        {showCancelledMessage && (
+          <div className="mb-6">
+            <Card className="p-4 border-amber-200 bg-amber-50">
+              <div className="flex items-start space-x-2">
+                <div className="w-5 h-5 rounded-full bg-amber-500 text-white text-xs flex items-center justify-center mt-0.5">
+                  !
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-amber-800 mb-1">
+                    Payment Cancelled
+                  </h3>
+                  <p className="text-sm text-amber-700">
+                    Your payment was cancelled. You can continue with your order or update your details below.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        )}
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
