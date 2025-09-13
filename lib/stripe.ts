@@ -32,6 +32,6 @@ if (!process.env.STRIPE_WEBHOOK_SECRET && process.env.NODE_ENV !== 'production')
 }
 
 export const stripe = secretKey ? new StripeServer(secretKey, {
-  apiVersion: '2024-11-20.acacia',
+  apiVersion: '2025-08-27.basil',
   typescript: true,
 }) : null
