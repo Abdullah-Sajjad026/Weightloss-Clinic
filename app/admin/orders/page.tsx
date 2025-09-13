@@ -68,6 +68,7 @@ export default function AdminOrdersPage() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
+  const [paymentStatusFilter, setPaymentStatusFilter] = useState("all");
   const [medicalReviewFilter, setMedicalReviewFilter] = useState("all");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -110,7 +111,7 @@ export default function AdminOrdersPage() {
 
   useEffect(() => {
     fetchOrders();
-  }, [page, statusFilter, medicalReviewFilter]);
+  }, [page, statusFilter, paymentStatusFilter, medicalReviewFilter]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -174,6 +175,26 @@ export default function AdminOrdersPage() {
     }
   };
 
+  const getPaymentStatusColor = (status: string) => {
+    switch (status) {
+      case 'COMPLETED':
+      case 'PAID':
+        return "bg-green-100 text-green-800";
+      case 'PENDING':
+      case 'PAYMENT_PENDING':
+        return "bg-yellow-100 text-yellow-800";
+      case 'FAILED':
+      case 'PAYMENT_FAILED':
+        return "bg-red-100 text-red-800";
+      case 'CANCELLED':
+        return "bg-gray-100 text-gray-800";
+      case 'REFUNDED':
+        return "bg-blue-100 text-blue-800";
+      default:
+        return "bg-gray-100 text-gray-800";
+    }
+  };
+
   const formatOrderStatus = (status: string) => {
     return status.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
   };
@@ -199,16 +220,33 @@ export default function AdminOrdersPage() {
   };
 
   const filteredOrders = orders.filter(order => {
+    // Medical review filter
     if (medicalReviewFilter === 'needs_review') {
-      return order.prescriptionRequired && 
-             (order.medicalReviewStatus === 'PENDING' || order.medicalReviewStatus === 'UNDER_REVIEW');
+      if (!(order.prescriptionRequired && 
+            (order.medicalReviewStatus === 'PENDING' || order.medicalReviewStatus === 'UNDER_REVIEW'))) {
+        return false;
+      }
     }
     if (medicalReviewFilter === 'approved') {
-      return order.medicalReviewStatus === 'APPROVED';
+      if (order.medicalReviewStatus !== 'APPROVED') return false;
     }
     if (medicalReviewFilter === 'rejected') {
-      return order.medicalReviewStatus === 'REJECTED';
+      if (order.medicalReviewStatus !== 'REJECTED') return false;
     }
+
+    // Payment status filter
+    if (paymentStatusFilter !== 'all') {
+      if (paymentStatusFilter === 'paid') {
+        if (!(order.paymentStatus === 'COMPLETED' || order.paymentStatus === 'PAID')) return false;
+      } else if (paymentStatusFilter === 'pending') {
+        if (!(order.paymentStatus === 'PENDING' || order.paymentStatus === 'PAYMENT_PENDING')) return false;
+      } else if (paymentStatusFilter === 'failed') {
+        if (!(order.paymentStatus === 'FAILED' || order.paymentStatus === 'PAYMENT_FAILED')) return false;
+      } else if (order.paymentStatus !== paymentStatusFilter.toUpperCase()) {
+        return false;
+      }
+    }
+
     return true;
   });
 
@@ -296,7 +334,7 @@ export default function AdminOrdersPage() {
       {/* Filters */}
       <Card className="p-6">
         <form onSubmit={handleSearch} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div>
               <Label htmlFor="search">Search Orders</Label>
               <Input
@@ -323,6 +361,23 @@ export default function AdminOrdersPage() {
                   <SelectItem value="SHIPPED">Shipped</SelectItem>
                   <SelectItem value="DELIVERED">Delivered</SelectItem>
                   <SelectItem value="CANCELLED">Cancelled</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <Label htmlFor="payment">Payment Status</Label>
+              <Select value={paymentStatusFilter} onValueChange={setPaymentStatusFilter}>
+                <SelectTrigger className="mt-1">
+                  <SelectValue placeholder="All payments" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Payments</SelectItem>
+                  <SelectItem value="paid">Paid</SelectItem>
+                  <SelectItem value="pending">Pending</SelectItem>
+                  <SelectItem value="failed">Failed</SelectItem>
+                  <SelectItem value="cancelled">Cancelled</SelectItem>
+                  <SelectItem value="refunded">Refunded</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -359,7 +414,8 @@ export default function AdminOrdersPage() {
             <TableRow>
               <TableHead>Order</TableHead>
               <TableHead>Customer</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead>Order Status</TableHead>
+              <TableHead>Payment Status</TableHead>
               <TableHead>Medical Review</TableHead>
               <TableHead>Total</TableHead>
               <TableHead>Items</TableHead>
@@ -370,7 +426,7 @@ export default function AdminOrdersPage() {
           <TableBody>
             {loading ? (
               <TableRow>
-                <TableCell colSpan={8} className="text-center py-8">
+                <TableCell colSpan={9} className="text-center py-8">
                   <div className="flex items-center justify-center space-x-2">
                     <RefreshCw className="w-4 h-4 animate-spin" />
                     <span>Loading orders...</span>
@@ -379,7 +435,7 @@ export default function AdminOrdersPage() {
               </TableRow>
             ) : filteredOrders.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={8} className="text-center py-8">
+                <TableCell colSpan={9} className="text-center py-8">
                   <div className="text-gray-500">No orders found</div>
                 </TableCell>
               </TableRow>
@@ -409,6 +465,12 @@ export default function AdminOrdersPage() {
                         {formatOrderStatus(order.status)}
                       </Badge>
                     </div>
+                  </TableCell>
+
+                  <TableCell>
+                    <Badge className={getPaymentStatusColor(order.paymentStatus)}>
+                      {formatOrderStatus(order.paymentStatus)}
+                    </Badge>
                   </TableCell>
 
                   <TableCell>

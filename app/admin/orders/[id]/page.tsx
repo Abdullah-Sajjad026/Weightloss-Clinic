@@ -28,7 +28,8 @@ import {
   XCircle,
   Clock,
   Save,
-  AlertTriangle
+  AlertTriangle,
+  ExternalLink
 } from "lucide-react";
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
@@ -82,6 +83,10 @@ interface Order {
   marketingOptIn: boolean;
   createdAt: string;
   updatedAt: string;
+  paidAt?: string;
+  stripeSessionId?: string;
+  stripePaymentIntentId?: string;
+  stripeCustomerId?: string;
   orderItems: OrderItem[];
   orderStatusHistory: OrderStatusHistoryItem[];
 }
@@ -542,20 +547,102 @@ export default function AdminOrderDetailPage({
               <h2 className="text-lg font-semibold">Payment Information</h2>
             </div>
             
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div>
                 <label className="text-sm font-medium text-gray-500">Payment Status</label>
-                <Badge className={
-                  order.paymentStatus === 'PAID' ? 'bg-green-100 text-green-800' : 
-                  order.paymentStatus === 'FAILED' ? 'bg-red-100 text-red-800' :
-                  'bg-yellow-100 text-yellow-800'
-                }>
-                  {formatOrderStatus(order.paymentStatus)}
-                </Badge>
+                <div className="mt-1">
+                  <Badge className={
+                    order.paymentStatus === 'COMPLETED' || order.paymentStatus === 'PAID' ? 'bg-green-100 text-green-800' : 
+                    order.paymentStatus === 'FAILED' || order.paymentStatus === 'PAYMENT_FAILED' ? 'bg-red-100 text-red-800' :
+                    order.paymentStatus === 'CANCELLED' ? 'bg-gray-100 text-gray-800' :
+                    order.paymentStatus === 'REFUNDED' ? 'bg-blue-100 text-blue-800' :
+                    'bg-yellow-100 text-yellow-800'
+                  }>
+                    {formatOrderStatus(order.paymentStatus)}
+                  </Badge>
+                </div>
               </div>
+
               <div>
                 <label className="text-sm font-medium text-gray-500">Order Total</label>
                 <p className="text-lg font-semibold">{formatPrice(order.totalAmount)}</p>
+              </div>
+
+              {order.paidAt && (
+                <div>
+                  <label className="text-sm font-medium text-gray-500">Payment Date</label>
+                  <p>{formatDate(order.paidAt)}</p>
+                </div>
+              )}
+
+              <Separator />
+
+              {/* Stripe Transaction Details */}
+              <div className="space-y-3">
+                <h3 className="font-medium text-gray-900">Stripe Transaction Details</h3>
+                
+                {order.stripeSessionId && (
+                  <div>
+                    <label className="text-sm font-medium text-gray-500">Stripe Session</label>
+                    <div className="flex items-center space-x-2 mt-1">
+                      <code className="text-xs bg-gray-100 px-2 py-1 rounded font-mono">
+                        {order.stripeSessionId}
+                      </code>
+                      <a 
+                        href={`https://dashboard.stripe.com/test/checkout/sessions/${order.stripeSessionId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 text-sm"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {order.stripePaymentIntentId && (
+                  <div>
+                    <label className="text-sm font-medium text-gray-500">Payment Intent</label>
+                    <div className="flex items-center space-x-2 mt-1">
+                      <code className="text-xs bg-gray-100 px-2 py-1 rounded font-mono">
+                        {order.stripePaymentIntentId}
+                      </code>
+                      <a 
+                        href={`https://dashboard.stripe.com/test/payments/${order.stripePaymentIntentId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 text-sm"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {order.stripeCustomerId && (
+                  <div>
+                    <label className="text-sm font-medium text-gray-500">Stripe Customer</label>
+                    <div className="flex items-center space-x-2 mt-1">
+                      <code className="text-xs bg-gray-100 px-2 py-1 rounded font-mono">
+                        {order.stripeCustomerId}
+                      </code>
+                      <a 
+                        href={`https://dashboard.stripe.com/test/customers/${order.stripeCustomerId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 text-sm"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {!order.stripeSessionId && !order.stripePaymentIntentId && (
+                  <div className="text-sm text-gray-500 italic">
+                    No Stripe transaction details available
+                  </div>
+                )}
               </div>
             </div>
           </Card>
