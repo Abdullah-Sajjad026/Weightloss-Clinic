@@ -44,18 +44,26 @@ export async function POST(request: NextRequest) {
     }
 
     // Create line items for Stripe
-    const lineItems = order.orderItems.map((item) => ({
-      price_data: {
-        currency: 'gbp',
-        product_data: {
-          name: item.productName,
-          description: item.productDescription || undefined,
-          images: item.productImage ? [item.productImage] : undefined,
+    const lineItems = order.orderItems.map((item) => {
+      // Only include valid image URLs
+      let images = undefined;
+      if (item.productImage && item.productImage.startsWith('http')) {
+        images = [item.productImage];
+      }
+      
+      return {
+        price_data: {
+          currency: 'gbp',
+          product_data: {
+            name: item.productName,
+            description: item.productDescription || undefined,
+            images: images,
+          },
+          unit_amount: Math.round(item.unitPrice * 100), // Convert to pence
         },
-        unit_amount: Math.round(item.unitPrice * 100), // Convert to pence
-      },
-      quantity: item.quantity,
-    }))
+        quantity: item.quantity,
+      };
+    })
 
     // Add shipping charge if applicable
     if (order.shippingAmount > 0) {
@@ -73,13 +81,25 @@ export async function POST(request: NextRequest) {
       })
     }
 
+    // Get the base URL for redirects
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+    const successUrl = `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`
+    const cancelUrl = `${baseUrl}/checkout?cancelled=true`
+    
+    console.log('Creating Stripe session with URLs:', {
+      baseUrl,
+      successUrl,
+      cancelUrl,
+      orderId
+    })
+    
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       payment_method_types: ['card'],
       line_items: lineItems,
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/checkout/success?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/checkout?cancelled=true`,
+      success_url: successUrl,
+      cancel_url: cancelUrl,
       metadata: {
         orderId: orderId,
       },
@@ -106,8 +126,16 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Error creating checkout session:', error)
+    // Enhanced error logging for debugging
+    if (error instanceof Error) {
+      console.error('Error details:', {
+        message: error.message,
+        name: error.name,
+        stack: error.stack
+      })
+    }
     return NextResponse.json(
-      { error: 'Failed to create checkout session' },
+      { error: `Failed to create checkout session: ${error instanceof Error ? error.message : 'Unknown error'}` },
       { status: 500 }
     )
   }

@@ -149,7 +149,12 @@ export default function CheckoutPage() {
 
     } catch (error) {
       console.error('Checkout error:', error);
-      alert('Failed to process checkout. Please try again.');
+      // Enhanced error message to help debug
+      let errorMessage = 'Failed to process checkout. Please try again.';
+      if (error instanceof Error) {
+        errorMessage = `Checkout failed: ${error.message}`;
+      }
+      alert(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
