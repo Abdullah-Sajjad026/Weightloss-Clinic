@@ -11,9 +11,9 @@ export function Logo({ className }: LogoProps) {
       <Image
         src="/northampton-clinic-logo.png"
         alt="Northampton Clinic Logo"
-        width={200}
-        height={60}
-        className={cn("w-auto object-contain h-[120px]")}
+        width={280}
+        height={84}
+        className={cn("w-auto object-contain h-[160px]")}
         priority
       />
     </div>

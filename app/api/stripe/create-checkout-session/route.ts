@@ -11,6 +11,9 @@ export async function POST(request: NextRequest) {
       hasAppUrl: !!process.env.NEXT_PUBLIC_APP_URL
     })
 
+    // Get origin from request for more reliable URL detection
+    const origin = request.headers.get('origin') || request.headers.get('host')
+
     if (!stripe) {
       console.error('Stripe not configured - missing STRIPE_SECRET_KEY')
       return NextResponse.json(
@@ -82,7 +85,38 @@ export async function POST(request: NextRequest) {
     }
 
     // Get the base URL for redirects
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+    const getBaseUrl = () => {
+      // Priority 1: Explicit environment variable (if not localhost)
+      if (process.env.NEXT_PUBLIC_APP_URL && process.env.NEXT_PUBLIC_APP_URL !== 'http://localhost:3000') {
+        return process.env.NEXT_PUBLIC_APP_URL;
+      }
+      
+      // Priority 2: Request origin (most reliable for deployed apps)
+      if (origin) {
+        // If origin doesn't include protocol, add https for production
+        if (origin.startsWith('http')) {
+          return origin;
+        } else {
+          return process.env.NODE_ENV === 'production' ? `https://${origin}` : `http://${origin}`;
+        }
+      }
+      
+      // Priority 3: Vercel deployment URL
+      if (process.env.VERCEL_URL) {
+        return `https://${process.env.VERCEL_URL}`;
+      }
+      
+      // Priority 4: Production warning
+      if (process.env.NODE_ENV === 'production') {
+        console.warn('⚠️ Production deployment detected but no reliable URL found. Please set NEXT_PUBLIC_APP_URL environment variable.');
+        return 'https://your-production-domain.com'; // Fallback - should not reach here
+      }
+      
+      // Fallback: Development
+      return 'http://localhost:3000';
+    };
+    
+    const baseUrl = getBaseUrl();
     const successUrl = `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`
     const cancelUrl = `${baseUrl}/checkout?cancelled=true`
     
@@ -90,7 +124,11 @@ export async function POST(request: NextRequest) {
       baseUrl,
       successUrl,
       cancelUrl,
-      orderId
+      orderId,
+      environment: process.env.NODE_ENV,
+      requestOrigin: origin,
+      vercelUrl: process.env.VERCEL_URL,
+      appUrl: process.env.NEXT_PUBLIC_APP_URL
     })
     
     // Create Stripe checkout session
