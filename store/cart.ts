@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { CartStore, CartItem } from '@/types/cart';
+import { validateCartItem, getValidationMessage } from '@/lib/cart-validation';
+import { useAssessmentEmail } from '@/hooks/useAssessmentEmail';
 
 const useCartStore = create<CartStore>()(
   persist(
@@ -12,9 +14,31 @@ const useCartStore = create<CartStore>()(
       isOpen: false,
 
       // Actions
-      addItem: (newItem) => {
+      addItem: async (newItem) => {
         const { items } = get();
         const quantity = newItem.quantity ?? 1;
+        
+        // Get user's verified email for assessment checking
+        const assessmentStore = useAssessmentEmail.getState();
+        const userEmail = assessmentStore.isVerified ? assessmentStore.email : undefined;
+        
+        // Validate if item can be added to cart
+        const validation = await validateCartItem(newItem.name, newItem.productId, userEmail || undefined);
+        
+        if (!validation.allowed) {
+          // Show validation message to user (this could trigger a toast/modal)
+          const message = getValidationMessage(validation);
+          console.warn('Cart validation failed:', message);
+          
+          // You could also dispatch a custom event or use a toast library here
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('cart-validation-error', {
+              detail: { message, reason: validation.reason, requiresAssessment: validation.requiresAssessment }
+            }));
+          }
+          
+          return; // Don't add item to cart
+        }
         
         // Check if item with same productId and variant already exists
         const existingItemIndex = items.findIndex(

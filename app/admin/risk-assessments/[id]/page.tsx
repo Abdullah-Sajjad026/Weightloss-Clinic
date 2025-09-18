@@ -37,6 +37,8 @@ interface RiskAssessmentDetail {
   reviewedBy?: string;
   reviewedAt?: string;
   createdAt: string;
+  canPurchaseMounjaro: boolean;
+  authorizationExpiry?: string;
 }
 
 export default function RiskAssessmentDetailPage() {
@@ -49,6 +51,8 @@ export default function RiskAssessmentDetailPage() {
   const [saving, setSaving] = useState(false);
   const [status, setStatus] = useState("");
   const [adminNotes, setAdminNotes] = useState("");
+  const [canPurchaseMounjaro, setCanPurchaseMounjaro] = useState(false);
+  const [authorizationExpiry, setAuthorizationExpiry] = useState("");
   const [reviewedBy, setReviewedBy] = useState("");
 
   useEffect(() => {
@@ -62,6 +66,8 @@ export default function RiskAssessmentDetailPage() {
       setStatus(assessment.status);
       setAdminNotes(assessment.adminNotes || "");
       setReviewedBy(assessment.reviewedBy || "");
+      setCanPurchaseMounjaro(assessment.canPurchaseMounjaro || false);
+      setAuthorizationExpiry(assessment.authorizationExpiry || "");
     }
   }, [assessment]);
 
@@ -89,6 +95,8 @@ export default function RiskAssessmentDetailPage() {
           status,
           adminNotes,
           reviewedBy: reviewedBy || "Admin User",
+          canPurchaseMounjaro,
+          authorizationExpiry: authorizationExpiry || null,
         }),
       });
 
@@ -336,6 +344,45 @@ export default function RiskAssessmentDetailPage() {
                     rows={4}
                     className="resize-none"
                   />
+                </div>
+
+                {/* Mounjaro Authorization Section */}
+                <div className="border-t pt-4 space-y-4">
+                  <div>
+                    <Label className="text-base font-semibold">Mounjaro Authorization</Label>
+                    <p className="text-sm text-gray-600 mb-3">
+                      Grant permission for this patient to purchase Mounjaro injections
+                    </p>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      id="canPurchaseMounjaro"
+                      checked={canPurchaseMounjaro}
+                      onChange={(e) => setCanPurchaseMounjaro(e.target.checked)}
+                      className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                    />
+                    <Label htmlFor="canPurchaseMounjaro" className="text-sm font-medium">
+                      Authorize Mounjaro purchase
+                    </Label>
+                  </div>
+
+                  {canPurchaseMounjaro && (
+                    <div>
+                      <Label htmlFor="authorizationExpiry">Authorization Expiry (Optional)</Label>
+                      <input
+                        id="authorizationExpiry"
+                        type="date"
+                        value={authorizationExpiry}
+                        onChange={(e) => setAuthorizationExpiry(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 mt-1"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">
+                        Leave empty for no expiration
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <Button

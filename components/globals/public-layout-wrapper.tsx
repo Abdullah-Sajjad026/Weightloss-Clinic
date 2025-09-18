@@ -2,6 +2,7 @@ import FooterSection from "./footer-section";
 import PromoBanner from "./promo-banner";
 import HeaderNav from "./header-nav";
 import { Toaster } from "@/components/ui/sonner";
+import { CartValidationHandler } from "@/components/cart/CartValidationHandler";
 
 export default function PublicLayoutWrapper({
   children,
@@ -21,6 +22,7 @@ export default function PublicLayoutWrapper({
         <FooterSection />
       </div>
       <Toaster />
+      <CartValidationHandler />
     </div>
   );
 }

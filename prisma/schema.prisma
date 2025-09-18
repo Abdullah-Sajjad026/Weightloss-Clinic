@@ -94,6 +94,10 @@ model RiskAssessment {
   reviewedBy    String?
   reviewedAt    DateTime?
   
+  // Mounjaro Purchase Authorization
+  canPurchaseMounjaro Boolean @default(false) // Specific authorization for Mounjaro
+  authorizationExpiry DateTime? // Optional expiry for authorization
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

@@ -20,7 +20,7 @@ export interface CartState {
 }
 
 export interface CartActions {
-  addItem: (item: Omit<CartItem, 'id' | 'quantity'> & { quantity?: number }) => void;
+  addItem: (item: Omit<CartItem, 'id' | 'quantity'> & { quantity?: number }) => Promise<void>;
   removeItem: (itemId: string) => void;
   updateQuantity: (itemId: string, quantity: number) => void;
   clearCart: () => void;

@@ -23,6 +23,45 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check if order contains Mounjaro and verify assessment
+    const hasMounjaro = cartItems.some(item => 
+      item.name.toLowerCase().includes('mounjaro') || 
+      item.slug?.toLowerCase().includes('mounjaro') ||
+      item.id === 'mounjaro'
+    );
+
+    if (hasMounjaro) {
+      try {
+        // Verify assessment for Mounjaro purchase
+        const assessmentResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/assessment/verify`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: customerData.email }),
+        });
+
+        const assessmentData = await assessmentResponse.json();
+
+        if (!assessmentData.eligible) {
+          return NextResponse.json(
+            { 
+              error: 'Assessment required for Mounjaro purchase',
+              reason: assessmentData.reason,
+              message: assessmentData.message
+            },
+            { status: 403 }
+          );
+        }
+      } catch (error) {
+        console.error('Assessment verification failed during checkout:', error);
+        return NextResponse.json(
+          { error: 'Unable to verify assessment. Please try again.' },
+          { status: 500 }
+        );
+      }
+    }
+
     // Generate unique order number
     const orderNumber = `NWLC-${Date.now().toString().slice(-6)}`;
 
