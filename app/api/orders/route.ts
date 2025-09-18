@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import { CheckoutFormData } from '@/types/cart';
 import { CartItem } from '@/types/cart';
 import { sendOrderConfirmationEmail, OrderEmailData } from '@/lib/email-service';
+import { productRequiresAssessment } from '@/lib/assessment-config';
 
 const prisma = new PrismaClient();
 
@@ -23,16 +24,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if order contains Mounjaro and verify assessment
-    const hasMounjaro = cartItems.some(item => 
-      item.name.toLowerCase().includes('mounjaro') || 
-      item.slug?.toLowerCase().includes('mounjaro') ||
-      item.id === 'mounjaro'
+    // Check if order contains assessment-required products
+    const assessmentRequiredItems = cartItems.filter(item => 
+      productRequiresAssessment(item.name, item.productId, item.category)
     );
 
-    if (hasMounjaro) {
+    if (assessmentRequiredItems.length > 0) {
       try {
-        // Verify assessment for Mounjaro purchase
+        // Verify assessment for restricted products
         const assessmentResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/assessment/verify`, {
           method: 'POST',
           headers: {
@@ -44,11 +43,13 @@ export async function POST(request: NextRequest) {
         const assessmentData = await assessmentResponse.json();
 
         if (!assessmentData.eligible) {
+          const productNames = assessmentRequiredItems.map(item => item.name).join(', ');
           return NextResponse.json(
             { 
-              error: 'Assessment required for Mounjaro purchase',
+              error: `Assessment required for: ${productNames}`,
               reason: assessmentData.reason,
-              message: assessmentData.message
+              message: assessmentData.message,
+              restrictedItems: productNames
             },
             { status: 403 }
           );

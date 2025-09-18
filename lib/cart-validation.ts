@@ -1,4 +1,5 @@
 // Cart validation utilities for assessment-required products
+import { productRequiresAssessment } from './assessment-config';
 
 export interface ValidationResult {
   allowed: boolean;
@@ -7,29 +8,25 @@ export interface ValidationResult {
   requiresAssessment?: boolean;
 }
 
-// Check if a product requires assessment
-export function requiresAssessment(productName: string, productId?: string): boolean {
-  const name = productName.toLowerCase();
-  const id = productId?.toLowerCase();
-  
-  // Check for Mounjaro (multiple ways to identify)
-  return (
-    name.includes('mounjaro') ||
-    name.includes('tirzepatide') ||
-    id === 'mounjaro' ||
-    (id?.includes('mounjaro') ?? false)
-  );
+// Check if a product requires assessment using configurable system
+export function requiresAssessment(
+  productName: string, 
+  productId?: string,
+  category?: string
+): boolean {
+  return productRequiresAssessment(productName, productId, category);
 }
 
 // Validate if user can add item to cart
 export async function validateCartItem(
   productName: string, 
   productId?: string, 
-  userEmail?: string
+  userEmail?: string,
+  category?: string
 ): Promise<ValidationResult> {
   
   // If product doesn't require assessment, allow it
-  if (!requiresAssessment(productName, productId)) {
+  if (!requiresAssessment(productName, productId, category)) {
     return { allowed: true };
   }
 

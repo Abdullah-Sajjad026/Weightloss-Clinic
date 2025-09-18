@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Calendar, Clock, Users, Package, AlertCircle, CheckCircle } from 'lucide-react'
+import { Calendar, Clock, Users, Package, AlertCircle, CheckCircle, Settings } from 'lucide-react'
 import Link from 'next/link'
 
 async function getDashboardStats() {
@@ -245,6 +245,15 @@ export default async function AdminDashboard() {
               >
                 <Clock className="h-6 w-6 text-orange-600 mx-auto mb-1" />
                 <p className="text-sm font-medium text-orange-900">Time Slots</p>
+              </a>
+            </div>
+            <div className="mt-3">
+              <a
+                href="/admin/assessment-config"
+                className="w-full p-3 text-center bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors flex items-center justify-center gap-2"
+              >
+                <Settings className="h-5 w-5 text-purple-600" />
+                <span className="text-sm font-medium text-purple-900">Assessment Configuration</span>
               </a>
             </div>
           </CardContent>
