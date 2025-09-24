@@ -94,8 +94,10 @@ model RiskAssessment {
   reviewedBy    String?
   reviewedAt    DateTime?
   
-  // Mounjaro Purchase Authorization
+  // Injection Purchase Authorization
   canPurchaseMounjaro Boolean @default(false) // Specific authorization for Mounjaro
+  authorizedMounjaroDose String? // Specific dose authorized (e.g., "2.5mg", "5mg", "7.5mg", "10mg", "15mg")
+  authorizedWegovyDose String? // Specific dose authorized for Wegovy (e.g., "0.25mg", "0.5mg", "1mg", "1.7mg", "2.4mg")
   authorizationExpiry DateTime? // Optional expiry for authorization
   
   createdAt DateTime @default(now())
@@ -227,28 +229,19 @@ model OrderStatusHistory {
 }
 
 enum OrderStatus {
-  PENDING           // Order placed, awaiting payment
-  PAYMENT_PENDING   // Payment in progress
-  PAID              // Payment completed
-  PAYMENT_FAILED    // Payment failed
-  MEDICAL_REVIEW    // Under medical review
-  APPROVED          // Medically approved, ready for processing
-  REJECTED          // Medically rejected
-  PROCESSING        // Being prepared for shipment
+  PENDING           // Order placed, awaiting processing
+  PROCESSING        // Being prepared for shipment  
   SHIPPED           // Dispatched
   DELIVERED         // Delivered to customer
   CANCELLED         // Cancelled by customer or admin
-  REFUNDED          // Refunded
 }
 
 enum PaymentStatus {
   PENDING
-  PROCESSING
   COMPLETED
   FAILED
   CANCELLED
   REFUNDED
-  PARTIALLY_REFUNDED
 }
 
 enum MedicalReviewStatus {

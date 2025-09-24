@@ -43,11 +43,11 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    if (!assessment.canPurchaseMounjaro) {
+    if (!assessment.canPurchaseMounjaro && !assessment.authorizedWegovyDose) {
       return NextResponse.json({
         eligible: false,
         reason: 'NOT_AUTHORIZED',
-        message: 'Not authorized for Mounjaro purchase.',
+        message: 'Not authorized for injection purchase.',
         status: assessment.status
       });
     }
@@ -65,11 +65,13 @@ export async function POST(request: NextRequest) {
     // All checks passed - user is eligible
     return NextResponse.json({
       eligible: true,
-      message: 'Eligible for Mounjaro purchase',
+      message: 'Eligible for injection purchase',
       assessmentDate: assessment.createdAt,
       approvedBy: assessment.reviewedBy,
       approvedAt: assessment.reviewedAt,
-      expiresAt: assessment.authorizationExpiry
+      expiresAt: assessment.authorizationExpiry,
+      authorizedMounjaroDose: assessment.authorizedMounjaroDose,
+      authorizedWegovyDose: assessment.authorizedWegovyDose
     });
 
   } catch (error) {
@@ -105,6 +107,8 @@ export async function GET(request: NextRequest) {
         id: true,
         status: true,
         canPurchaseMounjaro: true,
+        authorizedMounjaroDose: true,
+        authorizedWegovyDose: true,
         authorizationExpiry: true,
         createdAt: true,
         reviewedAt: true
@@ -119,7 +123,7 @@ export async function GET(request: NextRequest) {
     }
 
     const isEligible = assessment.status === 'APPROVED' && 
-                      assessment.canPurchaseMounjaro &&
+                      (assessment.canPurchaseMounjaro || assessment.authorizedWegovyDose) &&
                       (!assessment.authorizationExpiry || assessment.authorizationExpiry > new Date());
 
     return NextResponse.json({
@@ -128,7 +132,9 @@ export async function GET(request: NextRequest) {
       status: assessment.status,
       assessmentDate: assessment.createdAt,
       approvedAt: assessment.reviewedAt,
-      expiresAt: assessment.authorizationExpiry
+      expiresAt: assessment.authorizationExpiry,
+      authorizedMounjaroDose: assessment.authorizedMounjaroDose,
+      authorizedWegovyDose: assessment.authorizedWegovyDose
     });
 
   } catch (error) {

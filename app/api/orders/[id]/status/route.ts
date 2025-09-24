@@ -206,15 +206,11 @@ export async function GET(
 // Helper function to get default status messages
 function getDefaultStatusMessage(status: string): string {
   const messages = {
-    'PENDING': 'Order placed and awaiting medical review',
-    'MEDICAL_REVIEW': 'Order under medical review',
-    'APPROVED': 'Order medically approved and ready for processing',
-    'REJECTED': 'Order medically rejected',
+    'PENDING': 'Order placed and awaiting processing',
     'PROCESSING': 'Order being prepared for shipment',
     'SHIPPED': 'Order dispatched for delivery',
     'DELIVERED': 'Order successfully delivered',
     'CANCELLED': 'Order cancelled',
-    'REFUNDED': 'Order refunded',
   };
 
   return messages[status as keyof typeof messages] || `Status updated to ${status}`;

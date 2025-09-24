@@ -12,6 +12,7 @@ interface MounjaroPricingProps {
 
 export function MounjaroPricing({ product, pricingTiers }: MounjaroPricingProps) {
   const [isEligible, setIsEligible] = useState(false);
+  const [authorizedDoses, setAuthorizedDoses] = useState<{mounjaro?: string; wegovy?: string}>({});
 
   // Determine category based on product ID or badge
   const getProductCategory = (product: ProductData): 'injections' | 'pills-tablets' | 'bariatric-surgery' => {
@@ -45,9 +46,49 @@ export function MounjaroPricing({ product, pricingTiers }: MounjaroPricingProps)
           </div>
           
           <AssessmentGate 
-            onEligibilityConfirmed={() => setIsEligible(true)}
+            onEligibilityConfirmed={(doses) => {
+              setIsEligible(true);
+              setAuthorizedDoses(doses || {});
+            }}
             productName={product.name}
           />
+        </div>
+      </section>
+    );
+  }
+
+  // Filter pricing tiers based on authorized doses
+  const getAuthorizedTiers = () => {
+    const productName = product.name.toLowerCase();
+    let authorizedDose: string | undefined;
+    
+    if (productName.includes('mounjaro')) {
+      authorizedDose = authorizedDoses.mounjaro;
+    } else if (productName.includes('wegovy')) {
+      authorizedDose = authorizedDoses.wegovy;
+    }
+    
+    if (!authorizedDose) {
+      return []; // No authorized dose found
+    }
+    
+    // Find the matching tier
+    return pricingTiers.filter(tier => tier.dose === authorizedDose);
+  };
+
+  const authorizedTiers = getAuthorizedTiers();
+  
+  // If no authorized tiers found, show message
+  if (authorizedTiers.length === 0) {
+    return (
+      <section className="mx-auto px-4 max-w-7xl w-full">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+            <h2 className="text-2xl font-bold mb-4">No Authorized Dose Found</h2>
+            <p className="text-lg text-muted-foreground">
+              You don't have authorization for {product.name} purchase. Please contact your healthcare provider.
+            </p>
+          </div>
         </div>
       </section>
     );
@@ -56,27 +97,31 @@ export function MounjaroPricing({ product, pricingTiers }: MounjaroPricingProps)
   return (
     <section className="mx-auto px-4 max-w-7xl w-full">
       <div className="grid lg:grid-cols-2 gap-12 items-start">
-        {/* Left Side - Traditional Pricing Display */}
+        {/* Left Side - Authorized Dose Display */}
         <div>
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">Choose Your Dose</h2>
-            <p className="text-lg text-muted-foreground">All doses available with free delivery</p>
+            <h2 className="text-3xl font-bold mb-4">Your Authorized Dose</h2>
+            <p className="text-lg text-muted-foreground">
+              Based on your medical assessment, you're authorized for the following dose
+            </p>
           </div>
           
           <div className="grid grid-cols-1 gap-4">
-            {pricingTiers.map((tier) => (
+            {authorizedTiers.map((tier) => (
               <div
                 key={tier.dose}
-                className="border rounded-xl p-4 flex justify-between items-center"
+                className="border-2 border-green-200 bg-green-50 rounded-xl p-6 flex justify-between items-center"
               >
                 <div>
-                  <h3 className="text-lg font-semibold">{tier.dose}</h3>
+                  <h3 className="text-xl font-semibold text-green-800">{tier.dose}</h3>
+                  <p className="text-sm text-green-600 mt-1">✓ Authorized by your healthcare provider</p>
                   {tier.period !== "mo" && (
-                    <p className="text-sm text-muted-foreground">{tier.period}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{tier.period}</p>
                   )}
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold">{tier.price}</p>
+                  <p className="text-3xl font-bold text-green-800">{tier.price}</p>
+                  <p className="text-sm text-green-600">Your authorized dose</p>
                 </div>
               </div>
             ))}
@@ -87,7 +132,7 @@ export function MounjaroPricing({ product, pricingTiers }: MounjaroPricingProps)
         <div className="lg:sticky lg:top-8">
           <PricingSelector 
             product={productForCart}
-            pricingTiers={pricingTiers}
+            pricingTiers={authorizedTiers} // Only show authorized dose
           />
         </div>
       </div>

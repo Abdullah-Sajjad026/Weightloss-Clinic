@@ -10,8 +10,13 @@ import { AlertCircle, CheckCircle, Clock, Mail, ArrowRight } from "lucide-react"
 import Link from "next/link";
 
 interface AssessmentGateProps {
-  onEligibilityConfirmed: () => void;
+  onEligibilityConfirmed: (authorizedDoses?: AuthorizedDoses) => void;
   productName?: string;
+}
+
+interface AuthorizedDoses {
+  mounjaro?: string;
+  wegovy?: string;
 }
 
 interface VerificationResult {
@@ -23,6 +28,8 @@ interface VerificationResult {
   approvedBy?: string;
   approvedAt?: string;
   expiresAt?: string;
+  authorizedMounjaroDose?: string;
+  authorizedWegovyDose?: string;
 }
 
 export default function AssessmentGate({ 
@@ -52,7 +59,22 @@ export default function AssessmentGate({
 
       if (data.eligible) {
         setShowEmailInput(false);
-        onEligibilityConfirmed();
+        // Store verified email in assessment store
+        const { useAssessmentEmail } = await import('@/hooks/useAssessmentEmail');
+        const store = useAssessmentEmail.getState();
+        store.setEmail(email.trim());
+        store.setVerified(true);
+        
+        // Pass authorized doses to parent
+        const authorizedDoses: AuthorizedDoses = {};
+        if (data.authorizedMounjaroDose) {
+          authorizedDoses.mounjaro = data.authorizedMounjaroDose;
+        }
+        if (data.authorizedWegovyDose) {
+          authorizedDoses.wegovy = data.authorizedWegovyDose;
+        }
+        
+        onEligibilityConfirmed(authorizedDoses);
       }
     } catch (error) {
       console.error('Assessment check failed:', error);

@@ -88,18 +88,24 @@ export default function OrderTrackingPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'PENDING':
-      case 'MEDICAL_REVIEW':
-        return <Clock className="w-4 h-4 text-yellow-600" />;
-      case 'APPROVED':
+        return <Clock className="w-4 h-4 text-amber-600" />;
       case 'PROCESSING':
         return <Package className="w-4 h-4 text-blue-600" />;
       case 'SHIPPED':
-        return <Truck className="w-4 h-4 text-primary-600" />;
+        return <Truck className="w-4 h-4 text-indigo-600" />;
       case 'DELIVERED':
         return <CheckCircle className="w-4 h-4 text-green-600" />;
-      case 'REJECTED':
       case 'CANCELLED':
         return <XCircle className="w-4 h-4 text-red-600" />;
+      // Medical Review Status Icons
+      case 'UNDER_REVIEW':
+        return <Clock className="w-4 h-4 text-orange-600" />;
+      case 'APPROVED':
+        return <CheckCircle className="w-4 h-4 text-green-600" />;
+      case 'REJECTED':
+        return <XCircle className="w-4 h-4 text-red-600" />;
+      case 'REQUIRES_CONSULTATION':
+        return <AlertTriangle className="w-4 h-4 text-purple-600" />;
       default:
         return <AlertTriangle className="w-4 h-4 text-gray-600" />;
     }
@@ -108,20 +114,26 @@ export default function OrderTrackingPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'PENDING':
-      case 'MEDICAL_REVIEW':
-        return "bg-yellow-100 text-yellow-800";
-      case 'APPROVED':
+        return "bg-amber-100 text-amber-800 border-amber-200";
       case 'PROCESSING':
-        return "bg-blue-100 text-blue-800";
+        return "bg-blue-100 text-blue-800 border-blue-200";
       case 'SHIPPED':
-        return "bg-primary-100 text-primary-800";
+        return "bg-indigo-100 text-indigo-800 border-indigo-200";
       case 'DELIVERED':
-        return "bg-green-100 text-green-800";
-      case 'REJECTED':
+        return "bg-green-100 text-green-800 border-green-200";
       case 'CANCELLED':
-        return "bg-red-100 text-red-800";
+        return "bg-red-100 text-red-800 border-red-200";
+      // Medical Review Status Colors
+      case 'UNDER_REVIEW':
+        return "bg-orange-100 text-orange-800 border-orange-200";
+      case 'APPROVED':
+        return "bg-green-100 text-green-800 border-green-200";
+      case 'REJECTED':
+        return "bg-red-100 text-red-800 border-red-200";
+      case 'REQUIRES_CONSULTATION':
+        return "bg-purple-100 text-purple-800 border-purple-200";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-100 text-gray-800 border-gray-200";
     }
   };
 
@@ -247,9 +259,9 @@ export default function OrderTrackingPage() {
               {/* Tracking Information */}
               {order.trackingNumber && (
                 <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                  <h3 className="font-medium text-blue-900 mb-2">Tracking Information</h3>
+                  <h3 className="font-medium text-blue-900 mb-2">Royal Mail Tracking</h3>
                   <p className="text-sm text-blue-700 mb-3">
-                    Tracking Number: <strong>{order.trackingNumber}</strong>
+                    Royal Mail Tracking ID: <strong>{order.trackingNumber}</strong>
                   </p>
                   <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700">
                     <Link 

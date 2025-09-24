@@ -35,7 +35,15 @@ export async function PATCH(
   const { id } = await params
   try {
     const body = await request.json()
-    const { status, adminNotes, reviewedBy, canPurchaseMounjaro, authorizationExpiry } = body
+    const { 
+      status, 
+      adminNotes, 
+      reviewedBy, 
+      canPurchaseMounjaro, 
+      authorizedMounjaroDose,
+      authorizedWegovyDose,
+      authorizationExpiry 
+    } = body
     
     const assessment = await prisma.riskAssessment.update({
       where: { id },
@@ -45,6 +53,8 @@ export async function PATCH(
         reviewedBy,
         reviewedAt: status !== 'PENDING' ? new Date() : null,
         canPurchaseMounjaro: canPurchaseMounjaro || false,
+        authorizedMounjaroDose: authorizedMounjaroDose || null,
+        authorizedWegovyDose: authorizedWegovyDose || null,
         authorizationExpiry: authorizationExpiry ? new Date(authorizationExpiry) : null,
       },
     })

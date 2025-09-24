@@ -22,7 +22,8 @@ export async function validateCartItem(
   productName: string, 
   productId?: string, 
   userEmail?: string,
-  category?: string
+  category?: string,
+  variant?: string // The specific dose being added
 ): Promise<ValidationResult> {
   
   // If product doesn't require assessment, allow it
@@ -52,17 +53,39 @@ export async function validateCartItem(
 
     const data = await response.json();
 
-    if (data.eligible) {
-      return { allowed: true };
+    if (!data.eligible) {
+      // Return specific failure reason
+      return {
+        allowed: false,
+        requiresAssessment: true,
+        reason: data.reason,
+        message: data.message || 'Assessment verification required for this product.'
+      };
     }
 
-    // Return specific failure reason
-    return {
-      allowed: false,
-      requiresAssessment: true,
-      reason: data.reason,
-      message: data.message || 'Assessment verification required for this product.'
-    };
+    // Check dose-specific authorization if variant (dose) is provided
+    if (variant) {
+      const name = productName.toLowerCase();
+      let authorizedDose: string | undefined;
+      
+      if (name.includes('mounjaro')) {
+        authorizedDose = data.authorizedMounjaroDose;
+      } else if (name.includes('wegovy')) {
+        authorizedDose = data.authorizedWegovyDose;
+      }
+      
+      // If we have a specific authorized dose, check if the variant matches
+      if (authorizedDose && variant !== authorizedDose) {
+        return {
+          allowed: false,
+          reason: 'WRONG_DOSE',
+          message: `You are only authorized for ${authorizedDose}. Please select the correct dose.`,
+          requiresAssessment: false,
+        };
+      }
+    }
+
+    return { allowed: true };
 
   } catch (error) {
     console.error('Cart validation error:', error);

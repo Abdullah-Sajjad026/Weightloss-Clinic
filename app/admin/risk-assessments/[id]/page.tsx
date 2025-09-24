@@ -38,6 +38,8 @@ interface RiskAssessmentDetail {
   reviewedAt?: string;
   createdAt: string;
   canPurchaseMounjaro: boolean;
+  authorizedMounjaroDose?: string;
+  authorizedWegovyDose?: string;
   authorizationExpiry?: string;
 }
 
@@ -52,6 +54,8 @@ export default function RiskAssessmentDetailPage() {
   const [status, setStatus] = useState("");
   const [adminNotes, setAdminNotes] = useState("");
   const [canPurchaseMounjaro, setCanPurchaseMounjaro] = useState(false);
+  const [authorizedMounjaroDose, setAuthorizedMounjaroDose] = useState("");
+  const [authorizedWegovyDose, setAuthorizedWegovyDose] = useState("");
   const [authorizationExpiry, setAuthorizationExpiry] = useState("");
   const [reviewedBy, setReviewedBy] = useState("");
 
@@ -67,6 +71,8 @@ export default function RiskAssessmentDetailPage() {
       setAdminNotes(assessment.adminNotes || "");
       setReviewedBy(assessment.reviewedBy || "");
       setCanPurchaseMounjaro(assessment.canPurchaseMounjaro || false);
+      setAuthorizedMounjaroDose(assessment.authorizedMounjaroDose || "");
+      setAuthorizedWegovyDose(assessment.authorizedWegovyDose || "");
       setAuthorizationExpiry(assessment.authorizationExpiry || "");
     }
   }, [assessment]);
@@ -96,6 +102,8 @@ export default function RiskAssessmentDetailPage() {
           adminNotes,
           reviewedBy: reviewedBy || "Admin User",
           canPurchaseMounjaro,
+          authorizedMounjaroDose: authorizedMounjaroDose || null,
+          authorizedWegovyDose: authorizedWegovyDose || null,
           authorizationExpiry: authorizationExpiry || null,
         }),
       });
@@ -346,12 +354,12 @@ export default function RiskAssessmentDetailPage() {
                   />
                 </div>
 
-                {/* Mounjaro Authorization Section */}
-                <div className="border-t pt-4 space-y-4">
+                {/* Injection Authorization Section */}
+                <div className="border-t pt-4 space-y-6">
                   <div>
-                    <Label className="text-base font-semibold">Mounjaro Authorization</Label>
+                    <Label className="text-base font-semibold">Injection Authorization</Label>
                     <p className="text-sm text-gray-600 mb-3">
-                      Grant permission for this patient to purchase Mounjaro injections
+                      Grant permission and specify authorized doses for injection purchases
                     </p>
                   </div>
                   
@@ -369,6 +377,75 @@ export default function RiskAssessmentDetailPage() {
                   </div>
 
                   {canPurchaseMounjaro && (
+                    <div className="ml-6 space-y-3">
+                      <div>
+                        <Label htmlFor="mounjaro-dose">Authorized Mounjaro Dose</Label>
+                        <Select value={authorizedMounjaroDose} onValueChange={setAuthorizedMounjaroDose}>
+                          <SelectTrigger className="w-full mt-1">
+                            <SelectValue placeholder="Select authorized dose" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="2.5mg">2.5mg (Starting dose)</SelectItem>
+                            <SelectItem value="5mg">5mg</SelectItem>
+                            <SelectItem value="7.5mg">7.5mg</SelectItem>
+                            <SelectItem value="10mg">10mg</SelectItem>
+                            <SelectItem value="15mg">15mg (Maximum dose)</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Patient will only be able to purchase this specific dose
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Wegovy Authorization */}
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        id="canPurchaseWegovy"
+                        checked={!!authorizedWegovyDose}
+                        onChange={(e) => {
+                          if (!e.target.checked) {
+                            setAuthorizedWegovyDose("");
+                          } else {
+                            setAuthorizedWegovyDose("0.25mg");
+                          }
+                        }}
+                        className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                      />
+                      <Label htmlFor="canPurchaseWegovy" className="text-sm font-medium">
+                        Authorize Wegovy purchase
+                      </Label>
+                    </div>
+                    
+                    {authorizedWegovyDose && (
+                      <div className="ml-6 space-y-3">
+                        <div>
+                          <Label htmlFor="wegovy-dose">Authorized Wegovy Dose</Label>
+                          <Select value={authorizedWegovyDose} onValueChange={setAuthorizedWegovyDose}>
+                            <SelectTrigger className="w-full mt-1">
+                              <SelectValue placeholder="Select authorized dose" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="0.25mg">0.25mg (Starting dose)</SelectItem>
+                              <SelectItem value="0.5mg">0.5mg</SelectItem>
+                              <SelectItem value="1mg">1mg</SelectItem>
+                              <SelectItem value="1.7mg">1.7mg</SelectItem>
+                              <SelectItem value="2.4mg">2.4mg (Maintenance dose)</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <p className="text-xs text-gray-500 mt-1">
+                            Patient will only be able to purchase this specific dose
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Authorization Expiry - only show if either medication is authorized */}
+                  {(canPurchaseMounjaro || authorizedWegovyDose) && (
                     <div>
                       <Label htmlFor="authorizationExpiry">Authorization Expiry (Optional)</Label>
                       <input

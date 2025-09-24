@@ -23,7 +23,13 @@ const useCartStore = create<CartStore>()(
         const userEmail = assessmentStore.isVerified ? assessmentStore.email : undefined;
         
         // Validate if item can be added to cart
-        const validation = await validateCartItem(newItem.name, newItem.productId, userEmail || undefined, newItem.category);
+        const validation = await validateCartItem(
+          newItem.name, 
+          newItem.productId, 
+          userEmail || undefined, 
+          newItem.category,
+          newItem.variant // Pass the dose for validation
+        );
         
         if (!validation.allowed) {
           // Show validation message to user (this could trigger a toast/modal)

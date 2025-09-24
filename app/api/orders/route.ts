@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, MedicalReviewStatus } from '@prisma/client';
 import { CheckoutFormData } from '@/types/cart';
 import { CartItem } from '@/types/cart';
 import { sendOrderConfirmationEmail, OrderEmailData } from '@/lib/email-service';
@@ -29,6 +29,9 @@ export async function POST(request: NextRequest) {
       productRequiresAssessment(item.name, item.productId, item.category)
     );
 
+    let hasValidAssessment = false;
+    let assessmentData = null;
+
     if (assessmentRequiredItems.length > 0) {
       try {
         // Verify assessment for restricted products
@@ -40,7 +43,7 @@ export async function POST(request: NextRequest) {
           body: JSON.stringify({ email: customerData.email }),
         });
 
-        const assessmentData = await assessmentResponse.json();
+        assessmentData = await assessmentResponse.json();
 
         if (!assessmentData.eligible) {
           const productNames = assessmentRequiredItems.map(item => item.name).join(', ');
@@ -54,6 +57,8 @@ export async function POST(request: NextRequest) {
             { status: 403 }
           );
         }
+
+        hasValidAssessment = true;
       } catch (error) {
         console.error('Assessment verification failed during checkout:', error);
         return NextResponse.json(
@@ -75,6 +80,21 @@ export async function POST(request: NextRequest) {
     // Check if any items require prescription
     const prescriptionRequired = cartItems.some(item => item.isprescription);
 
+    // Determine medical review status based on assessment
+    let medicalReviewStatus: MedicalReviewStatus = MedicalReviewStatus.APPROVED; // Default to approved
+    
+    if (prescriptionRequired) {
+      if (hasValidAssessment) {
+        // User has valid assessment - automatically approve
+        medicalReviewStatus = MedicalReviewStatus.APPROVED;
+        console.log(`Order ${orderNumber}: Auto-approved due to valid assessment for ${customerData.email}`);
+      } else {
+        // User doesn't have assessment - requires review
+        medicalReviewStatus = MedicalReviewStatus.PENDING;
+        console.log(`Order ${orderNumber}: Pending review - no assessment found for ${customerData.email}`);
+      }
+    }
+
     // Create order with items
     const order = await prisma.order.create({
       data: {
@@ -87,7 +107,7 @@ export async function POST(request: NextRequest) {
         shippingAmount,
         totalAmount,
         prescriptionRequired,
-        medicalReviewStatus: prescriptionRequired ? 'PENDING' : 'APPROVED',
+        medicalReviewStatus,
         shippingStreet: customerData.shippingStreet,
         shippingCity: customerData.shippingCity,
         shippingPostalCode: customerData.shippingPostalCode,
@@ -116,7 +136,9 @@ export async function POST(request: NextRequest) {
         orderStatusHistory: {
           create: {
             status: 'PENDING',
-            notes: 'Order placed successfully',
+            notes: hasValidAssessment && prescriptionRequired 
+              ? 'Order placed successfully. Medical review auto-approved due to valid assessment.'
+              : 'Order placed successfully',
           }
         }
       },

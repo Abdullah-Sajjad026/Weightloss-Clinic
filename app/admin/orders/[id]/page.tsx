@@ -185,18 +185,24 @@ export default function AdminOrderDetailPage({
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'PENDING':
-      case 'MEDICAL_REVIEW':
-        return <Clock className="w-5 h-5 text-yellow-600" />;
-      case 'APPROVED':
+        return <Clock className="w-5 h-5 text-amber-600" />;
       case 'PROCESSING':
         return <Package className="w-5 h-5 text-blue-600" />;
       case 'SHIPPED':
-        return <Truck className="w-5 h-5 text-primary-600" />;
+        return <Truck className="w-5 h-5 text-indigo-600" />;
       case 'DELIVERED':
         return <CheckCircle className="w-5 h-5 text-green-600" />;
-      case 'REJECTED':
       case 'CANCELLED':
         return <XCircle className="w-5 h-5 text-red-600" />;
+      // Medical Review Status Icons
+      case 'UNDER_REVIEW':
+        return <Clock className="w-5 h-5 text-orange-600" />;
+      case 'APPROVED':
+        return <CheckCircle className="w-5 h-5 text-green-600" />;
+      case 'REJECTED':
+        return <XCircle className="w-5 h-5 text-red-600" />;
+      case 'REQUIRES_CONSULTATION':
+        return <AlertTriangle className="w-5 h-5 text-purple-600" />;
       default:
         return <AlertTriangle className="w-5 h-5 text-gray-600" />;
     }
@@ -205,20 +211,33 @@ export default function AdminOrderDetailPage({
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'PENDING':
-      case 'MEDICAL_REVIEW':
-        return "bg-yellow-100 text-yellow-800";
-      case 'APPROVED':
+        return "bg-amber-100 text-amber-800 border-amber-200";
       case 'PROCESSING':
-        return "bg-blue-100 text-blue-800";
+        return "bg-blue-100 text-blue-800 border-blue-200";
       case 'SHIPPED':
-        return "bg-primary-100 text-primary-800";
+        return "bg-indigo-100 text-indigo-800 border-indigo-200";
       case 'DELIVERED':
-        return "bg-green-100 text-green-800";
-      case 'REJECTED':
+        return "bg-green-100 text-green-800 border-green-200";
       case 'CANCELLED':
-        return "bg-red-100 text-red-800";
+        return "bg-red-100 text-red-800 border-red-200";
+      // Medical Review Status Colors
+      case 'UNDER_REVIEW':
+        return "bg-orange-100 text-orange-800 border-orange-200";
+      case 'APPROVED':
+        return "bg-green-100 text-green-800 border-green-200";
+      case 'REJECTED':
+        return "bg-red-100 text-red-800 border-red-200";
+      case 'REQUIRES_CONSULTATION':
+        return "bg-purple-100 text-purple-800 border-purple-200";
+      // Payment Status Colors
+      case 'COMPLETED':
+        return "bg-emerald-100 text-emerald-800 border-emerald-200";
+      case 'FAILED':
+        return "bg-red-100 text-red-800 border-red-200";
+      case 'REFUNDED':
+        return "bg-slate-100 text-slate-800 border-slate-200";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-100 text-gray-800 border-gray-200";
     }
   };
 
@@ -305,24 +324,21 @@ export default function AdminOrderDetailPage({
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="PENDING">Pending</SelectItem>
-                    <SelectItem value="MEDICAL_REVIEW">Medical Review</SelectItem>
-                    <SelectItem value="APPROVED">Approved</SelectItem>
                     <SelectItem value="PROCESSING">Processing</SelectItem>
                     <SelectItem value="SHIPPED">Shipped</SelectItem>
                     <SelectItem value="DELIVERED">Delivered</SelectItem>
                     <SelectItem value="CANCELLED">Cancelled</SelectItem>
-                    <SelectItem value="REFUNDED">Refunded</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div>
-                <Label htmlFor="trackingNumber">Tracking Number</Label>
+                <Label htmlFor="trackingNumber">Royal Mail Tracking ID</Label>
                 <Input
                   id="trackingNumber"
                   value={trackingNumber}
                   onChange={(e) => setTrackingNumber(e.target.value)}
-                  placeholder="Enter tracking number..."
+                  placeholder="Enter Royal Mail tracking ID..."
                   className="mt-1"
                 />
               </div>
@@ -550,14 +566,17 @@ export default function AdminOrderDetailPage({
             <div className="space-y-4">
               <div>
                 <label className="text-sm font-medium text-gray-500">Payment Status</label>
-                <div className="mt-1">
-                  <Badge className={
-                    order.paymentStatus === 'COMPLETED' || order.paymentStatus === 'PAID' ? 'bg-green-100 text-green-800' : 
-                    order.paymentStatus === 'FAILED' || order.paymentStatus === 'PAYMENT_FAILED' ? 'bg-red-100 text-red-800' :
-                    order.paymentStatus === 'CANCELLED' ? 'bg-gray-100 text-gray-800' :
-                    order.paymentStatus === 'REFUNDED' ? 'bg-blue-100 text-blue-800' :
-                    'bg-yellow-100 text-yellow-800'
-                  }>
+                <div className="mt-1 flex items-center space-x-2">
+                  {order.paymentStatus === 'COMPLETED' ? (
+                    <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  ) : order.paymentStatus === 'FAILED' ? (
+                    <XCircle className="w-4 h-4 text-red-600" />
+                  ) : order.paymentStatus === 'REFUNDED' ? (
+                    <AlertTriangle className="w-4 h-4 text-slate-600" />
+                  ) : (
+                    <Clock className="w-4 h-4 text-amber-600" />
+                  )}
+                  <Badge className={getStatusColor(order.paymentStatus)}>
                     {formatOrderStatus(order.paymentStatus)}
                   </Badge>
                 </div>
