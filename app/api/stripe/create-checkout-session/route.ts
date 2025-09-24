@@ -153,7 +153,8 @@ export async function POST(request: NextRequest) {
       where: { id: orderId },
       data: {
         stripeSessionId: session.id,
-        status: 'PAYMENT_PENDING',
+        status: 'PENDING', // Payment is pending, but we use PaymentStatus for payment-specific tracking
+        paymentStatus: 'PENDING',
       },
     })
 

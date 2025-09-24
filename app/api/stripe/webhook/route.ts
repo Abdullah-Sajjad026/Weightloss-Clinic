@@ -76,7 +76,7 @@ async function handleCheckoutSessionCompleted(session: any) {
     await prisma.order.update({
       where: { id: orderId },
       data: {
-        status: 'PAID',
+        status: 'PENDING', // Order received payment, now pending processing
         paymentStatus: 'COMPLETED',
         stripePaymentIntentId: session.payment_intent,
         paidAt: new Date(),
@@ -112,7 +112,7 @@ async function handlePaymentIntentFailed(paymentIntent: any) {
       await prisma.order.update({
         where: { id: order.id },
         data: {
-          status: 'PAYMENT_FAILED',
+          status: 'CANCELLED',
           paymentStatus: 'FAILED',
         },
       })
@@ -138,7 +138,7 @@ async function handleCheckoutSessionExpired(session: any) {
     await prisma.order.update({
       where: { id: orderId },
       data: {
-        status: 'PAYMENT_FAILED',
+        status: 'CANCELLED',
         paymentStatus: 'CANCELLED',
       },
     })
