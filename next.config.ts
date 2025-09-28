@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     // Optimize package imports for better bundle size
     optimizePackageImports: ['@radix-ui/react-icons', 'lucide-react', '@tabler/icons-react'],

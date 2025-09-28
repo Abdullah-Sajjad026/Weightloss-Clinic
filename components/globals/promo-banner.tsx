@@ -18,7 +18,7 @@ export default function PromoBanner() {
             🎉 Free consultation available - Limited time offer
           </span>
           <Button asChild size="sm" variant="outline">
-            <Link href="/consultation">Book Now</Link>
+            <Link href="/book-appointment">Book Now</Link>
           </Button>
         </div>
         <Button

@@ -70,10 +70,9 @@ export default function CartPage() {
               <Button asChild size="lg">
                 <Link href="/injections">Browse Injections</Link>
               </Button>
-              {/* Pills & Tablets link removed as page doesn't exist */}
-              {/* <Button variant="outline" asChild size="lg">
-                <Link href="/pills-tablets">Browse Pills & Tablets</Link>
-              </Button> */}
+              <Button variant="outline" asChild size="lg">
+                <Link href="/assessment">Take Assessment</Link>
+              </Button>
             </div>
           </div>
         </div>
