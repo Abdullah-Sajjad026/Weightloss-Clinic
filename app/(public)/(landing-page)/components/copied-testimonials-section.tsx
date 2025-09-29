@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Marquee } from "@/components/magicui/marquee"
-import { X, Play } from "lucide-react"
+import { Play } from "lucide-react"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 
 const testimonials = [
@@ -132,12 +132,6 @@ export default function TestimonialsSection() {
                   <p className="text-gray-600">{selectedTestimonial.period}</p>
                   <p className="text-green-600 font-medium">{selectedTestimonial.progress}</p>
                 </div>
-                <button
-                  onClick={() => setSelectedTestimonial(null)}
-                  className="rounded-full p-2 hover:bg-gray-100"
-                >
-                  <X className="h-5 w-5" />
-                </button>
               </div>
               
               {/* Placeholder for video content */}

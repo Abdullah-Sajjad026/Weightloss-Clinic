@@ -27,15 +27,17 @@ export const assessmentConfig: AssessmentConfig = {
   specificProductRequirements: {
     'mounjaro': true,
     'tirzepatide': true,
+    'wegovy': true,
+    'semaglutide': true,
   },
   
   // Product name patterns that require assessment (case-insensitive)
   requiredPatterns: [
     'mounjaro',
     'tirzepatide',
+    'wegovy',
+    'semaglutide',
     // Add more patterns as needed:
-    // 'wegovy',
-    // 'semaglutide',
     // 'ozempic'
   ],
   

@@ -60,37 +60,14 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-        <div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center justify-evenly gap-3 px-6 py-2 lg:grid-cols-2 lg:py-1">
+        <div className="mx-auto flex w-full max-w-[1600px] items-center justify-center gap-3 px-6 py-2 lg:py-1">
           <OfficialRegentPharmacyLogo />
-          <div className="mt-3 hidden justify-center md:mb-2 md:flex lg:mt-0 lg:mb-0">
-            <FreeOnlineYogaLogo />
-          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export function FreeOnlineYogaLogo() {
-  return (
-    <div className="text-primary/90 flex items-center justify-center gap-2 text-base font-medium opacity-100 transition hover:opacity-80 lg:text-lg">
-      <svg
-        className="text-primary/80 size-6"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-      >
-        <path
-          d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-        />
-      </svg>
-      Free Online Yoga Class (Weekly)
-    </div>
-  );
-}
 
 export function OfficialRegentPharmacyLogo() {
   return (

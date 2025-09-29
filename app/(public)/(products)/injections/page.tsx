@@ -16,11 +16,21 @@ import MedicallyReviewedSection from "@/app/(public)/(landing-page)/components/m
 
 export const metadata: Metadata = {
   title: "Weight Loss Injections - Mounjaro & Wegovy",
-  description: "Professional weight loss injections including Mounjaro (tirzepatide) and Wegovy (semaglutide). Compare effectiveness, pricing, and side effects. Expert medical consultation available.",
-  keywords: ["weight loss injections", "Mounjaro", "Wegovy", "tirzepatide", "semaglutide", "Northampton", "medical weight loss"],
+  description:
+    "Professional weight loss injections including Mounjaro (tirzepatide) and Wegovy (semaglutide). Compare effectiveness, pricing, and side effects. Expert medical consultation available.",
+  keywords: [
+    "weight loss injections",
+    "Mounjaro",
+    "Wegovy",
+    "tirzepatide",
+    "semaglutide",
+    "Northampton",
+    "medical weight loss",
+  ],
   openGraph: {
     title: "Weight Loss Injections - Mounjaro & Wegovy - Northampton Clinic",
-    description: "Professional weight loss injections with Mounjaro and Wegovy. Expert medical consultation and personalized treatment plans.",
+    description:
+      "Professional weight loss injections with Mounjaro and Wegovy. Expert medical consultation and personalized treatment plans.",
   },
 };
 
@@ -35,7 +45,7 @@ const injectionProducts = [
   },
   {
     name: "Wegovy",
-    description: "All doses available", 
+    description: "All doses available",
     price: "from £169/month",
     imageUrl: "/products/wegovy-box.webp",
     imageAlt: "Wegovy injection medication",
@@ -121,8 +131,6 @@ export default function InjectionsPage() {
           colorScheme="tertiary"
         />
       </section>
-
-      <MedicallyReviewedSection />
     </>
   );
 }

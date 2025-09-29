@@ -219,7 +219,7 @@ export default function FAQsSection() {
         <div className="mt-8 flex flex-col gap-3 text-lg text-zinc-900 lg:flex-row">
           <div>Have a question we haven't answered?</div>
           <Link
-            href="tel:01604250734"
+            href="/contact"
             className="text-primary-700 font-medium underline underline-offset-2 hover:opacity-70"
           >
             Call Now!
