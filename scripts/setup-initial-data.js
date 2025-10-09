@@ -80,12 +80,32 @@ async function setupInitialTimeSlots() {
 
 async function main() {
   try {
+    console.log('🚀 Starting initial data setup...\n');
+
+    // Check database connection
+    await prisma.$connect();
+    console.log('✅ Database connection established\n');
+
+    // Run setup tasks
     await setupInitialTimeSlots();
+
+    console.log('\n✅ All setup tasks completed successfully!');
   } catch (error) {
-    console.error('Setup failed:', error);
+    console.error('\n❌ Setup failed:', error.message);
+
+    // Provide helpful error messages
+    if (error.code === 'P1001') {
+      console.error('\n🔍 Cannot reach database server.');
+      console.error('💡 Check your DATABASE_URL environment variable.');
+    } else if (error.code === 'P1003') {
+      console.error('\n🔍 Database does not exist.');
+      console.error('💡 Run migrations first: pnpm db:migrate:deploy');
+    }
+
     process.exit(1);
   } finally {
     await prisma.$disconnect();
+    console.log('\n👋 Disconnected from database');
   }
 }
 
