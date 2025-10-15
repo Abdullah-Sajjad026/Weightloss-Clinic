@@ -91,17 +91,6 @@ export default function AdminLoginPage() {
               {isLoading ? "Logging in..." : "Login"}
             </Button>
           </form>
-
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <h4 className="font-medium text-blue-900 mb-2">Demo Credentials</h4>
-            <p className="text-sm text-blue-800">
-              <strong>Password:</strong> admin123
-            </p>
-            <p className="text-xs text-blue-600 mt-1">
-              Change this in production by setting ADMIN_PASSWORD environment
-              variable
-            </p>
-          </div>
         </CardContent>
       </Card>
     </div>
